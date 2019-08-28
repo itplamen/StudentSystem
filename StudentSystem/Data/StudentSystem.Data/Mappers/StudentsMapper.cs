@@ -1,7 +1,9 @@
 ﻿namespace StudentSystem.Data.Mappers
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.SqlClient;
+    using System.Linq;
 
     using StudentSystem.Common.Contracts;
     using StudentSystem.Data.Models;
@@ -24,6 +26,27 @@
             };
 
             return student;
+        }
+
+        public IEnumerable<Student> Map(IEnumerable<SqlDataReader> from)
+        {
+            SqlDataReader reader = from.FirstOrDefault();
+
+            if (reader != null)
+            {
+                ICollection<Student> students = new List<Student>();
+
+                while (reader.Read())
+                {
+                    Student student = Map(reader);
+
+                    students.Add(student);
+                }
+
+                return students;
+            }
+
+            return Enumerable.Empty<Student>();
         }
     }
 }

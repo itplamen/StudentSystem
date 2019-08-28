@@ -7,5 +7,7 @@
         where To : class
     {
         To Map(TFrom from);
+
+        IEnumerable<To> Map(IEnumerable<TFrom> from);
     }
 }

@@ -18,8 +18,6 @@
 
         public IEnumerable<Student> Handle()
         {
-            ICollection<Student> students = new List<Student>();
-
             using (SqlConnection connection = new SqlConnection(Data.Default.ConnectionString))
             {
                 connection.Open();
@@ -28,16 +26,12 @@
                 {
                     using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
-                        while (reader.Read())
-                        {
-                            Student student = studentsMapper.Map(reader);
-                            students.Add(student);
-                        }
+                        IEnumerable<SqlDataReader> readers = new List<SqlDataReader>() { reader };
+
+                        return studentsMapper.Map(readers);
                     }
                 }
             }
-
-            return students;
         }
     }
 }
