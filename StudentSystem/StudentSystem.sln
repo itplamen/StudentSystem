@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentSystem.Clients.Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentSystem.Clients.Web", "Clients\StudentSystem.Clients.Web\StudentSystem.Clients.Web.csproj", "{7024AADF-BFD6-4E4F-8561-290844B9B871}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IoCContainer", "IoCContainer", "{68DA9C69-62C0-4290-83CF-D9C12D58DBEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentSystem.IoCContainer.Packages", "IoCContainer\StudentSystem.IoCContainer.Packages\StudentSystem.IoCContainer.Packages.csproj", "{6BF358C5-9918-487C-B0F8-C5D1F5E5CB05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +63,10 @@ Global
 		{7024AADF-BFD6-4E4F-8561-290844B9B871}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7024AADF-BFD6-4E4F-8561-290844B9B871}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7024AADF-BFD6-4E4F-8561-290844B9B871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BF358C5-9918-487C-B0F8-C5D1F5E5CB05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BF358C5-9918-487C-B0F8-C5D1F5E5CB05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BF358C5-9918-487C-B0F8-C5D1F5E5CB05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BF358C5-9918-487C-B0F8-C5D1F5E5CB05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +79,7 @@ Global
 		{17C7A81D-A24E-42F7-A28B-F6326E814C0D} = {A38290D9-D180-4823-A454-33C3339174B4}
 		{F2623CAF-56EE-4C9D-9699-A05A6167B9BC} = {3C3A222C-503C-4866-8FD6-BCAA010E420B}
 		{7024AADF-BFD6-4E4F-8561-290844B9B871} = {3C3A222C-503C-4866-8FD6-BCAA010E420B}
+		{6BF358C5-9918-487C-B0F8-C5D1F5E5CB05} = {68DA9C69-62C0-4290-83CF-D9C12D58DBEE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16099E54-6515-4A7B-BD95-D7463FD735E5}
