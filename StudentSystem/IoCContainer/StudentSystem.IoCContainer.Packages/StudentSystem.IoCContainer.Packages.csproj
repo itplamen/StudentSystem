@@ -77,6 +77,7 @@
     <Compile Include="Data\DataMappersPackage.cs" />
     <Compile Include="Data\QueryHandlersPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\WebMappersPackage.cs" />
     <Compile Include="Services\WebServicesPackage.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +95,10 @@
     <ProjectReference Include="..\..\Data\StudentSystem.Data\StudentSystem.Data.csproj">
       <Project>{AEAF0D34-C29C-44AF-9906-39D069657D47}</Project>
       <Name>StudentSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\StudentSystem.Services.Models.Web\StudentSystem.Services.Models.Web.csproj">
+      <Project>{17C7A81D-A24E-42F7-A28B-F6326E814C0D}</Project>
+      <Name>StudentSystem.Services.Models.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Services\StudentSystem.Services.Web\StudentSystem.Services.Web.csproj">
       <Project>{B189491A-68A0-4650-8A7A-184058BFA238}</Project>
