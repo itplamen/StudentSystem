@@ -74,11 +74,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DataMappersPackage.cs" />
     <Compile Include="Data\QueryHandlersPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\StudentSystem.Common\StudentSystem.Common.csproj">
+      <Project>{D303E50C-DADA-4DD9-9A19-8EB6F1DAA3C7}</Project>
+      <Name>StudentSystem.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\StudentSystem.Data.Models\StudentSystem.Data.Models.csproj">
+      <Project>{261E57E6-8A7B-4673-A9E4-314064442E08}</Project>
+      <Name>StudentSystem.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\StudentSystem.Data\StudentSystem.Data.csproj">
+      <Project>{AEAF0D34-C29C-44AF-9906-39D069657D47}</Project>
+      <Name>StudentSystem.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
