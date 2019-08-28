@@ -41,7 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\StudentsMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\StudentSystem.Common\StudentSystem.Common.csproj">
+      <Project>{D303E50C-DADA-4DD9-9A19-8EB6F1DAA3C7}</Project>
+      <Name>StudentSystem.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\StudentSystem.Data.Models\StudentSystem.Data.Models.csproj">
+      <Project>{261E57E6-8A7B-4673-A9E4-314064442E08}</Project>
+      <Name>StudentSystem.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StudentSystem.Services.Models.Web\StudentSystem.Services.Models.Web.csproj">
+      <Project>{17C7A81D-A24E-42F7-A28B-F6326E814C0D}</Project>
+      <Name>StudentSystem.Services.Models.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
