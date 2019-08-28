@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{A3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentSystem.Services.Web", "Services\StudentSystem.Services.Web\StudentSystem.Services.Web.csproj", "{B189491A-68A0-4650-8A7A-184058BFA238}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentSystem.Services.Models.Web", "Services\StudentSystem.Services.Models.Web\StudentSystem.Services.Models.Web.csproj", "{17C7A81D-A24E-42F7-A28B-F6326E814C0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{B189491A-68A0-4650-8A7A-184058BFA238}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B189491A-68A0-4650-8A7A-184058BFA238}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B189491A-68A0-4650-8A7A-184058BFA238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17C7A81D-A24E-42F7-A28B-F6326E814C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17C7A81D-A24E-42F7-A28B-F6326E814C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17C7A81D-A24E-42F7-A28B-F6326E814C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17C7A81D-A24E-42F7-A28B-F6326E814C0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{261E57E6-8A7B-4673-A9E4-314064442E08} = {03B6802A-4A52-4ACB-B8F0-452CBC48C07E}
 		{D303E50C-DADA-4DD9-9A19-8EB6F1DAA3C7} = {C3BF1B97-9D0E-4550-B68A-41DEE3B45E1A}
 		{B189491A-68A0-4650-8A7A-184058BFA238} = {A38290D9-D180-4823-A454-33C3339174B4}
+		{17C7A81D-A24E-42F7-A28B-F6326E814C0D} = {A38290D9-D180-4823-A454-33C3339174B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16099E54-6515-4A7B-BD95-D7463FD735E5}
