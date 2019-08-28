@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,8 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IStudentsService.cs" />
     <Compile Include="Mappers\StudentsMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\StudentSystem.Common\StudentSystem.Common.csproj">
@@ -52,6 +55,10 @@
     <ProjectReference Include="..\..\Data\StudentSystem.Data.Models\StudentSystem.Data.Models.csproj">
       <Project>{261E57E6-8A7B-4673-A9E4-314064442E08}</Project>
       <Name>StudentSystem.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\StudentSystem.Data\StudentSystem.Data.csproj">
+      <Project>{AEAF0D34-C29C-44AF-9906-39D069657D47}</Project>
+      <Name>StudentSystem.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\StudentSystem.Services.Models.Web\StudentSystem.Services.Models.Web.csproj">
       <Project>{17C7A81D-A24E-42F7-A28B-F6326E814C0D}</Project>
