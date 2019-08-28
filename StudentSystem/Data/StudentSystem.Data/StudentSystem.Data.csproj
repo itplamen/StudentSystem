@@ -48,6 +48,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Data.settings</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\StudentsMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\Students\AllStudentsQueryHandler.cs" />
   </ItemGroup>
@@ -59,6 +60,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\StudentSystem.Common\StudentSystem.Common.csproj">
+      <Project>{D303E50C-DADA-4DD9-9A19-8EB6F1DAA3C7}</Project>
+      <Name>StudentSystem.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StudentSystem.Data.Models\StudentSystem.Data.Models.csproj">
       <Project>{261E57E6-8A7B-4673-A9E4-314064442E08}</Project>
       <Name>StudentSystem.Data.Models</Name>
