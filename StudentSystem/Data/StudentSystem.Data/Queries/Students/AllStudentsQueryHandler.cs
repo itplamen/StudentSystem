@@ -4,33 +4,36 @@
     using System.Data.SqlClient;
 
     using StudentSystem.Common.Contracts;
+    using StudentSystem.Data.Contracts;
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Models;
 
     public class AllStudentsQueryHandler : IQueryHandler<IEnumerable<Student>>
     {
+        private readonly ISqlQueryExecutor sqlQueryExecutor;
         private readonly IMapper<SqlDataReader, Student> studentsMapper;
 
-        public AllStudentsQueryHandler(IMapper<SqlDataReader, Student> studentsMapper)
+        public AllStudentsQueryHandler(ISqlQueryExecutor sqlQueryExecutor, IMapper<SqlDataReader, Student> studentsMapper)
         {
+            this.sqlQueryExecutor = sqlQueryExecutor;
             this.studentsMapper = studentsMapper;
         }
 
         public IEnumerable<Student> Handle()
         {
-            using (SqlConnection connection = new SqlConnection(Data.Default.ConnectionString))
+            string query = "SELECT * FROM Students";
+            IEnumerable<Student> students = sqlQueryExecutor.Execute(query, GetStudents);
+
+            return students;
+        }
+
+        private IEnumerable<Student> GetStudents(SqlCommand sqlCommand)
+        {
+            using (SqlDataReader reader = sqlCommand.ExecuteReader())
             {
-                connection.Open();
+                IEnumerable<SqlDataReader> readers = new List<SqlDataReader>() { reader };
 
-                using (SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Students", connection))
-                {
-                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
-                    {
-                        IEnumerable<SqlDataReader> readers = new List<SqlDataReader>() { reader };
-
-                        return studentsMapper.Map(readers);
-                    }
-                }
+                return studentsMapper.Map(readers);
             }
         }
     }
