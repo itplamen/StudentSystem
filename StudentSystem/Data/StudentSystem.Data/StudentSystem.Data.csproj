@@ -43,21 +43,12 @@
   <ItemGroup>
     <Compile Include="Contracts\Queries\IQuery.cs" />
     <Compile Include="Contracts\Queries\IQueryHandler.cs" />
-    <Compile Include="Data.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Data.settings</DependentUpon>
-    </Compile>
     <Compile Include="Mappers\StudentsMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\Students\AllStudentsQueryHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Data.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Data.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\StudentSystem.Common\StudentSystem.Common.csproj">
