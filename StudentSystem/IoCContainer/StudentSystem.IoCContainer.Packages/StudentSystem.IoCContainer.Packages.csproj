@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CommonPackage.cs" />
     <Compile Include="Data\DataMappersPackage.cs" />
     <Compile Include="Data\QueryHandlersPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

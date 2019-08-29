@@ -6,6 +6,7 @@
     using SimpleInjector.Integration.Wcf;
     using SimpleInjector.Packaging;
 
+    using StudentSystem.IoCContainer.Packages.Common;
     using StudentSystem.IoCContainer.Packages.Data;
     using StudentSystem.IoCContainer.Packages.Services;
 
@@ -22,7 +23,8 @@
                 new DataMappersPackage(),
                 new QueryHandlersPackage(),
                 new WebMappersPackage(),
-                new WebServicesPackage()
+                new WebServicesPackage(),
+                new CommonPackage()
             };
 
             foreach (var package in packages)
