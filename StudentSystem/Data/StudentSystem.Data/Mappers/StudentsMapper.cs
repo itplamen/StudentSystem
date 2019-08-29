@@ -16,9 +16,9 @@
             {
                 Id = Convert.ToInt32(from["Id"]),
                 CreatedOn = Convert.ToDateTime(from["CreatedOn"]),
-                ModifiedOn = Convert.ToDateTime(from["ModifiedOn"]),
+                ModifiedOn = Map(from, "ModifiedOn"),
                 IsDeleted = Convert.ToBoolean(from["IsDeleted"]),
-                DeletedOn = Convert.ToDateTime(from["DeletedOn"]),
+                DeletedOn = Map(from, "DeletedOn"),
                 FirstName = Convert.ToString(from["FirstName"]),
                 LastName = Convert.ToString(from["LastName"]),
                 Email = Convert.ToString(from["Email"]),
@@ -47,6 +47,18 @@
             }
 
             return Enumerable.Empty<Student>();
+        }
+
+        private DateTime? Map(SqlDataReader reader, string columnName)
+        {
+            int columnOrdinal = reader.GetOrdinal(columnName);
+
+            if (reader.IsDBNull(columnOrdinal))
+            {
+                return (DateTime?)null;
+            }
+
+            return (DateTime?)reader.GetDateTime(columnOrdinal);
         }
     }
 }
