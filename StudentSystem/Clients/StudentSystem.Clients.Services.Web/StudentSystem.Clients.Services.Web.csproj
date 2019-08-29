@@ -78,10 +78,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="StudentsService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +98,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\IoCContainer\StudentSystem.IoCContainer.Packages\StudentSystem.IoCContainer.Packages.csproj">
+      <Project>{6BF358C5-9918-487C-B0F8-C5D1F5E5CB05}</Project>
+      <Name>StudentSystem.IoCContainer.Packages</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Services\StudentSystem.Services.Web\StudentSystem.Services.Web.csproj">
       <Project>{b189491a-68a0-4650-8a7a-184058bfa238}</Project>
       <Name>StudentSystem.Services.Web</Name>
