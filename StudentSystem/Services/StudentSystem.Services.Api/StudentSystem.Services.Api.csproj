@@ -44,7 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IStudentSystemApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentSystemApi.cs" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
