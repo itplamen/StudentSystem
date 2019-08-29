@@ -3,7 +3,7 @@
     using System.Collections.Generic;
 
     using SimpleInjector;
-    using SimpleInjector.Integration.Web;
+    using SimpleInjector.Lifestyles;
     using SimpleInjector.Packaging;
 
     using StudentSystem.Data.Contracts.Queries;
@@ -14,7 +14,7 @@
     {
         public void RegisterServices(Container container)
         {
-            container.Register<IQueryHandler<IEnumerable<Student>>, AllStudentsQueryHandler>(new WebRequestLifestyle());
+            container.Register<IQueryHandler<IEnumerable<Student>>, AllStudentsQueryHandler>(new AsyncScopedLifestyle());
         }
     }
 }
