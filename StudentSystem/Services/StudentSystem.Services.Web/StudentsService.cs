@@ -1,8 +1,8 @@
 ﻿namespace StudentSystem.Services.Web
 {
     using System.Collections.Generic;
-    using StudentSystem.Common.Contracts;
 
+    using StudentSystem.Common.Contracts;
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Models;
     using StudentSystem.Services.Models.Web;
