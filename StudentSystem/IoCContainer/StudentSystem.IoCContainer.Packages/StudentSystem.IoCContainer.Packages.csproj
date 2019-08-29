@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ApiPackage.cs" />
     <Compile Include="Common\CommonPackage.cs" />
     <Compile Include="Data\DataMappersPackage.cs" />
     <Compile Include="Data\QueryHandlersPackage.cs" />
@@ -96,6 +97,10 @@
     <ProjectReference Include="..\..\Data\StudentSystem.Data\StudentSystem.Data.csproj">
       <Project>{AEAF0D34-C29C-44AF-9906-39D069657D47}</Project>
       <Name>StudentSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\StudentSystem.Services.Api\StudentSystem.Services.Api.csproj">
+      <Project>{F5640FB2-3FCA-4FCF-8254-D3E34960AB6D}</Project>
+      <Name>StudentSystem.Services.Api</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Services\StudentSystem.Services.Models.Web\StudentSystem.Services.Models.Web.csproj">
       <Project>{17C7A81D-A24E-42F7-A28B-F6326E814C0D}</Project>
