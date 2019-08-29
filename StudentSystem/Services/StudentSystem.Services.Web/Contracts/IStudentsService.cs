@@ -9,7 +9,7 @@
     [ServiceContract]
     public interface IStudentsService
     {
-        [WebGet]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
         IEnumerable<StudentModel> GetAll();
     }
