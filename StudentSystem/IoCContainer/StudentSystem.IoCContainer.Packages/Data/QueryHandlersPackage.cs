@@ -3,7 +3,6 @@
     using System.Collections.Generic;
 
     using SimpleInjector;
-    using SimpleInjector.Lifestyles;
     using SimpleInjector.Packaging;
 
     using StudentSystem.Data.Contracts.Queries;
@@ -14,7 +13,7 @@
     {
         public void RegisterServices(Container container)
         {
-            container.Register<IQueryHandler<IEnumerable<Student>>, AllStudentsQueryHandler>(new AsyncScopedLifestyle());
+            container.Register<IQueryHandler<IEnumerable<Student>>, AllStudentsQueryHandler>(Lifestyle.Transient);
         }
     }
 }

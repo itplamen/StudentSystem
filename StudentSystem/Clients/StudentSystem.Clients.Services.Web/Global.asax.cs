@@ -22,6 +22,7 @@
             {
                 new DataMappersPackage(),
                 new QueryHandlersPackage(),
+                new ExecutorsPackage(),
                 new WebMappersPackage(),
                 new WebServicesPackage(),
                 new CommonPackage()
