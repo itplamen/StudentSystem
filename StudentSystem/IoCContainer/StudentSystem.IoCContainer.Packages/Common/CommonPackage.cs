@@ -3,6 +3,7 @@
     using SimpleInjector;
     using SimpleInjector.Packaging;
 
+    using StudentSystem.Common;
     using StudentSystem.Common.Contracts;
     using StudentSystem.Common.Loggers;
 
@@ -11,6 +12,7 @@
         public void RegisterServices(Container container)
         {
             container.Register<ILoggerFactory, LoggerFactory>(Lifestyle.Singleton);
+            container.Register<IConfigurationManager, ConfigurationManager>(Lifestyle.Singleton);
         }
     }
 }
