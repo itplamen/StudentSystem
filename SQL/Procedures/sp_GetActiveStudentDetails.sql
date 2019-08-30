@@ -10,7 +10,8 @@ BEGIN
 
 	SELECT 
 		students.Id AS [StudentId], 
-		students.FirstName + ' ' + students.LastName AS [StudentName], 
+		students.FirstName AS [StudentFirstName], 
+		students.LastName AS [StudentLastName],
 		students.Email AS [StudentEmail], 
 		students.DateOfBirth AS [StudentDateOfBirth],
 		students.CreatedOn AS [StudentCreatedOn],
@@ -22,8 +23,9 @@ BEGIN
 		disciplines.Id AS [DisciplineId],
 		disciplines.Name AS [DisciplineName],
 		professors.Id AS [ProfessorId],
-		professors.FirstName + ' ' + professors.LastName AS [ProfessorName],
-		scores.Mark AS [Score]
+		professors.FirstName AS [ProfessorFirstName],
+		professors.LastName AS [ProfessorLastName],
+		scores.Mark AS [Mark]
 	INTO #ActiveStudentDetails
 	FROM [dbo].[Students] students
 	INNER JOIN [dbo].[Scores] scores ON scores.StudentId = students.Id
@@ -34,16 +36,18 @@ BEGIN
 
 	-- Students
     SELECT 
-		StudentId, 
-		StudentName,
-		StudentEmail,
-		StudentDateOfBirth,
-		StudentCreatedOn,
-		StudentModifiedOn
+		StudentId AS [Id], 
+		StudentFirstName AS [FirstName],
+		StudentLastName AS [LastName],
+		StudentEmail AS [Email],
+		StudentDateOfBirth AS [DateOfBirth],
+		StudentCreatedOn AS [CreatedOn],
+		StudentModifiedOn AS [ModifiedOn]
 	FROM #ActiveStudentDetails
 	GROUP BY 
 		StudentId, 
-		StudentName,
+		StudentFirstName,
+		StudentLastName,
 		StudentEmail,
 		StudentDateOfBirth,
 		StudentCreatedOn,
@@ -51,27 +55,46 @@ BEGIN
 
 	-- Semesters
 	SELECT 
-		SemesterId,
-		SemesterName,
-		SemesterStarDate,
-		SemesterEndDate,
-		StudentId
+		SemesterId AS [Id],
+		SemesterName AS [Name],
+		SemesterStarDate AS [StartDate],
+		SemesterEndDate AS [EndDate]
 	FROM #ActiveStudentDetails
 	GROUP BY 
 		SemesterId,
 		SemesterName,
 		SemesterStarDate,
-		SemesterEndDate,
-		StudentId
+		SemesterEndDate
 
-	--Disciplines
+	-- Professors
 	SELECT 
+		ProfessorId AS [Id],
+		ProfessorFirstName AS [FirstName],
+		ProfessorLastName AS [LastName]
+	FROM #ActiveStudentDetails
+	GROUP BY 
+		ProfessorId,
+		ProfessorFirstName,
+		ProfessorLastName
+
+	-- Disciplines
+	SELECT 
+		DisciplineId AS [Id],
+		DisciplineName AS [Name],
+		SemesterId AS [SemesterId],
+		ProfessorId AS [ProfessorId]
+	FROM #ActiveStudentDetails
+	GROUP BY 
 		DisciplineId,
 		DisciplineName,
-		StudentId,
-		ProfessorId,
-		ProfessorName,
-		Score
+		SemesterId,
+		ProfessorId
+
+	--Scores
+	SELECT 
+		Mark AS [Mark],
+		StudentId AS [StudentId],
+		DisciplineId AS [DisciplineId]
 	FROM #ActiveStudentDetails
 
 	DROP TABLE #ActiveStudentDetails
