@@ -3,18 +3,11 @@
     using System;
     using System.Runtime.Serialization;
 
+    using StudentSystem.Services.Models.Web.Base;
+
     [DataContract]
-    public class StudentResponseModel
+    public class StudentResponseModel : BaseResponseModel
     {
-        [DataMember]
-        public int Id { get; set; }
-
-        [DataMember]
-        public DateTime CreatedOn { get; set; }
-
-        [DataMember]
-        public DateTime? ModifiedOn { get; set; }
-
         [DataMember]
         public string FirstName { get; set; }
 
