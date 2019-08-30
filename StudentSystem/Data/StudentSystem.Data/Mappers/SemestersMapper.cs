@@ -15,8 +15,6 @@
             Semester semester = new Semester()
             {
                 Id = Convert.ToInt32(from["Id"]),
-                CreatedOn = Convert.ToDateTime(from["CreatedOn"]),
-                ModifiedOn = Map(from, "ModifiedOn"),
                 Name = Convert.ToString(from["Name"]),
                 StartDate = Convert.ToDateTime(from["StartDate"]),
                 EndDate = Convert.ToDateTime(from["EndDate"])
@@ -44,18 +42,6 @@
             }
 
             return Enumerable.Empty<Semester>();
-        }
-
-        private DateTime? Map(SqlDataReader reader, string columnName)
-        {
-            int columnOrdinal = reader.GetOrdinal(columnName);
-
-            if (reader.IsDBNull(columnOrdinal))
-            {
-                return null;
-            }
-
-            return (DateTime?)reader.GetDateTime(columnOrdinal);
         }
     }
 }
