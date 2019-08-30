@@ -1,6 +1,8 @@
 ﻿namespace StudentSystem.Data.Models
 {
-    public class Professor
+    using StudentSystem.Data.Models.Base;
+
+    public class Professor : BaseModel
     {
         public string FirstName { get; set; }
 

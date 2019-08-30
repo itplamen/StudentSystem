@@ -1,6 +1,8 @@
 ﻿namespace StudentSystem.Data.Models
 {
-    public class Discipline
+    using StudentSystem.Data.Models.Base;
+
+    public class Discipline : BaseModel
     {
         public string Name { get; set; }
 
