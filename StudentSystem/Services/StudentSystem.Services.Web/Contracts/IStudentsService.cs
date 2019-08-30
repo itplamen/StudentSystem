@@ -4,13 +4,13 @@
     using System.ServiceModel;
     using System.ServiceModel.Web;
 
-    using StudentSystem.Services.Models.Web;
+    using StudentSystem.Services.Models.Web.Students;
 
     [ServiceContract]
     public interface IStudentsService
     {
         [WebGet(ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
-        IEnumerable<StudentModel> GetAll();
+        IEnumerable<StudentResponseModel> GetAll();
     }
 }

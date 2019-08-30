@@ -4,19 +4,17 @@
 
     using StudentSystem.Common.Contracts;
     using StudentSystem.Data.Models;
-    using StudentSystem.Services.Models.Web;
+    using StudentSystem.Services.Models.Web.Students;
 
-    public class StudentsMapper : IMapper<Student, StudentModel>
+    public class StudentsMapper : IMapper<Student, StudentResponseModel>
     {
-        public StudentModel Map(Student from)
+        public StudentResponseModel Map(Student from)
         {
-            StudentModel studentModel = new StudentModel()
+            StudentResponseModel studentModel = new StudentResponseModel()
             {
                 Id = from.Id,
                 CreatedOn = from.CreatedOn,
                 ModifiedOn = from.ModifiedOn,
-                IsDeleted = from.IsDeleted,
-                DeletedOn = from.DeletedOn,
                 FirstName = from.FirstName,
                 LastName = from.LastName,
                 Email = from.Email,
@@ -26,13 +24,13 @@
             return studentModel;
         }
 
-        public IEnumerable<StudentModel> Map(IEnumerable<Student> from)
+        public IEnumerable<StudentResponseModel> Map(IEnumerable<Student> from)
         {
-            ICollection<StudentModel> studentModels = new List<StudentModel>();
+            ICollection<StudentResponseModel> studentModels = new List<StudentResponseModel>();
 
             foreach (var student in from)
             {
-                StudentModel studentModel = Map(student);
+                StudentResponseModel studentModel = Map(student);
 
                 studentModels.Add(studentModel);
             }

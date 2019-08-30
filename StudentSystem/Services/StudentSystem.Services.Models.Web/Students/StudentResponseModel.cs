@@ -1,10 +1,10 @@
-﻿namespace StudentSystem.Services.Models.Web
+﻿namespace StudentSystem.Services.Models.Web.Students
 {
     using System;
     using System.Runtime.Serialization;
 
     [DataContract]
-    public class StudentModel
+    public class StudentResponseModel
     {
         [DataMember]
         public int Id { get; set; }
@@ -14,12 +14,6 @@
 
         [DataMember]
         public DateTime? ModifiedOn { get; set; }
-
-        [DataMember]
-        public bool IsDeleted { get; set; }
-
-        [DataMember]
-        public DateTime? DeletedOn { get; set; }
 
         [DataMember]
         public string FirstName { get; set; }

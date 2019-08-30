@@ -17,8 +17,6 @@
                 Id = Convert.ToInt32(from["Id"]),
                 CreatedOn = Convert.ToDateTime(from["CreatedOn"]),
                 ModifiedOn = Map(from, "ModifiedOn"),
-                IsDeleted = Convert.ToBoolean(from["IsDeleted"]),
-                DeletedOn = Map(from, "DeletedOn"),
                 FirstName = Convert.ToString(from["FirstName"]),
                 LastName = Convert.ToString(from["LastName"]),
                 Email = Convert.ToString(from["Email"]),
@@ -55,7 +53,7 @@
 
             if (reader.IsDBNull(columnOrdinal))
             {
-                return (DateTime?)null;
+                return null;
             }
 
             return (DateTime?)reader.GetDateTime(columnOrdinal);
