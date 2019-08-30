@@ -44,6 +44,7 @@
     <Compile Include="Contracts\ISqlQueryExecutor.cs" />
     <Compile Include="Contracts\Queries\IQuery.cs" />
     <Compile Include="Contracts\Queries\IQueryHandler.cs" />
+    <Compile Include="Mappers\DisciplinesMapper.cs" />
     <Compile Include="Mappers\SemestersMapper.cs" />
     <Compile Include="Mappers\StudentsMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
