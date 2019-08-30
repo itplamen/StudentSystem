@@ -13,6 +13,8 @@ BEGIN
 		students.FirstName + ' ' + students.LastName AS [StudentName], 
 		students.Email AS [StudentEmail], 
 		students.DateOfBirth AS [StudentDateOfBirth],
+		students.CreatedOn AS [StudentCreatedOn],
+		students.ModifiedOn AS [StudentModifiedOn],
 		semesters.Id AS [SemesterId],
 		semesters.Name AS [SemesterName],
 		semesters.StartDate AS [SemesterStarDate],
@@ -35,13 +37,17 @@ BEGIN
 		StudentId, 
 		StudentName,
 		StudentEmail,
-		StudentDateOfBirth
+		StudentDateOfBirth,
+		StudentCreatedOn,
+		StudentModifiedOn
 	FROM #ActiveStudentDetails
 	GROUP BY 
 		StudentId, 
 		StudentName,
 		StudentEmail,
-		StudentDateOfBirth
+		StudentDateOfBirth,
+		StudentCreatedOn,
+		StudentModifiedOn
 
 	-- Semesters
 	SELECT 
@@ -71,5 +77,3 @@ BEGIN
 	DROP TABLE #ActiveStudentDetails
 
 END
-
-EXEC sp_GetActiveStudentDetails
