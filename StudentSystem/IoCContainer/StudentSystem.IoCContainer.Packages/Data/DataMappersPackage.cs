@@ -14,6 +14,7 @@
         public void RegisterServices(Container container)
         {
             container.Register(typeof(IMapper<SqlDataReader, Student>), typeof(StudentsMapper), Lifestyle.Singleton);
+            container.Register(typeof(IMapper<SqlDataReader, Semester>), typeof(SemestersMapper), Lifestyle.Singleton);
         }
     }
 }
