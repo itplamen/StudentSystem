@@ -8,7 +8,7 @@
     using SimpleInjector;
     using SimpleInjector.Integration.Web.Mvc;
     using SimpleInjector.Packaging;
-
+    using StudentSystem.Infrastructure.Clients.Web.Mapping;
     using StudentSystem.IoCContainer.Packages.Common;
 
     public class MvcApplication : System.Web.HttpApplication
@@ -34,6 +34,7 @@
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
 
             AreaRegistration.RegisterAllAreas();
+            AutoMapperConfig.RegisterMappings(Assembly.GetExecutingAssembly());
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

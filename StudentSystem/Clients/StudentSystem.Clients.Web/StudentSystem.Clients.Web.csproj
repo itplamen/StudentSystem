@@ -176,6 +176,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\StudentSystem.Infrastructure.Clients.Web\StudentSystem.Infrastructure.Clients.Web.csproj">
+      <Project>{8C4B214F-BF9C-4229-8BA5-657DBA6F4834}</Project>
+      <Name>StudentSystem.Infrastructure.Clients.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\IoCContainer\StudentSystem.IoCContainer.Packages\StudentSystem.IoCContainer.Packages.csproj">
       <Project>{6BF358C5-9918-487C-B0F8-C5D1F5E5CB05}</Project>
       <Name>StudentSystem.IoCContainer.Packages</Name>
