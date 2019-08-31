@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Contracts\IStudentsService.cs" />
     <Compile Include="Mappers\Base\BaseMapper.cs" />
+    <Compile Include="Mappers\DisciplinesMapper.cs" />
     <Compile Include="Mappers\ProfessorsMapper.cs" />
     <Compile Include="Mappers\ScoresMapper.cs" />
     <Compile Include="Mappers\StudentsMapper.cs" />
