@@ -1,15 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace StudentSystem.Clients.Web.Controllers
+﻿namespace StudentSystem.Clients.Web.Controllers
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using System.Web.Mvc;
+
+    using StudentSystem.Services.Api.Contracts;
+    using StudentSystem.Services.Api.StudentsServiceSoap;
+
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private readonly IStudentSystemApi studentSystemApi;
+
+        public HomeController(IStudentSystemApi studentSystemApi)
         {
+            this.studentSystemApi = studentSystemApi;
+        }
+
+        public async Task<ActionResult> Index()
+        {
+            IEnumerable<SemesterResponseModel> response = await studentSystemApi.GetStudentDetailsAsync();
+
             return View();
         }
 

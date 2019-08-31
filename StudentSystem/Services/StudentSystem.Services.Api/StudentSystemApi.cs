@@ -1,32 +1,24 @@
 ﻿namespace StudentSystem.Services.Api
 {
-    using System.Net.Http;
-    using System.Net.Http.Headers;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using Newtonsoft.Json;
-
     using StudentSystem.Services.Api.Contracts;
+    using StudentSystem.Services.Api.StudentsServiceSoap;
 
     public class StudentSystemApi : IStudentSystemApi
     {
-        private const string DEFAULT_MEDIA_TYPE_HEADER = "application/json";
+        private readonly StudentsServiceClient studentsService;
 
-        private readonly HttpClient httpClient;
-
-        public StudentSystemApi(HttpClient httpClient)
+        public StudentSystemApi(StudentsServiceClient studentsService)
         {
-            this.httpClient = httpClient;
-            this.httpClient.DefaultRequestHeaders.Add("Connection", "close");
-            this.httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(DEFAULT_MEDIA_TYPE_HEADER));
+            this.studentsService = studentsService;
         }
 
-        public async Task<T> GetAsync<T>(string url)
-            where T : class
+        public async Task<IEnumerable<SemesterResponseModel>> GetStudentDetailsAsync()
         {
-            HttpResponseMessage responseMessage = await this.httpClient.GetAsync(url);
-            string jsonString = await responseMessage.Content.ReadAsStringAsync();
-            T response = JsonConvert.DeserializeObject<T>(jsonString);
+            IEnumerable<SemesterResponseModel> response = await studentsService.GetAsync();
+            studentsService.Close();
 
             return response;
         }

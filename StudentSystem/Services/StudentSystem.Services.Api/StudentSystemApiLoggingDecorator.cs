@@ -1,6 +1,8 @@
 ﻿namespace StudentSystem.Services.Api
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
@@ -8,6 +10,7 @@
 
     using StudentSystem.Common.Contracts;
     using StudentSystem.Services.Api.Contracts;
+    using StudentSystem.Services.Api.StudentsServiceSoap;
 
     public class StudentSystemApiLoggingDecorator : IStudentSystemApi
     {
@@ -22,15 +25,14 @@
             this.logger = loggerFactory.Create(LOGGER, LOGGER);
         }
 
-        public async Task<T> GetAsync<T>(string url) 
-            where T : class
+        public async Task<IEnumerable<SemesterResponseModel>> GetStudentDetailsAsync()
         {
             try
             {
-                T response = await decorated.GetAsync<T>(url);
+                IEnumerable<SemesterResponseModel> response = await decorated.GetStudentDetailsAsync();
 
                 StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.AppendLine($"Request: {url}");
+                stringBuilder.AppendLine($"Request: {nameof(GetStudentDetailsAsync)}");
                 stringBuilder.AppendLine($"Response: {ToJson(response)}");
 
                 logger.LogInfo(stringBuilder.ToString());
@@ -39,9 +41,9 @@
             }
             catch (Exception ex)
             {
-                logger.LogError($"Request to {url} failed", ex);
+                logger.LogError($"Request to {nameof(GetStudentDetailsAsync)} failed", ex);
 
-                return await Task.FromResult(default(T));
+                return await Task.FromResult(Enumerable.Empty<SemesterResponseModel>());
             }
         }
 

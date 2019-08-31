@@ -1,10 +1,12 @@
 ﻿namespace StudentSystem.Services.Api.Contracts
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
+
+    using StudentSystem.Services.Api.StudentsServiceSoap;
 
     public interface IStudentSystemApi
     {
-        Task<T> GetAsync<T>(string url)
-            where T : class;
+        Task<IEnumerable<SemesterResponseModel>> GetStudentDetailsAsync();
     }
 }

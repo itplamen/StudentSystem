@@ -175,6 +175,10 @@
       <Project>{6BF358C5-9918-487C-B0F8-C5D1F5E5CB05}</Project>
       <Name>StudentSystem.IoCContainer.Packages</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Services\StudentSystem.Services.Api\StudentSystem.Services.Api.csproj">
+      <Project>{F5640FB2-3FCA-4FCF-8254-D3E34960AB6D}</Project>
+      <Name>StudentSystem.Services.Api</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
