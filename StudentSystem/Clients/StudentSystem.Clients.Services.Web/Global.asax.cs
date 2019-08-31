@@ -20,9 +20,7 @@
 
             IPackage[] packages = new IPackage[]
             {
-                new DataMappersPackage(),
-                new QueryHandlersPackage(),
-                new ExecutorsPackage(),
+                new DataPackage(),
                 new WebMappersPackage(),
                 new WebServicesPackage(),
                 new CommonPackage()

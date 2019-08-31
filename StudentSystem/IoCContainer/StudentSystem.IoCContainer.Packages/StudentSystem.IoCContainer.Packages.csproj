@@ -76,9 +76,7 @@
   <ItemGroup>
     <Compile Include="Common\ApiPackage.cs" />
     <Compile Include="Common\CommonPackage.cs" />
-    <Compile Include="Data\DataMappersPackage.cs" />
-    <Compile Include="Data\ExecutorsPackage.cs" />
-    <Compile Include="Data\QueryHandlersPackage.cs" />
+    <Compile Include="Data\DataPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\WebMappersPackage.cs" />
     <Compile Include="Services\WebServicesPackage.cs" />
