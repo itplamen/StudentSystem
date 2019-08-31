@@ -1,16 +1,14 @@
 ﻿namespace StudentSystem.Data.Mappers
 {
     using System;
-    using System.Collections.Generic;
     using System.Data.SqlClient;
-    using System.Linq;
 
-    using StudentSystem.Common.Contracts;
+    using StudentSystem.Data.Mappers.Base;
     using StudentSystem.Data.Models;
 
-    public class StudentsMapper : IMapper<SqlDataReader, Student>
+    public class StudentsMapper : BaseMapper<SqlDataReader, Student>
     {
-        public Student Map(SqlDataReader from)
+        public override Student Map(SqlDataReader from)
         {
             Student student = new Student()
             {
@@ -24,39 +22,6 @@
             };
 
             return student;
-        }
-
-        public IEnumerable<Student> Map(IEnumerable<SqlDataReader> from)
-        {
-            SqlDataReader reader = from.FirstOrDefault();
-
-            if (reader != null)
-            {
-                ICollection<Student> students = new List<Student>();
-
-                while (reader.Read())
-                {
-                    Student student = Map(reader);
-
-                    students.Add(student);
-                }
-
-                return students;
-            }
-
-            return Enumerable.Empty<Student>();
-        }
-
-        private DateTime? Map(SqlDataReader reader, string columnName)
-        {
-            int columnOrdinal = reader.GetOrdinal(columnName);
-
-            if (reader.IsDBNull(columnOrdinal))
-            {
-                return null;
-            }
-
-            return (DateTime?)reader.GetDateTime(columnOrdinal);
         }
     }
 }

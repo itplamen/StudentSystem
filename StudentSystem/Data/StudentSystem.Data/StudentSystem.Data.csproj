@@ -50,6 +50,7 @@
     <Compile Include="Contracts\ISqlQueryExecutor.cs" />
     <Compile Include="Contracts\Queries\IQuery.cs" />
     <Compile Include="Contracts\Queries\IQueryHandler.cs" />
+    <Compile Include="Mappers\Base\BaseMapper.cs" />
     <Compile Include="Mappers\DisciplinesMapper.cs" />
     <Compile Include="Mappers\ProfessorsMapper.cs" />
     <Compile Include="Mappers\ScoresMapper.cs" />
