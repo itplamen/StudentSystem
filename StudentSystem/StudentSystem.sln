@@ -24,6 +24,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentSystem.Clients.Services.Web", "Clients\StudentSystem.Clients.Services.Web\StudentSystem.Clients.Services.Web.csproj", "{F2623CAF-56EE-4C9D-9699-A05A6167B9BC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentSystem.Clients.Web", "Clients\StudentSystem.Clients.Web\StudentSystem.Clients.Web.csproj", "{7024AADF-BFD6-4E4F-8561-290844B9B871}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F2623CAF-56EE-4C9D-9699-A05A6167B9BC} = {F2623CAF-56EE-4C9D-9699-A05A6167B9BC}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IoCContainer", "IoCContainer", "{68DA9C69-62C0-4290-83CF-D9C12D58DBEE}"
 EndProject
