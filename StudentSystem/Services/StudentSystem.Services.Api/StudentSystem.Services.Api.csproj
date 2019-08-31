@@ -36,6 +36,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,12 +46,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\StudentsServiceSoap\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Contracts\IStudentSystemApi.cs" />
     <Compile Include="StudentSystemApiLoggingDecorator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentSystemApi.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\StudentsServiceSoap\StudentsService.wsdl" />
+    <None Include="Connected Services\StudentsServiceSoap\StudentsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StudentsServiceSoap\StudentsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StudentsServiceSoap\StudentsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StudentsServiceSoap\StudentsService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StudentsServiceSoap\StudentsService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StudentsServiceSoap\StudentsService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StudentsServiceSoap\StudentsService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StudentsServiceSoap\StudentsService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StudentsServiceSoap\StudentSystem.Services.Api.StudentsServiceSoap.SemesterResponseModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +93,27 @@
       <Project>{D303E50C-DADA-4DD9-9A19-8EB6F1DAA3C7}</Project>
       <Name>StudentSystem.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\StudentsServiceSoap\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StudentsServiceSoap\StudentsService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StudentsServiceSoap\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StudentsServiceSoap\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StudentsServiceSoap\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
