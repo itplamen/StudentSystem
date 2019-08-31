@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="//cdn.datatables.net/1.9.4/css/jquery.dataTables.css" />
     @Styles.Render("~/Content/css")
 </head>
 <body>
@@ -33,6 +34,10 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
+
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="https://cdn.datatables.net/1.9.4/js/jquery.dataTables.js"></script>
 
     @RenderSection("scripts", required: false)
 </body>
