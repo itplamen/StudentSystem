@@ -1,14 +1,12 @@
 ﻿namespace StudentSystem.Services.Web.Mappers
 {
-    using System.Collections.Generic;
-
-    using StudentSystem.Common.Contracts;
     using StudentSystem.Data.Models;
     using StudentSystem.Services.Models.Web.Students;
+    using StudentSystem.Services.Web.Mappers.Base;
 
-    public class StudentsMapper : IMapper<Student, StudentResponseModel>
+    public class StudentsMapper : BaseMapper<Student, StudentResponseModel>
     {
-        public StudentResponseModel Map(Student from)
+        public override StudentResponseModel Map(Student from)
         {
             StudentResponseModel studentModel = new StudentResponseModel()
             {
@@ -22,20 +20,6 @@
             };
 
             return studentModel;
-        }
-
-        public IEnumerable<StudentResponseModel> Map(IEnumerable<Student> from)
-        {
-            ICollection<StudentResponseModel> studentModels = new List<StudentResponseModel>();
-
-            foreach (var student in from)
-            {
-                StudentResponseModel studentModel = Map(student);
-
-                studentModels.Add(studentModel);
-            }
-
-            return studentModels;
         }
     }
 }
