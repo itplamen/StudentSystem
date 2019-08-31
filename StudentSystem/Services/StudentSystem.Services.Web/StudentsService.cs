@@ -1,32 +1,30 @@
 ﻿namespace StudentSystem.Services.Web
 {
     using System.Collections.Generic;
-    using System.Linq;
+
     using StudentSystem.Common.Contracts;
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Models;
-    using StudentSystem.Services.Models.Web.Students;
+    using StudentSystem.Services.Models.Web.Semesters;
     using StudentSystem.Services.Web.Contracts;
 
     public class StudentsService : IStudentsService
     {
-        private readonly IMapper<Student, StudentResponseModel> studentsMapper;
-        private readonly IQueryHandler<IEnumerable<Semester>> activeStudentDetailsHandler;
+        private readonly IMapper<Semester, SemesterResponseModel> semestersMapper;
+        private readonly IQueryHandler<IEnumerable<Semester>> studentDetailsHandler;
 
-        public StudentsService(
-            IMapper<Student, StudentResponseModel> studentsMapper, 
-            IQueryHandler<IEnumerable<Semester>> activeStudentDetailsHandler)
+        public StudentsService(IMapper<Semester, SemesterResponseModel> semestersMapper, IQueryHandler<IEnumerable<Semester>> studentDetailsHandler)
         {
-            this.studentsMapper = studentsMapper;
-            this.activeStudentDetailsHandler = activeStudentDetailsHandler;
+            this.semestersMapper = semestersMapper;
+            this.studentDetailsHandler = studentDetailsHandler;
         }
 
-        public IEnumerable<StudentResponseModel> GetAll()
+        public IEnumerable<SemesterResponseModel> Get()
         {
-            IEnumerable<Semester> studentDetails = activeStudentDetailsHandler.Handle();
-            IEnumerable<Score> scores = studentDetails.SelectMany(x => x.Disciplines.SelectMany(y => y.Scores));
+            IEnumerable<Semester> studentDetails = studentDetailsHandler.Handle();
+            IEnumerable<SemesterResponseModel> semestersResponse = semestersMapper.Map(studentDetails);
 
-            return null;
+            return semestersResponse;
         }
     }
 }
