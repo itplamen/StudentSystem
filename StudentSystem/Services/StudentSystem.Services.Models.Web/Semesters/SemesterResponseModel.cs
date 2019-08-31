@@ -5,7 +5,7 @@
     using System.Runtime.Serialization;
 
     using StudentSystem.Services.Models.Web.Base;
-    using StudentSystem.Services.Models.Web.Scores;
+    using StudentSystem.Services.Models.Web.Disciplines;
 
     [DataContract]
     public class SemesterResponseModel : BaseResponseModel
@@ -20,6 +20,6 @@
         public DateTime EndDate { get; set; }
 
         [DataMember]
-        public IEnumerable<ScoreResponseModel> Scores { get; set; }
+        public IEnumerable<DisciplineResponseModel> Disciplines { get; set; }
     }
 }
