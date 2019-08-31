@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationManager.cs" />
+    <Compile Include="Contracts\IBuilder.cs" />
     <Compile Include="Contracts\IConfigurationManager.cs" />
     <Compile Include="Contracts\ILogger.cs" />
     <Compile Include="Contracts\ILoggerFactory.cs" />

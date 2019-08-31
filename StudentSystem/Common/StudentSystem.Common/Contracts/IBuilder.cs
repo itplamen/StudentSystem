@@ -1,4 +1,4 @@
-﻿namespace StudentSystem.Data.Contracts.Builders
+﻿namespace StudentSystem.Common.Contracts
 {
     using System.Collections.Generic;
 

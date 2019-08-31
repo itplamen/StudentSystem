@@ -5,7 +5,6 @@
     using System.Linq;
 
     using StudentSystem.Common.Contracts;
-    using StudentSystem.Data.Contracts.Builders;
     using StudentSystem.Data.Models;
 
     public class SemestersBuilder : IBuilder<SqlDataReader, Semester>

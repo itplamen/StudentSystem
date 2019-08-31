@@ -10,7 +10,6 @@
     using StudentSystem.Data;
     using StudentSystem.Data.Builders.StudentDetails;
     using StudentSystem.Data.Contracts;
-    using StudentSystem.Data.Contracts.Builders;
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Mappers;
     using StudentSystem.Data.Models;

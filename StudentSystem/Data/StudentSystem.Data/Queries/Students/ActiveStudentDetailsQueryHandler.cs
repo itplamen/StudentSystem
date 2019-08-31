@@ -3,9 +3,8 @@
     using System.Collections.Generic;
     using System.Data;
     using System.Data.SqlClient;
-
+    using StudentSystem.Common.Contracts;
     using StudentSystem.Data.Contracts;
-    using StudentSystem.Data.Contracts.Builders;
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Models;
 
