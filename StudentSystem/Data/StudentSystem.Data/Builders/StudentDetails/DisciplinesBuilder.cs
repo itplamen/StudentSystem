@@ -37,6 +37,8 @@
                     discipline.Professor = professors.FirstOrDefault(x => x.Id == discipline.ProfessorId);
                     discipline.Scores = scores.Where(x => x.DisciplineId == discipline.Id);
                 }
+
+                return disciplines;
             }
 
             return Enumerable.Empty<Discipline>();

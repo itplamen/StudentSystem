@@ -30,6 +30,8 @@
                 {
                     score.Student = students.FirstOrDefault(x => x.Id == score.StudentId);
                 }
+
+                return scores;
             }
 
             return Enumerable.Empty<Score>();

@@ -1,3 +1,6 @@
+USE StudentSystemDb
+GO
+
 CREATE PROCEDURE [dbo].[sp_GetActiveStudentDetails]
 AS
 
@@ -34,6 +37,50 @@ BEGIN
 	INNER JOIN [dbo].[Professors] professors ON professors.Id = disciplines.ProfessorId
 	WHERE students.IsDeleted = 0
 
+	-- Semesters
+	SELECT 
+		SemesterId AS [Id],
+		SemesterName AS [Name],
+		SemesterStarDate AS [StartDate],
+		SemesterEndDate AS [EndDate]
+	FROM #ActiveStudentDetails
+	GROUP BY 
+		SemesterId,
+		SemesterName,
+		SemesterStarDate,
+		SemesterEndDate
+
+	-- Disciplines
+	SELECT 
+		DisciplineId AS [Id],
+		DisciplineName AS [Name],
+		SemesterId AS [SemesterId],
+		ProfessorId AS [ProfessorId]
+	FROM #ActiveStudentDetails
+	GROUP BY 
+		DisciplineId,
+		DisciplineName,
+		SemesterId,
+		ProfessorId
+
+	-- Professors
+	SELECT 
+		ProfessorId AS [Id],
+		ProfessorFirstName AS [FirstName],
+		ProfessorLastName AS [LastName]
+	FROM #ActiveStudentDetails
+	GROUP BY 
+		ProfessorId,
+		ProfessorFirstName,
+		ProfessorLastName
+
+	--Scores
+	SELECT 
+		Mark AS [Mark],
+		StudentId AS [StudentId],
+		DisciplineId AS [DisciplineId]
+	FROM #ActiveStudentDetails
+
 	-- Students
     SELECT 
 		StudentId AS [Id], 
@@ -52,50 +99,6 @@ BEGIN
 		StudentDateOfBirth,
 		StudentCreatedOn,
 		StudentModifiedOn
-
-	-- Semesters
-	SELECT 
-		SemesterId AS [Id],
-		SemesterName AS [Name],
-		SemesterStarDate AS [StartDate],
-		SemesterEndDate AS [EndDate]
-	FROM #ActiveStudentDetails
-	GROUP BY 
-		SemesterId,
-		SemesterName,
-		SemesterStarDate,
-		SemesterEndDate
-
-	-- Professors
-	SELECT 
-		ProfessorId AS [Id],
-		ProfessorFirstName AS [FirstName],
-		ProfessorLastName AS [LastName]
-	FROM #ActiveStudentDetails
-	GROUP BY 
-		ProfessorId,
-		ProfessorFirstName,
-		ProfessorLastName
-
-	-- Disciplines
-	SELECT 
-		DisciplineId AS [Id],
-		DisciplineName AS [Name],
-		SemesterId AS [SemesterId],
-		ProfessorId AS [ProfessorId]
-	FROM #ActiveStudentDetails
-	GROUP BY 
-		DisciplineId,
-		DisciplineName,
-		SemesterId,
-		ProfessorId
-
-	--Scores
-	SELECT 
-		Mark AS [Mark],
-		StudentId AS [StudentId],
-		DisciplineId AS [DisciplineId]
-	FROM #ActiveStudentDetails
 
 	DROP TABLE #ActiveStudentDetails
 
