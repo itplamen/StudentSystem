@@ -15,12 +15,18 @@
             ICollection<StudentViewModel> viewModels = new List<StudentViewModel>();
 
             IEnumerable<StudentResponseModel> studentResponses = semesters.SelectMany(x => 
-                x.Disciplines.SelectMany(y => y.Scores.Select(z => z.Student)));
+                    x.Disciplines.SelectMany(y => 
+                    y.Scores.Select(z => 
+                    z.Student)))
+                .GroupBy(x => x.Id)
+                .Select(x => x.First());
 
             foreach (var studentResponse in studentResponses)
             {
-                IEnumerable<SemesterResponseModel> studentSemesters = semesters.Where(x =>
-                       x.Disciplines.Any(y => y.Scores.Any(z => z.StudentId == studentResponse.Id)));
+                IEnumerable<SemesterResponseModel> studentSemesters = semesters.Where(x => 
+                    x.Disciplines.Any(y => 
+                    y.Scores.Any(z => 
+                    z.StudentId == studentResponse.Id)));
 
                 StudentViewModel viewModel = Mapper.Map<StudentViewModel>(studentResponse);
                 viewModel.Semesters = SemestersBuilder.Build(studentSemesters);
