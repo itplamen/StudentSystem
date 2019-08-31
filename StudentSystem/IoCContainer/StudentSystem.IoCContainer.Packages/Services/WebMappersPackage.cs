@@ -6,6 +6,7 @@
     using StudentSystem.Common.Contracts;
     using StudentSystem.Data.Models;
     using StudentSystem.Services.Models.Web.Professors;
+    using StudentSystem.Services.Models.Web.Scores;
     using StudentSystem.Services.Models.Web.Students;
     using StudentSystem.Services.Web.Mappers;
 
@@ -13,8 +14,9 @@
     {
         public void RegisterServices(Container container)
         {
+            container.Register(typeof(IMapper<Scope, ScoreResponseModel>), typeof(ScoresMapper), Lifestyle.Singleton);
             container.Register(typeof(IMapper<Student, StudentResponseModel>), typeof(StudentsMapper), Lifestyle.Singleton);
-            container.Register(typeof(IMapper<Student, ProfessorResponseModel>), typeof(ProfessorsMapper), Lifestyle.Singleton);
+            container.Register(typeof(IMapper<Professor, ProfessorResponseModel>), typeof(ProfessorsMapper), Lifestyle.Singleton);
         }
     }
 }
