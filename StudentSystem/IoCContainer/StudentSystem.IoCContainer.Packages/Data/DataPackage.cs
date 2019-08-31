@@ -8,7 +8,9 @@
 
     using StudentSystem.Common.Contracts;
     using StudentSystem.Data;
+    using StudentSystem.Data.Builders.StudentDetails;
     using StudentSystem.Data.Contracts;
+    using StudentSystem.Data.Contracts.Builders;
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Mappers;
     using StudentSystem.Data.Models;
@@ -18,9 +20,19 @@
     {
         public void RegisterServices(Container container)
         {
+            RegisterBuildrs(container);
             RegisterMappers(container);
             RegisterExecutors(container);
             RegisterQueryHandlers(container);
+        }
+
+        private void RegisterBuildrs(Container container)
+        {
+            container.Register(typeof(IBuilder<SqlDataReader, Student>), typeof(StudentsBuilder), Lifestyle.Singleton);
+            container.Register(typeof(IBuilder<SqlDataReader, Semester>), typeof(SemestersBuilder), Lifestyle.Singleton);
+            container.Register(typeof(IBuilder<SqlDataReader, Discipline>), typeof(DisciplinesBuilder), Lifestyle.Singleton);
+            container.Register(typeof(IBuilder<SqlDataReader, Professor>), typeof(ProfessorsBuilder), Lifestyle.Singleton);
+            container.Register(typeof(IBuilder<SqlDataReader, Score>), typeof(ScoresBuilder), Lifestyle.Singleton);
         }
 
         private void RegisterMappers(Container container)
