@@ -3,17 +3,21 @@
     using System.Runtime.Serialization;
 
     using StudentSystem.Services.Models.Web.Base;
+    using StudentSystem.Services.Models.Web.Students;
 
     [DataContract]
     public class ScoreResponseModel : BaseResponseModel
     {
         [DataMember]
-        public string Discipline { get; set; }
+        public float Mark { get; set; }
 
         [DataMember]
-        public string Professor { get; set; }
+        public int StudentId { get; set; }
 
         [DataMember]
-        public float Score { get; set; }
+        public int DisciplineId { get; set; }
+
+        [DataMember]
+        public StudentResponseModel Student { get; set; }
     }
 }
