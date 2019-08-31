@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\Builders\IBuilder.cs" />
     <Compile Include="Contracts\ISqlQueryExecutor.cs" />
     <Compile Include="Contracts\Queries\IQuery.cs" />
     <Compile Include="Contracts\Queries\IQueryHandler.cs" />
