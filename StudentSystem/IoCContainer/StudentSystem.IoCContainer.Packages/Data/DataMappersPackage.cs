@@ -17,7 +17,7 @@
             container.Register(typeof(IMapper<SqlDataReader, Semester>), typeof(SemestersMapper), Lifestyle.Singleton);
             container.Register(typeof(IMapper<SqlDataReader, Discipline>), typeof(DisciplinesMapper), Lifestyle.Singleton);
             container.Register(typeof(IMapper<SqlDataReader, Professor>), typeof(ProfessorsMapper), Lifestyle.Singleton);
-            container.Register(typeof(IMapper<SqlDataReader, Scope>), typeof(ScoresMapper), Lifestyle.Singleton);
+            container.Register(typeof(IMapper<SqlDataReader, Score>), typeof(ScoresMapper), Lifestyle.Singleton);
         }
     }
 }
