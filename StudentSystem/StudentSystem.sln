@@ -34,6 +34,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentSystem.IoCContainer.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentSystem.Services.Api", "Services\StudentSystem.Services.Api\StudentSystem.Services.Api.csproj", "{F5640FB2-3FCA-4FCF-8254-D3E34960AB6D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{3CB8C61B-AFCE-4D7B-BEF9-B2DF7689E334}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentSystem.Infrastructure.Clients.Web", "Infrastructure\StudentSystem.Infrastructure.Clients.Web\StudentSystem.Infrastructure.Clients.Web.csproj", "{8C4B214F-BF9C-4229-8BA5-657DBA6F4834}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +80,10 @@ Global
 		{F5640FB2-3FCA-4FCF-8254-D3E34960AB6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5640FB2-3FCA-4FCF-8254-D3E34960AB6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5640FB2-3FCA-4FCF-8254-D3E34960AB6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C4B214F-BF9C-4229-8BA5-657DBA6F4834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C4B214F-BF9C-4229-8BA5-657DBA6F4834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C4B214F-BF9C-4229-8BA5-657DBA6F4834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C4B214F-BF9C-4229-8BA5-657DBA6F4834}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +98,7 @@ Global
 		{7024AADF-BFD6-4E4F-8561-290844B9B871} = {3C3A222C-503C-4866-8FD6-BCAA010E420B}
 		{6BF358C5-9918-487C-B0F8-C5D1F5E5CB05} = {68DA9C69-62C0-4290-83CF-D9C12D58DBEE}
 		{F5640FB2-3FCA-4FCF-8254-D3E34960AB6D} = {A38290D9-D180-4823-A454-33C3339174B4}
+		{8C4B214F-BF9C-4229-8BA5-657DBA6F4834} = {3CB8C61B-AFCE-4D7B-BEF9-B2DF7689E334}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16099E54-6515-4A7B-BD95-D7463FD735E5}
