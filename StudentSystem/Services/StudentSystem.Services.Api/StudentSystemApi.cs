@@ -18,7 +18,6 @@
         public async Task<IEnumerable<SemesterResponseModel>> GetStudentDetailsAsync()
         {
             IEnumerable<SemesterResponseModel> response = await studentsService.GetAsync();
-            studentsService.Close();
 
             return response;
         }
