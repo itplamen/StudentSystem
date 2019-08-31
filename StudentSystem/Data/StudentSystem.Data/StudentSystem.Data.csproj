@@ -44,6 +44,7 @@
     <Compile Include="Builders\StudentDetails\DisciplinesBuilder.cs" />
     <Compile Include="Builders\StudentDetails\ProfessorsBuilder.cs" />
     <Compile Include="Builders\StudentDetails\ScoresBuilder.cs" />
+    <Compile Include="Builders\StudentDetails\SemestersBuilder.cs" />
     <Compile Include="Builders\StudentDetails\StudentsBuilder.cs" />
     <Compile Include="Contracts\Builders\IBuilder.cs" />
     <Compile Include="Contracts\ISqlQueryExecutor.cs" />
