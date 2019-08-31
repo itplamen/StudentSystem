@@ -16,7 +16,7 @@
     {
         public void RegisterServices(Container container)
         {
-            container.Register(typeof(IMapper<Scope, ScoreResponseModel>), typeof(ScoresMapper), Lifestyle.Singleton);
+            container.Register(typeof(IMapper<Score, ScoreResponseModel>), typeof(ScoresMapper), Lifestyle.Singleton);
             container.Register(typeof(IMapper<Student, StudentResponseModel>), typeof(StudentsMapper), Lifestyle.Singleton);
             container.Register(typeof(IMapper<Semester, SemesterResponseModel>), typeof(SemestersMapper), Lifestyle.Singleton);
             container.Register(typeof(IMapper<Professor, ProfessorResponseModel>), typeof(ProfessorsMapper), Lifestyle.Singleton);
