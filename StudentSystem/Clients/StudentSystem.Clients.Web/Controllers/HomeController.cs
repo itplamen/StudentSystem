@@ -4,6 +4,8 @@
     using System.Threading.Tasks;
     using System.Web.Mvc;
 
+    using StudentSystem.Clients.Web.Builders;
+    using StudentSystem.Clients.Web.Models.Home;
     using StudentSystem.Services.Api.Contracts;
     using StudentSystem.Services.Api.StudentsServiceSoap;
 
@@ -19,8 +21,9 @@
         public async Task<ActionResult> Index()
         {
             IEnumerable<SemesterResponseModel> response = await studentSystemApi.GetStudentDetailsAsync();
+            IEnumerable<StudentViewModel> studentViewModels = StudentsBuilder.Build(response);
 
-            return View();
+            return View(studentViewModels);
         }
 
         public ActionResult About()
