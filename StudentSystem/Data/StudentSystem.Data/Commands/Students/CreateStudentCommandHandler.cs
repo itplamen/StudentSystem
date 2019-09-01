@@ -5,7 +5,7 @@
     using StudentSystem.Data.Contracts;
     using StudentSystem.Data.Contracts.Commands;
     
-    public class CreateStudentCommandHandler : ICommandHandler<CreateStudentCommand, int>
+    public class CreateStudentCommandHandler : ICommandHandler<StudentCommand, int>
     {
         private readonly ISqlQueryExecutor sqlQueryExecutor;
 
@@ -16,7 +16,7 @@
             this.sqlQueryExecutor = sqlQueryExecutor;
         }
 
-        public int Handle(CreateStudentCommand command)
+        public int Handle(StudentCommand command)
         {
             string query = @"INSERT INTO Students(FirstName, LastName, Email, DateOfBirth)
                             OUTPUT INSERTED.ID
