@@ -33,6 +33,9 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
         private string FirstNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LastNameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -80,6 +83,19 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
                 if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
                     this.FirstNameField = value;
                     this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
@@ -547,6 +563,12 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentsService/Get", ReplyAction="http://tempuri.org/IStudentsService/GetResponse")]
         System.Threading.Tasks.Task<StudentSystem.Services.Api.StudentsServiceSoap.SemesterResponseModel[]> GetAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentsService/Update", ReplyAction="http://tempuri.org/IStudentsService/UpdateResponse")]
+        bool Update(StudentSystem.Services.Api.StudentsServiceSoap.StudentRequestModel request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentsService/Update", ReplyAction="http://tempuri.org/IStudentsService/UpdateResponse")]
+        System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.StudentsServiceSoap.StudentRequestModel request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -590,6 +612,14 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
         
         public System.Threading.Tasks.Task<StudentSystem.Services.Api.StudentsServiceSoap.SemesterResponseModel[]> GetAsync() {
             return base.Channel.GetAsync();
+        }
+        
+        public bool Update(StudentSystem.Services.Api.StudentsServiceSoap.StudentRequestModel request) {
+            return base.Channel.Update(request);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.StudentsServiceSoap.StudentRequestModel request) {
+            return base.Channel.UpdateAsync(request);
         }
     }
 }

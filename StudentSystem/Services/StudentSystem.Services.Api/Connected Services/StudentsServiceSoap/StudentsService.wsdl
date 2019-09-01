@@ -24,6 +24,12 @@
   <wsdl:message name="IStudentsService_Get_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetResponse" />
   </wsdl:message>
+  <wsdl:message name="IStudentsService_Update_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="IStudentsService_Update_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
   <wsdl:portType name="IStudentsService">
     <wsdl:operation name="Create">
       <wsdl:input wsaw:Action="http://tempuri.org/IStudentsService/Create" message="tns:IStudentsService_Create_InputMessage" />
@@ -32,6 +38,10 @@
     <wsdl:operation name="Get">
       <wsdl:input wsaw:Action="http://tempuri.org/IStudentsService/Get" message="tns:IStudentsService_Get_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IStudentsService/GetResponse" message="tns:IStudentsService_Get_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStudentsService/Update" message="tns:IStudentsService_Update_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStudentsService/UpdateResponse" message="tns:IStudentsService_Update_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IStudentsService" type="tns:IStudentsService">
@@ -47,6 +57,15 @@
     </wsdl:operation>
     <wsdl:operation name="Get">
       <soap:operation soapAction="http://tempuri.org/IStudentsService/Get" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/IStudentsService/Update" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
