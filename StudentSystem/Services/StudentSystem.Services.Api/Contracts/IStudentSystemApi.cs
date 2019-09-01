@@ -10,5 +10,7 @@
         Task<bool> CreateStudent(StudentRequestModel request);
 
         Task<IEnumerable<SemesterResponseModel>> GetStudentDetailsAsync();
+
+        Task<bool> UpdateStudent(StudentRequestModel request);
     }
 }

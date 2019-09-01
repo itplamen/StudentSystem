@@ -59,6 +59,23 @@
             }
         }
 
+        public async Task<bool> UpdateStudent(StudentRequestModel request)
+        {
+            try
+            {
+                bool isUpdated = await studentsService.UpdateAsync(request);
+                Log($"{nameof(UpdateStudent)} - {ToJson(request)}", isUpdated);
+
+                return isUpdated;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError($"Request to {nameof(UpdateStudent)} failed", ex);
+
+                return await Task.FromResult(false);
+            }
+        }
+
         private void Log<TModel>(string request, TModel response)
         {
             StringBuilder stringBuilder = new StringBuilder();
