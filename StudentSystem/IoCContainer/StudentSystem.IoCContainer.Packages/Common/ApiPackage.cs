@@ -11,9 +11,7 @@
     {
         public void RegisterServices(Container container)
         {
-            container.Register<IStudentSystemApi, StudentSystemApiProxy>(Lifestyle.Singleton);
-            container.RegisterDecorator<IStudentSystemApi, StudentSystemApiLoggingDecorator>(Lifestyle.Singleton);
-
+            container.Register<IStudentSystemApi, StudentSystemApi>(Lifestyle.Singleton);
             container.Register(() => new StudentsServiceClient(), Lifestyle.Singleton);
         }
     }

@@ -12,16 +12,16 @@
     using StudentSystem.Services.Api.Contracts;
     using StudentSystem.Services.Api.StudentsServiceSoap;
 
-    public class StudentSystemApiLoggingDecorator : IStudentSystemApi
+    public class StudentSystemApi : IStudentSystemApi
     {
         private const string LOGGER = "StudentSystemApi";
 
         private readonly ILogger logger;
-        private readonly IStudentSystemApi decorated;
+        private readonly StudentsServiceClient studentsService;
 
-        public StudentSystemApiLoggingDecorator(IStudentSystemApi decorated, ILoggerFactory loggerFactory)
+        public StudentSystemApi(ILoggerFactory loggerFactory, StudentsServiceClient studentsService)
         {
-            this.decorated = decorated;
+            this.studentsService = studentsService;
             this.logger = loggerFactory.Create(LOGGER, LOGGER);
         }
 
@@ -29,13 +29,8 @@
         {
             try
             {
-                IEnumerable<SemesterResponseModel> response = await decorated.GetStudentDetailsAsync();
-
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.AppendLine($"Request: {nameof(GetStudentDetailsAsync)}");
-                stringBuilder.AppendLine($"Response: {ToJson(response)}");
-
-                logger.LogInfo(stringBuilder.ToString());
+                IEnumerable<SemesterResponseModel> response = await studentsService.GetAsync();
+                Log(nameof(GetStudentDetailsAsync), response);
 
                 return response;
             }
@@ -47,8 +42,16 @@
             }
         }
 
-        private string ToJson<T>(T model) 
-            where T : class
+        private void Log<TModel>(string request, TModel response)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine($"Request: {request}");
+            stringBuilder.AppendLine($"Response: {ToJson(response)}");
+
+            logger.LogInfo(stringBuilder.ToString());
+        }
+
+        private string ToJson<TModel>(TModel model)
         {
             try
             {
