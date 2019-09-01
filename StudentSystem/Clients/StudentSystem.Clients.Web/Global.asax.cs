@@ -8,7 +8,8 @@
     using SimpleInjector;
     using SimpleInjector.Integration.Web.Mvc;
     using SimpleInjector.Packaging;
-    using StudentSystem.Infrastructure.Clients.Web.Mapping;
+
+    using StudentSystem.Common.Infrastructure.Mapping;
     using StudentSystem.IoCContainer.Packages.Common;
 
     public class MvcApplication : System.Web.HttpApplication

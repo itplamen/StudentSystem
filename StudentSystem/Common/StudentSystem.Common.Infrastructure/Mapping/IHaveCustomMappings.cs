@@ -1,4 +1,4 @@
-﻿namespace StudentSystem.Infrastructure.Clients.Web.Mapping
+﻿namespace StudentSystem.Common.Infrastructure.Mapping
 {
     using AutoMapper;
 

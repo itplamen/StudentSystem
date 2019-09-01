@@ -5,7 +5,7 @@
 
     using AutoMapper;
 
-    using StudentSystem.Infrastructure.Clients.Web.Mapping;
+    using StudentSystem.Common.Infrastructure.Mapping;
     using StudentSystem.Services.Api.StudentsServiceSoap;
 
     public class SemesterViewModel : IMapFrom<SemesterResponseModel>, IHaveCustomMappings
