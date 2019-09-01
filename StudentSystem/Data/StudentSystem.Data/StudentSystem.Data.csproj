@@ -46,6 +46,8 @@
     <Compile Include="Builders\StudentDetails\ScoresBuilder.cs" />
     <Compile Include="Builders\StudentDetails\SemestersBuilder.cs" />
     <Compile Include="Builders\StudentDetails\StudentsBuilder.cs" />
+    <Compile Include="Contracts\Commands\ICommand.cs" />
+    <Compile Include="Contracts\Commands\ICommandHandler.cs" />
     <Compile Include="Contracts\ISqlQueryExecutor.cs" />
     <Compile Include="Contracts\Queries\IQuery.cs" />
     <Compile Include="Contracts\Queries\IQueryHandler.cs" />
@@ -71,6 +73,9 @@
       <Project>{261E57E6-8A7B-4673-A9E4-314064442E08}</Project>
       <Name>StudentSystem.Data.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
