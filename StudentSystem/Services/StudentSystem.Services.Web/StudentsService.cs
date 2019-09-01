@@ -17,13 +17,13 @@
         private readonly IValidator<StudentRequestModel> validator;
         private readonly IMapper<Semester, SemesterResponseModel> semestersMapper;
         private readonly IQueryHandler<IEnumerable<Semester>> studentDetailsHandler;
-        private readonly ICommandHandler<CreateStudentCommand, bool> createStudentHandler;
+        private readonly ICommandHandler<CreateStudentCommand, int> createStudentHandler;
 
         public StudentsService(
             IValidator<StudentRequestModel> validator,
             IMapper<Semester, SemesterResponseModel> semestersMapper, 
             IQueryHandler<IEnumerable<Semester>> studentDetailsHandler,
-            ICommandHandler<CreateStudentCommand, bool> createStudentHandler)
+            ICommandHandler<CreateStudentCommand, int> createStudentHandler)
         {
             this.validator = validator;
             this.semestersMapper = semestersMapper;
@@ -41,9 +41,9 @@
             }
 
             CreateStudentCommand command = new CreateStudentCommand(request.FirstName, request.LastName, request.Email, request.DateOfBirth);
-            bool isCreated = createStudentHandler.Handle(command);
+            int id = createStudentHandler.Handle(command);
 
-            return isCreated;
+            return id > 0;
         }
 
         public IEnumerable<SemesterResponseModel> Get()

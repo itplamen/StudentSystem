@@ -58,7 +58,7 @@
 
         private void RegisterCommandHandlers(Container container)
         {
-            container.Register<ICommandHandler<CreateStudentCommand, bool>, CreateStudentCommandHandler>(Lifestyle.Transient);
+            container.Register<ICommandHandler<CreateStudentCommand, int>, CreateStudentCommandHandler>(Lifestyle.Transient);
         }
     }
 }
