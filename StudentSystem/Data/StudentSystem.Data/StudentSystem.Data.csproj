@@ -46,6 +46,8 @@
     <Compile Include="Builders\StudentDetails\ScoresBuilder.cs" />
     <Compile Include="Builders\StudentDetails\SemestersBuilder.cs" />
     <Compile Include="Builders\StudentDetails\StudentsBuilder.cs" />
+    <Compile Include="Commands\Students\CreateStudentCommand.cs" />
+    <Compile Include="Commands\Students\CreateStudentCommandHandler.cs" />
     <Compile Include="Contracts\Commands\ICommand.cs" />
     <Compile Include="Contracts\Commands\ICommandHandler.cs" />
     <Compile Include="Contracts\ISqlQueryExecutor.cs" />
@@ -74,8 +76,6 @@
       <Name>StudentSystem.Data.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

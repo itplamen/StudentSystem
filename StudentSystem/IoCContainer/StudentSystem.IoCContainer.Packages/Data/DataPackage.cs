@@ -9,7 +9,9 @@
     using StudentSystem.Common.Contracts;
     using StudentSystem.Data;
     using StudentSystem.Data.Builders.StudentDetails;
+    using StudentSystem.Data.Commands.Students;
     using StudentSystem.Data.Contracts;
+    using StudentSystem.Data.Contracts.Commands;
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Mappers;
     using StudentSystem.Data.Models;
@@ -23,6 +25,7 @@
             RegisterMappers(container);
             RegisterExecutors(container);
             RegisterQueryHandlers(container);
+            RegisterCommandHandlers(container);
         }
 
         private void RegisterBuildrs(Container container)
@@ -51,6 +54,11 @@
         private void RegisterQueryHandlers(Container container)
         {
             container.Register<IQueryHandler<IEnumerable<Semester>>, ActiveStudentDetailsQueryHandler>(Lifestyle.Transient);
+        }
+
+        private void RegisterCommandHandlers(Container container)
+        {
+            container.Register<ICommandHandler<CreateStudentCommand, bool>, CreateStudentCommandHandler>(Lifestyle.Transient);
         }
     }
 }
