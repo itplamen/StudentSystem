@@ -1,6 +1,10 @@
 # StudentSystem
 Practical assignment from Matrix Global (team Bit8) for the role of Full-Stack .Net Software Developer
 
+## Build status
+
+[![Build status](https://ci.appveyor.com/api/projects/status/vmea3b27n4aqf2g2?svg=true)](https://ci.appveyor.com/project/itplamen/studentsystem)
+
 ## Technologies
 
 * WCF
