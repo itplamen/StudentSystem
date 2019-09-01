@@ -10,7 +10,7 @@
     public interface IStudentsService
     {
         [OperationContract]
-        bool Create(StudentRequestModel requestModel);
+        bool Create(StudentRequestModel request);
 
         [OperationContract]
         IEnumerable<SemesterResponseModel> Get();
