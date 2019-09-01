@@ -14,5 +14,8 @@
 
         [OperationContract]
         IEnumerable<SemesterResponseModel> Get();
+
+        [OperationContract]
+        bool Update(StudentRequestModel request);
     }
 }

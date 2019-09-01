@@ -16,19 +16,22 @@
     {
         private readonly IValidator<StudentRequestModel> validator;
         private readonly IMapper<Semester, SemesterResponseModel> semestersMapper;
+        private readonly ICommandHandler<StudentCommand, int> createStudentHandler;
+        private readonly ICommandHandler<StudentCommand, bool> updateStudentHandler;
         private readonly IQueryHandler<IEnumerable<Semester>> studentDetailsHandler;
-        private readonly ICommandHandler<CreateStudentCommand, int> createStudentHandler;
 
         public StudentsService(
             IValidator<StudentRequestModel> validator,
             IMapper<Semester, SemesterResponseModel> semestersMapper, 
-            IQueryHandler<IEnumerable<Semester>> studentDetailsHandler,
-            ICommandHandler<CreateStudentCommand, int> createStudentHandler)
+            ICommandHandler<StudentCommand, int> createStudentHandler,
+            ICommandHandler<StudentCommand, bool> updateStudentHandler,
+            IQueryHandler<IEnumerable<Semester>> studentDetailsHandler)
         {
             this.validator = validator;
             this.semestersMapper = semestersMapper;
-            this.studentDetailsHandler = studentDetailsHandler;
             this.createStudentHandler = createStudentHandler;
+            this.updateStudentHandler = updateStudentHandler;
+            this.studentDetailsHandler = studentDetailsHandler;
         }
 
         public bool Create(StudentRequestModel request)
@@ -40,7 +43,7 @@
                 return false;
             }
 
-            CreateStudentCommand command = new CreateStudentCommand(request.FirstName, request.LastName, request.Email, request.DateOfBirth);
+            StudentCommand command = new StudentCommand(request.FirstName, request.LastName, request.Email, request.DateOfBirth);
             int id = createStudentHandler.Handle(command);
 
             return id > 0;
@@ -52,6 +55,23 @@
             IEnumerable<SemesterResponseModel> semestersResponse = semestersMapper.Map(studentDetails);
 
             return semestersResponse;
+        }
+
+        public bool Update(StudentRequestModel request)
+        {
+            ValidationResult validationResult = validator.Validate(request);
+
+            if (validationResult.HasErrors)
+            {
+                return false;
+            }
+
+            StudentCommand command = new StudentCommand(request.FirstName, request.LastName, request.Email, request.DateOfBirth);
+            command.Id = request.Id;
+
+            bool isUpdated = updateStudentHandler.Handle(command);
+
+            return isUpdated;
         }
     }
 }
