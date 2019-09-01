@@ -4,14 +4,20 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semesters" />
-      <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" />
-      <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" />
-      <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" />
-      <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores" />
-      <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Students" />
+      <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Students" />
+      <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semesters" />
+      <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" />
+      <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" />
+      <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" />
+      <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IStudentsService_Create_InputMessage">
+    <wsdl:part name="parameters" element="tns:Create" />
+  </wsdl:message>
+  <wsdl:message name="IStudentsService_Create_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateResponse" />
+  </wsdl:message>
   <wsdl:message name="IStudentsService_Get_InputMessage">
     <wsdl:part name="parameters" element="tns:Get" />
   </wsdl:message>
@@ -19,6 +25,10 @@
     <wsdl:part name="parameters" element="tns:GetResponse" />
   </wsdl:message>
   <wsdl:portType name="IStudentsService">
+    <wsdl:operation name="Create">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStudentsService/Create" message="tns:IStudentsService_Create_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStudentsService/CreateResponse" message="tns:IStudentsService_Create_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Get">
       <wsdl:input wsaw:Action="http://tempuri.org/IStudentsService/Get" message="tns:IStudentsService_Get_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IStudentsService/GetResponse" message="tns:IStudentsService_Get_OutputMessage" />
@@ -26,6 +36,15 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IStudentsService" type="tns:IStudentsService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Create">
+      <soap:operation soapAction="http://tempuri.org/IStudentsService/Create" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Get">
       <soap:operation soapAction="http://tempuri.org/IStudentsService/Get" style="document" />
       <wsdl:input>

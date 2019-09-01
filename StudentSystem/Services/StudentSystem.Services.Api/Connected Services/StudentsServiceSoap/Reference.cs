@@ -15,6 +15,100 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StudentRequestModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Student" +
+        "s")]
+    [System.SerializableAttribute()]
+    public partial class StudentRequestModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateOfBirthField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateOfBirth {
+            get {
+                return this.DateOfBirthField;
+            }
+            set {
+                if ((this.DateOfBirthField.Equals(value) != true)) {
+                    this.DateOfBirthField = value;
+                    this.RaisePropertyChanged("DateOfBirth");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FirstName {
+            get {
+                return this.FirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
+                    this.FirstNameField = value;
+                    this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="SemesterResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semeste" +
         "rs")]
     [System.SerializableAttribute()]
@@ -442,6 +536,12 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="StudentsServiceSoap.IStudentsService")]
     public interface IStudentsService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentsService/Create", ReplyAction="http://tempuri.org/IStudentsService/CreateResponse")]
+        bool Create(StudentSystem.Services.Api.StudentsServiceSoap.StudentRequestModel request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentsService/Create", ReplyAction="http://tempuri.org/IStudentsService/CreateResponse")]
+        System.Threading.Tasks.Task<bool> CreateAsync(StudentSystem.Services.Api.StudentsServiceSoap.StudentRequestModel request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentsService/Get", ReplyAction="http://tempuri.org/IStudentsService/GetResponse")]
         StudentSystem.Services.Api.StudentsServiceSoap.SemesterResponseModel[] Get();
         
@@ -474,6 +574,14 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
         
         public StudentsServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public bool Create(StudentSystem.Services.Api.StudentsServiceSoap.StudentRequestModel request) {
+            return base.Channel.Create(request);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateAsync(StudentSystem.Services.Api.StudentsServiceSoap.StudentRequestModel request) {
+            return base.Channel.CreateAsync(request);
         }
         
         public StudentSystem.Services.Api.StudentsServiceSoap.SemesterResponseModel[] Get() {
