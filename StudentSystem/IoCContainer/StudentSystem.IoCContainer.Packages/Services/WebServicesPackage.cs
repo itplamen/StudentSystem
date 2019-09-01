@@ -4,6 +4,7 @@
     using SimpleInjector.Packaging;
 
     using StudentSystem.Common.Contracts;
+    using StudentSystem.Common.Validators;
     using StudentSystem.Data.Models;
     using StudentSystem.Services.Models.Web.Disciplines;
     using StudentSystem.Services.Models.Web.Professors;
@@ -13,6 +14,7 @@
     using StudentSystem.Services.Web;
     using StudentSystem.Services.Web.Contracts;
     using StudentSystem.Services.Web.Mappers;
+    using StudentSystem.Services.Web.Validators.Students;
 
     public sealed class WebServicesPackage : IPackage
     {
@@ -20,6 +22,7 @@
         {
             RegisterWebServices(container);
             RegisterMappers(container);
+            RegisterValidators(container);
         }
 
         public void RegisterWebServices(Container container)
@@ -34,6 +37,13 @@
             container.Register(typeof(IMapper<Semester, SemesterResponseModel>), typeof(SemestersMapper), Lifestyle.Singleton);
             container.Register(typeof(IMapper<Professor, ProfessorResponseModel>), typeof(ProfessorsMapper), Lifestyle.Singleton);
             container.Register(typeof(IMapper<Discipline, DisciplineResponseModel>), typeof(DisciplinesMapper), Lifestyle.Singleton);
+        }
+
+        public void RegisterValidators(Container container)
+        {
+            container.Register(typeof(IValidator<StudentRequestModel>), typeof(ValidatorComposite<StudentRequestModel>), Lifestyle.Singleton);
+            container.Collection.Append(typeof(IValidator<StudentRequestModel>), typeof(StudentNameValidator), Lifestyle.Singleton);
+            container.Collection.Append(typeof(IValidator<StudentRequestModel>), typeof(StudentEmailValidator), Lifestyle.Singleton);
         }
     }
 }
