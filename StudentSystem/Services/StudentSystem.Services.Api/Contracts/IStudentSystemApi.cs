@@ -7,6 +7,8 @@
 
     public interface IStudentSystemApi
     {
+        Task<bool> CreateStudent(StudentRequestModel request);
+
         Task<IEnumerable<SemesterResponseModel>> GetStudentDetailsAsync();
     }
 }

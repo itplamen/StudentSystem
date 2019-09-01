@@ -25,6 +25,23 @@
             this.logger = loggerFactory.Create(LOGGER, LOGGER);
         }
 
+        public async Task<bool> CreateStudent(StudentRequestModel request)
+        {
+            try
+            {
+                bool isCreated = await studentsService.CreateAsync(request);
+                Log($"{nameof(CreateStudent)} - {ToJson(request)}", isCreated);
+
+                return isCreated;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError($"Request to {nameof(CreateStudent)} failed", ex);
+
+                return await Task.FromResult(false);
+            }
+        }
+
         public async Task<IEnumerable<SemesterResponseModel>> GetStudentDetailsAsync()
         {
             try
