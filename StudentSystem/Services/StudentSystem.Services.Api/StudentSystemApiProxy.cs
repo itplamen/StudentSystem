@@ -6,11 +6,11 @@
     using StudentSystem.Services.Api.Contracts;
     using StudentSystem.Services.Api.StudentsServiceSoap;
 
-    public class StudentSystemApi : IStudentSystemApi
+    public class StudentSystemApiProxy : IStudentSystemApi
     {
         private readonly StudentsServiceClient studentsService;
 
-        public StudentSystemApi(StudentsServiceClient studentsService)
+        public StudentSystemApiProxy(StudentsServiceClient studentsService)
         {
             this.studentsService = studentsService;
         }
