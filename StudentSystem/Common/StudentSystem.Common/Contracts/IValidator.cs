@@ -2,8 +2,8 @@
 {
     using StudentSystem.Common.Validators;
 
-    public interface IValidator<in T>
+    public interface IValidator<in TModel>
     {
-        ValidationResult Validate(T model);
+        ValidationResult Validate(TModel model);
     }
 }
