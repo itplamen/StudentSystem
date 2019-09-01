@@ -21,7 +21,6 @@
             IPackage[] packages = new IPackage[]
             {
                 new DataPackage(),
-                new WebMappersPackage(),
                 new WebServicesPackage(),
                 new CommonPackage()
             };
