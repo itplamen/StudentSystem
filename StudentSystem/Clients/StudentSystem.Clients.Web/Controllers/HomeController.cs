@@ -12,15 +12,17 @@
     public class HomeController : Controller
     {
         private readonly IStudentSystemApi studentSystemApi;
+        private readonly StudentsServiceClient studentsClient;
 
-        public HomeController(IStudentSystemApi studentSystemApi)
+        public HomeController(IStudentSystemApi studentSystemApi, StudentsServiceClient studentsClient)
         {
             this.studentSystemApi = studentSystemApi;
+            this.studentsClient = studentsClient;
         }
 
         public async Task<ActionResult> Index()
         {
-            IEnumerable<SemesterResponseModel> response = await studentSystemApi.GetStudentDetailsAsync();
+            IEnumerable<SemesterResponseModel> response = await studentSystemApi.Execute(studentsClient.GetAsync);
             IEnumerable<StudentViewModel> studentViewModels = StudentsBuilder.Build(response);
 
             return View(studentViewModels);

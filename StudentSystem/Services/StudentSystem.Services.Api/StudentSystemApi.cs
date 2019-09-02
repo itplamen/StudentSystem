@@ -1,51 +1,24 @@
 ﻿namespace StudentSystem.Services.Api
 {
-    using System.Collections.Generic;
+    using System;
     using System.Threading.Tasks;
 
     using StudentSystem.Services.Api.Contracts;
-    using StudentSystem.Services.Api.ProfessorsServiceSoap;
-    using StudentSystem.Services.Api.StudentsServiceSoap;
 
     public class StudentSystemApi : IStudentSystemApi
     {
-        private readonly IRequestsExecutor requestsExecutor;
-        private readonly StudentsServiceClient studentsClient;
-        private readonly ProfessorsServiceClient professorsClient;
-
-        public StudentSystemApi(IRequestsExecutor requestsExecutor, StudentsServiceClient studentsClient, ProfessorsServiceClient professorsClient)
+        public async Task<TResponse> Execute<TResponse>(Func<Task<TResponse>> request)
         {
-            this.requestsExecutor = requestsExecutor;
-            this.studentsClient = studentsClient;
-            this.professorsClient = professorsClient;
-        }
-
-        public async Task<bool> CreateStudent(StudentRequestModel request)
-        {
-            bool isCreated = await requestsExecutor.Execute(studentsClient.CreateAsync, request);
-
-            return isCreated;
-        }
-
-        public async Task<IEnumerable<SemesterResponseModel>> GetStudentDetailsAsync()
-        {
-            IEnumerable<SemesterResponseModel> response = await requestsExecutor.Execute(studentsClient.GetAsync);
+            TResponse response = await request();
 
             return response;
         }
 
-        public async Task<bool> UpdateStudent(StudentRequestModel request)
+        public async Task<TResponse> Execute<TRequest, TResponse>(Func<TRequest, Task<TResponse>> request, TRequest model)
         {
-            bool isUpdated = await requestsExecutor.Execute(studentsClient.UpdateAsync, request);
+            TResponse response = await request(model);
 
-            return isUpdated;
-        }
-
-        public async Task<bool> DeleteStudent(int id)
-        {
-            bool isDeleted = await requestsExecutor.Execute(studentsClient.DeleteAsync, id);
-
-            return isDeleted;
+            return response;
         }
     }
 }

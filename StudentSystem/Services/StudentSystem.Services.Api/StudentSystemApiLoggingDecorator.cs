@@ -9,14 +9,14 @@
     using StudentSystem.Common.Contracts;
     using StudentSystem.Services.Api.Contracts;
 
-    public class RequestsExecutorLoggingDecorator : IRequestsExecutor
+    public class StudentSystemApiLoggingDecorator : IStudentSystemApi
     {
         private const string LOGGER = "RequestsExecutor";
 
         private readonly ILogger logger;
-        private readonly IRequestsExecutor requestsExecutor;
+        private readonly IStudentSystemApi requestsExecutor;
 
-        public RequestsExecutorLoggingDecorator(ILoggerFactory loggerFactory, IRequestsExecutor requestsExecutor)
+        public StudentSystemApiLoggingDecorator(ILoggerFactory loggerFactory, IStudentSystemApi requestsExecutor)
         {
             this.requestsExecutor = requestsExecutor;
             this.logger = loggerFactory.Create(LOGGER, LOGGER);
