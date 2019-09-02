@@ -16,5 +16,8 @@
 
         [OperationContract]
         bool Update(UpdateProfessorRequestModel request);
+
+        [OperationContract]
+        bool Delete(int id);
     }
 }

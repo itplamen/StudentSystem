@@ -3,6 +3,7 @@
     using System.Collections.Generic;
 
     using StudentSystem.Common.Contracts;
+    using StudentSystem.Data.Commands.Common;
     using StudentSystem.Data.Commands.Professors;
     using StudentSystem.Data.Contracts.Commands;
     using StudentSystem.Data.Contracts.Queries;
@@ -15,17 +16,20 @@
         private readonly IMapper<Professor, ProfessorResponseModel> professorsMapper;
         private readonly IQueryHandler<IEnumerable<Professor>> getAllProfessorsHandler;
         private readonly ICommandHandler<ProfessorCommand, int> createProfessorHandler;
+        private readonly ICommandHandler<DeleteEntityCommand, bool> deleteProfessorHandler;
         private readonly ICommandHandler<UpdateProfessorCommand, bool> updateProfessorHandler;
 
         public ProfessorsService(
             IMapper<Professor, ProfessorResponseModel> professorsMapper,
             IQueryHandler<IEnumerable<Professor>> getAllProfessorsHandler,
             ICommandHandler<ProfessorCommand, int> createProfessorHandler,
+            ICommandHandler<DeleteEntityCommand, bool> deleteProfessorHandler,
             ICommandHandler<UpdateProfessorCommand, bool> updateProfessorHandler)
         {
             this.professorsMapper = professorsMapper;
             this.getAllProfessorsHandler = getAllProfessorsHandler;
             this.createProfessorHandler = createProfessorHandler;
+            this.deleteProfessorHandler = deleteProfessorHandler;
             this.updateProfessorHandler = updateProfessorHandler;
         }
 
@@ -51,6 +55,14 @@
             bool isUpdated = updateProfessorHandler.Handle(command);
 
             return isUpdated;
+        }
+
+        public bool Delete(int id)
+        {
+            DeleteEntityCommand command = new DeleteEntityCommand(id, "Professors");
+            bool isDeleted = deleteProfessorHandler.Handle(command);
+
+            return isDeleted;
         }
     }
 }
