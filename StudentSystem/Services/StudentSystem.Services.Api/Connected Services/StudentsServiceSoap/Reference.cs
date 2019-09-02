@@ -18,6 +18,7 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
     [System.Runtime.Serialization.DataContractAttribute(Name="StudentRequestModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Student" +
         "s")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudentSystem.Services.Api.StudentsServiceSoap.UpdateStudentRequestModel))]
     public partial class StudentRequestModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -31,9 +32,6 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LastNameField;
@@ -88,19 +86,6 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string LastName {
             get {
                 return this.LastNameField;
@@ -119,6 +104,30 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateStudentRequestModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Student" +
+        "s")]
+    [System.SerializableAttribute()]
+    public partial class UpdateStudentRequestModel : StudentSystem.Services.Api.StudentsServiceSoap.StudentRequestModel {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
             }
         }
     }
@@ -565,10 +574,10 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
         System.Threading.Tasks.Task<StudentSystem.Services.Api.StudentsServiceSoap.SemesterResponseModel[]> GetAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentsService/Update", ReplyAction="http://tempuri.org/IStudentsService/UpdateResponse")]
-        bool Update(StudentSystem.Services.Api.StudentsServiceSoap.StudentRequestModel request);
+        bool Update(StudentSystem.Services.Api.StudentsServiceSoap.UpdateStudentRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentsService/Update", ReplyAction="http://tempuri.org/IStudentsService/UpdateResponse")]
-        System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.StudentsServiceSoap.StudentRequestModel request);
+        System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.StudentsServiceSoap.UpdateStudentRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentsService/Delete", ReplyAction="http://tempuri.org/IStudentsService/DeleteResponse")]
         bool Delete(int id);
@@ -620,11 +629,11 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
             return base.Channel.GetAsync();
         }
         
-        public bool Update(StudentSystem.Services.Api.StudentsServiceSoap.StudentRequestModel request) {
+        public bool Update(StudentSystem.Services.Api.StudentsServiceSoap.UpdateStudentRequestModel request) {
             return base.Channel.Update(request);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.StudentsServiceSoap.StudentRequestModel request) {
+        public System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.StudentsServiceSoap.UpdateStudentRequestModel request) {
             return base.Channel.UpdateAsync(request);
         }
         

@@ -6,7 +6,6 @@
       <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -24,4 +23,14 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="StudentResponseModel" nillable="true" type="tns:StudentResponseModel" />
+  <xs:complexType name="UpdateStudentRequestModel">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StudentRequestModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateStudentRequestModel" nillable="true" type="tns:UpdateStudentRequestModel" />
 </xs:schema>
