@@ -18,7 +18,7 @@
         private readonly IValidator<StudentRequestModel> validator;
         private readonly IMapper<Semester, SemesterResponseModel> semestersMapper;
         private readonly ICommandHandler<StudentCommand, int> createStudentHandler;
-        private readonly ICommandHandler<StudentCommand, bool> updateStudentHandler;
+        private readonly ICommandHandler<UpdateStudentCommand, bool> updateStudentHandler;
         private readonly IQueryHandler<IEnumerable<Semester>> studentDetailsHandler;
         private readonly ICommandHandler<DeleteEntityCommand, bool> deleteStudentHandler;
 
@@ -26,7 +26,7 @@
             IValidator<StudentRequestModel> validator,
             IMapper<Semester, SemesterResponseModel> semestersMapper, 
             ICommandHandler<StudentCommand, int> createStudentHandler,
-            ICommandHandler<StudentCommand, bool> updateStudentHandler,
+            ICommandHandler<UpdateStudentCommand, bool> updateStudentHandler,
             IQueryHandler<IEnumerable<Semester>> studentDetailsHandler,
             ICommandHandler<DeleteEntityCommand, bool> deleteStudentHandler)
         {
@@ -70,8 +70,12 @@
                 return false;
             }
 
-            StudentCommand command = new StudentCommand(request.FirstName, request.LastName, request.Email, request.DateOfBirth);
-            command.Id = request.Id;
+            UpdateStudentCommand command = new UpdateStudentCommand(
+                request.Id, 
+                request.FirstName, 
+                request.LastName, 
+                request.Email, 
+                request.DateOfBirth);
 
             bool isUpdated = updateStudentHandler.Handle(command);
 

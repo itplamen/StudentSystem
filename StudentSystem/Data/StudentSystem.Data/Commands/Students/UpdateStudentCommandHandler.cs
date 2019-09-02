@@ -6,7 +6,7 @@
     using StudentSystem.Data.Contracts;
     using StudentSystem.Data.Contracts.Commands;
 
-    public class UpdateStudentCommandHandler : ICommandHandler<StudentCommand, bool>
+    public class UpdateStudentCommandHandler : ICommandHandler<UpdateStudentCommand, bool>
     {
         private readonly ISqlQueryExecutor sqlQueryExecutor;
 
@@ -17,7 +17,7 @@
             this.sqlQueryExecutor = sqlQueryExecutor;
         }
 
-        public bool Handle(StudentCommand command)
+        public bool Handle(UpdateStudentCommand command)
         {
             string query = @"UPDATE Students
                             SET FirstName = @firstName, LastName = @lastName, Email = @email, DateOfBirth = @dateOfBirth, ModifiedOn = @modifiedOn
