@@ -9,6 +9,7 @@
     using StudentSystem.Common.Contracts;
     using StudentSystem.Data;
     using StudentSystem.Data.Builders.StudentDetails;
+    using StudentSystem.Data.Commands.Common;
     using StudentSystem.Data.Commands.Professors;
     using StudentSystem.Data.Commands.Students;
     using StudentSystem.Data.Contracts;
@@ -61,6 +62,7 @@
 
         private void RegisterCommandHandlers(Container container)
         {
+            container.Register<ICommandHandler<DeleteEntityCommand, bool>, DeleteEntityCommandHandler>(Lifestyle.Transient);
             container.Register<ICommandHandler<StudentCommand, int>, CreateStudentCommandHandler>(Lifestyle.Transient);
             container.Register<ICommandHandler<StudentCommand, bool>, UpdateStudentCommandHandler>(Lifestyle.Transient);
             container.Register<ICommandHandler<ProfessorCommand, int>, CreateProfessorCommandHandler>(Lifestyle.Transient);
