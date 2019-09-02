@@ -51,6 +51,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\SemestersServiceSoap\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\StudentsServiceSoap\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -77,6 +82,34 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ProfessorsServiceSoap\StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SemestersServiceSoap\SemestersService.wsdl" />
+    <None Include="Connected Services\SemestersServiceSoap\SemestersService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SemestersServiceSoap\SemestersService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SemestersServiceSoap\SemestersService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SemestersServiceSoap\SemestersService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SemestersServiceSoap\SemestersService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SemestersServiceSoap\SemestersService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SemestersServiceSoap\SemestersService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SemestersServiceSoap\SemestersService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SemestersServiceSoap\StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\StudentsServiceSoap\StudentsService.wsdl" />
@@ -120,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ProfessorsServiceSoap\" />
+    <WCFMetadataStorage Include="Connected Services\SemestersServiceSoap\" />
     <WCFMetadataStorage Include="Connected Services\StudentsServiceSoap\" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +182,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ProfessorsServiceSoap\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SemestersServiceSoap\SemestersService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SemestersServiceSoap\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SemestersServiceSoap\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SemestersServiceSoap\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

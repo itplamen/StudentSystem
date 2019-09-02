@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="63ed0218-9ca0-401b-b643-c175e82dfe5d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:49158/SemestersService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SemestersService.xsd" MetadataType="Schema" ID="fc4d1a3b-9507-441f-8903-a5c63658e5f1" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd5" />
+    <MetadataFile FileName="SemestersService1.xsd" MetadataType="Schema" ID="bcd441db-7eac-45a2-94b6-2f6dc31a0595" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SemestersService.wsdl" MetadataType="Wsdl" ID="54ca9179-76ea-4459-8392-f08e09cb6296" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?wsdl" />
+    <MetadataFile FileName="SemestersService2.xsd" MetadataType="Schema" ID="e5263292-4e57-4cc0-9f27-90401bd3401b" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SemestersService3.xsd" MetadataType="Schema" ID="bbb085a1-184f-4905-9797-17862db643ad" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd6" />
+    <MetadataFile FileName="SemestersService4.xsd" MetadataType="Schema" ID="dc69d4b9-fd5d-40a6-95b5-75291b02dec4" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd3" />
+    <MetadataFile FileName="SemestersService5.xsd" MetadataType="Schema" ID="1767ddf5-1e97-4bde-b669-5afa29da3ceb" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd4" />
+    <MetadataFile FileName="SemestersService6.xsd" MetadataType="Schema" ID="9e960e45-11d6-4b29-b2c7-2571094e1595" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SemestersService.disco" MetadataType="Disco" ID="d48faf62-b3ed-4a57-9bc5-81e9c749e548" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?disco" />
+    <MetadataFile FileName="SemestersService7.xsd" MetadataType="Schema" ID="84ffb16c-d9a2-4a9c-9b4d-d2ae8e9ac293" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd7" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
