@@ -26,6 +26,12 @@
   <wsdl:message name="IProfessorsService_Update_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateResponse" />
   </wsdl:message>
+  <wsdl:message name="IProfessorsService_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="IProfessorsService_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProfessorsService">
     <wsdl:operation name="Create">
       <wsdl:input wsaw:Action="http://tempuri.org/IProfessorsService/Create" message="tns:IProfessorsService_Create_InputMessage" />
@@ -38,6 +44,10 @@
     <wsdl:operation name="Update">
       <wsdl:input wsaw:Action="http://tempuri.org/IProfessorsService/Update" message="tns:IProfessorsService_Update_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProfessorsService/UpdateResponse" message="tns:IProfessorsService_Update_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfessorsService/Delete" message="tns:IProfessorsService_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProfessorsService/DeleteResponse" message="tns:IProfessorsService_Delete_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IProfessorsService" type="tns:IProfessorsService">
@@ -62,6 +72,15 @@
     </wsdl:operation>
     <wsdl:operation name="Update">
       <soap:operation soapAction="http://tempuri.org/IProfessorsService/Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/IProfessorsService/Delete" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

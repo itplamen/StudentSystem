@@ -239,6 +239,12 @@ namespace StudentSystem.Services.Api.ProfessorsServiceSoap {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfessorsService/Update", ReplyAction="http://tempuri.org/IProfessorsService/UpdateResponse")]
         System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.ProfessorsServiceSoap.UpdateProfessorRequestModel request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfessorsService/Delete", ReplyAction="http://tempuri.org/IProfessorsService/DeleteResponse")]
+        bool Delete(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfessorsService/Delete", ReplyAction="http://tempuri.org/IProfessorsService/DeleteResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -290,6 +296,14 @@ namespace StudentSystem.Services.Api.ProfessorsServiceSoap {
         
         public System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.ProfessorsServiceSoap.UpdateProfessorRequestModel request) {
             return base.Channel.UpdateAsync(request);
+        }
+        
+        public bool Delete(int id) {
+            return base.Channel.Delete(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteAsync(int id) {
+            return base.Channel.DeleteAsync(id);
         }
     }
 }
