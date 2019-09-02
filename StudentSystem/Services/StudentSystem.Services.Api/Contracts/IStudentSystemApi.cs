@@ -12,5 +12,7 @@
         Task<IEnumerable<SemesterResponseModel>> GetStudentDetailsAsync();
 
         Task<bool> UpdateStudent(StudentRequestModel request);
+
+        Task<bool> DeleteStudent(int id);
     }
 }

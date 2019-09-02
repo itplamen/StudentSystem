@@ -40,5 +40,12 @@
 
             return isUpdated;
         }
+
+        public async Task<bool> DeleteStudent(int id)
+        {
+            bool isDeleted = await requestsExecutor.Execute(studentsClient.DeleteAsync, id);
+
+            return isDeleted;
+        }
     }
 }
