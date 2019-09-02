@@ -10,11 +10,23 @@
 
     public abstract class BaseMapper<TFrom, To> : IMapper<TFrom, To>
         where TFrom : SqlDataReader
-        where To : BaseModel
+        where To : BaseModel, new()
     {
-        public abstract To Map(TFrom from);
+        public virtual To Map(TFrom from)
+        {
+            To to = new To()
+            {
+                Id = Convert.ToInt32(from["Id"]),
+                CreatedOn = Convert.ToDateTime(from["CreatedOn"]),
+                ModifiedOn = Map(from, "ModifiedOn"),
+                IsDeleted = Convert.ToBoolean(from["IsDeleted"]),
+                DeletedOn = Map(from, "DeletedOn")
+            };
 
-        public IEnumerable<To> Map(IEnumerable<TFrom> from)
+            return to;
+        }
+
+        public virtual IEnumerable<To> Map(IEnumerable<TFrom> from)
         {
             TFrom reader = from.FirstOrDefault();
 
