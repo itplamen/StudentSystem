@@ -46,6 +46,8 @@
     <Compile Include="Builders\StudentDetails\ScoresBuilder.cs" />
     <Compile Include="Builders\StudentDetails\SemestersBuilder.cs" />
     <Compile Include="Builders\StudentDetails\StudentsBuilder.cs" />
+    <Compile Include="Commands\Professors\CreateProfessorCommandHandler.cs" />
+    <Compile Include="Commands\Professors\ProfessorCommand.cs" />
     <Compile Include="Commands\Students\StudentCommand.cs" />
     <Compile Include="Commands\Students\CreateStudentCommandHandler.cs" />
     <Compile Include="Commands\Students\UpdateStudentCommandHandler.cs" />
