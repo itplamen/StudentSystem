@@ -4,6 +4,7 @@
 
     using StudentSystem.Common.Contracts;
     using StudentSystem.Common.Validators;
+    using StudentSystem.Data.Commands.Common;
     using StudentSystem.Data.Commands.Students;
     using StudentSystem.Data.Contracts.Commands;
     using StudentSystem.Data.Contracts.Queries;
@@ -19,19 +20,22 @@
         private readonly ICommandHandler<StudentCommand, int> createStudentHandler;
         private readonly ICommandHandler<StudentCommand, bool> updateStudentHandler;
         private readonly IQueryHandler<IEnumerable<Semester>> studentDetailsHandler;
+        private readonly ICommandHandler<DeleteEntityCommand, bool> deleteStudentHandler;
 
         public StudentsService(
             IValidator<StudentRequestModel> validator,
             IMapper<Semester, SemesterResponseModel> semestersMapper, 
             ICommandHandler<StudentCommand, int> createStudentHandler,
             ICommandHandler<StudentCommand, bool> updateStudentHandler,
-            IQueryHandler<IEnumerable<Semester>> studentDetailsHandler)
+            IQueryHandler<IEnumerable<Semester>> studentDetailsHandler,
+            ICommandHandler<DeleteEntityCommand, bool> deleteStudentHandler)
         {
             this.validator = validator;
             this.semestersMapper = semestersMapper;
             this.createStudentHandler = createStudentHandler;
             this.updateStudentHandler = updateStudentHandler;
             this.studentDetailsHandler = studentDetailsHandler;
+            this.deleteStudentHandler = deleteStudentHandler;
         }
 
         public bool Create(StudentRequestModel request)
@@ -72,6 +76,14 @@
             bool isUpdated = updateStudentHandler.Handle(command);
 
             return isUpdated;
+        }
+
+        public bool Delete(int id)
+        {
+            DeleteEntityCommand command = new DeleteEntityCommand(id, "Students");
+            bool isDeleted = deleteStudentHandler.Handle(command);
+
+            return isDeleted;
         }
     }
 }
