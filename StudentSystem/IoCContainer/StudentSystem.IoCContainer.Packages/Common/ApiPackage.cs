@@ -12,6 +12,8 @@
     {
         public void RegisterServices(Container container)
         {
+            container.Register<IRequestsExecutor, RequestsExecutor>(Lifestyle.Singleton);
+
             container.Register<IStudentSystemApi, StudentSystemApi>(Lifestyle.Singleton);
             container.Register(() => new ProfessorsServiceClient(), Lifestyle.Singleton);
             container.Register(() => new StudentsServiceClient(), Lifestyle.Singleton);
