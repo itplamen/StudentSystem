@@ -8,29 +8,32 @@
     using StudentSystem.Data.Contracts.Commands;
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Models;
+    using StudentSystem.Data.Queries.Common;
     using StudentSystem.Services.Models.Web.Professors;
     using StudentSystem.Services.Web.Contracts;
 
     public class ProfessorsService : IProfessorsService
     {
+        private const string TABLE_NAME = "Professors";
+
         private readonly IMapper<Professor, ProfessorResponseModel> professorsMapper;
-        private readonly IQueryHandler<IEnumerable<Professor>> getAllProfessorsHandler;
         private readonly ICommandHandler<ProfessorCommand, int> createProfessorHandler;
         private readonly ICommandHandler<DeleteEntityCommand, bool> deleteProfessorHandler;
         private readonly ICommandHandler<UpdateProfessorCommand, bool> updateProfessorHandler;
+        private readonly IQueryHandler<AllEntitiesQuery<Professor>, IEnumerable<Professor>> getAllProfessorsHandler;
 
         public ProfessorsService(
             IMapper<Professor, ProfessorResponseModel> professorsMapper,
-            IQueryHandler<IEnumerable<Professor>> getAllProfessorsHandler,
             ICommandHandler<ProfessorCommand, int> createProfessorHandler,
             ICommandHandler<DeleteEntityCommand, bool> deleteProfessorHandler,
-            ICommandHandler<UpdateProfessorCommand, bool> updateProfessorHandler)
+            ICommandHandler<UpdateProfessorCommand, bool> updateProfessorHandler,
+            IQueryHandler<AllEntitiesQuery<Professor>, IEnumerable<Professor>> getAllProfessorsHandler)
         {
             this.professorsMapper = professorsMapper;
-            this.getAllProfessorsHandler = getAllProfessorsHandler;
             this.createProfessorHandler = createProfessorHandler;
             this.deleteProfessorHandler = deleteProfessorHandler;
             this.updateProfessorHandler = updateProfessorHandler;
+            this.getAllProfessorsHandler = getAllProfessorsHandler;
         }
 
         public bool Create(ProfessorRequestModel request)
@@ -43,7 +46,9 @@
 
         public IEnumerable<ProfessorResponseModel> GetAll()
         {
-            IEnumerable<Professor> professors = getAllProfessorsHandler.Handle();
+            AllEntitiesQuery<Professor> query = new AllEntitiesQuery<Professor>(TABLE_NAME, false);
+            IEnumerable <Professor> professors = getAllProfessorsHandler.Handle(query);
+
             IEnumerable<ProfessorResponseModel> responseModels = professorsMapper.Map(professors);
 
             return responseModels;
@@ -59,7 +64,7 @@
 
         public bool Delete(int id)
         {
-            DeleteEntityCommand command = new DeleteEntityCommand(id, "Professors");
+            DeleteEntityCommand command = new DeleteEntityCommand(id, TABLE_NAME);
             bool isDeleted = deleteProfessorHandler.Handle(command);
 
             return isDeleted;

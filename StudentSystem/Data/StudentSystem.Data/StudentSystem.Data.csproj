@@ -72,8 +72,8 @@
     <Compile Include="Mappers\SemestersMapper.cs" />
     <Compile Include="Mappers\StudentsMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queries\Professors\AllProfessorsQueryHandler.cs" />
-    <Compile Include="Queries\Semesters\AllSemestersQueryHandler.cs" />
+    <Compile Include="Queries\Common\AllEntitiesQuery.cs" />
+    <Compile Include="Queries\Common\AllEntitiesQueryHandler.cs" />
     <Compile Include="Queries\Students\ActiveStudentDetailsQueryHandler.cs" />
     <Compile Include="SqlQueryExecutor.cs" />
   </ItemGroup>
