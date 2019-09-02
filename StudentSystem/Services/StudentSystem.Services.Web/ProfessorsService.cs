@@ -15,15 +15,18 @@
         private readonly IMapper<Professor, ProfessorResponseModel> professorsMapper;
         private readonly IQueryHandler<IEnumerable<Professor>> getAllProfessorsHandler;
         private readonly ICommandHandler<ProfessorCommand, int> createProfessorHandler;
+        private readonly ICommandHandler<UpdateProfessorCommand, bool> updateProfessorHandler;
 
         public ProfessorsService(
             IMapper<Professor, ProfessorResponseModel> professorsMapper,
             IQueryHandler<IEnumerable<Professor>> getAllProfessorsHandler,
-            ICommandHandler<ProfessorCommand, int> createProfessorHandler)
+            ICommandHandler<ProfessorCommand, int> createProfessorHandler,
+            ICommandHandler<UpdateProfessorCommand, bool> updateProfessorHandler)
         {
             this.professorsMapper = professorsMapper;
             this.getAllProfessorsHandler = getAllProfessorsHandler;
             this.createProfessorHandler = createProfessorHandler;
+            this.updateProfessorHandler = updateProfessorHandler;
         }
 
         public bool Create(ProfessorRequestModel request)
@@ -40,6 +43,14 @@
             IEnumerable<ProfessorResponseModel> responseModels = professorsMapper.Map(professors);
 
             return responseModels;
+        }
+
+        public bool Update(UpdateProfessorRequestModel request)
+        {
+            UpdateProfessorCommand command = new UpdateProfessorCommand(request.Id, request.FirstName, request.LastName);
+            bool isUpdated = updateProfessorHandler.Handle(command);
+
+            return isUpdated;
         }
     }
 }
