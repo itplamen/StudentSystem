@@ -16,6 +16,7 @@
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Mappers;
     using StudentSystem.Data.Models;
+    using StudentSystem.Data.Queries.Professors;
     using StudentSystem.Data.Queries.Students;
 
     public sealed class DataPackage : IPackage
@@ -54,6 +55,7 @@
 
         private void RegisterQueryHandlers(Container container)
         {
+            container.Register<IQueryHandler<IEnumerable<Professor>>, AllProfessorsQueryHandler>(Lifestyle.Transient);
             container.Register<IQueryHandler<IEnumerable<Semester>>, ActiveStudentDetailsQueryHandler>(Lifestyle.Transient);
         }
 
