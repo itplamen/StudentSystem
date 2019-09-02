@@ -44,7 +44,9 @@
   <ItemGroup>
     <Compile Include="Base\BaseResponseModel.cs" />
     <Compile Include="Disciplines\DisciplineResponseModel.cs" />
+    <Compile Include="Professors\ProfessorRequestModel.cs" />
     <Compile Include="Professors\ProfessorResponseModel.cs" />
+    <Compile Include="Professors\UpdateProfessorRequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scores\ScoreResponseModel.cs" />
     <Compile Include="Semesters\SemesterResponseModel.cs" />
