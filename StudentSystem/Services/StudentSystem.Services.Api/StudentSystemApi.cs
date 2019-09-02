@@ -10,6 +10,7 @@
 
     using StudentSystem.Common.Contracts;
     using StudentSystem.Services.Api.Contracts;
+    using StudentSystem.Services.Api.ProfessorsServiceSoap;
     using StudentSystem.Services.Api.StudentsServiceSoap;
 
     public class StudentSystemApi : IStudentSystemApi
@@ -18,10 +19,15 @@
 
         private readonly ILogger logger;
         private readonly StudentsServiceClient studentsService;
+        private readonly ProfessorsServiceClient professorsClient;
 
-        public StudentSystemApi(ILoggerFactory loggerFactory, StudentsServiceClient studentsService)
+        public StudentSystemApi(
+            ILoggerFactory loggerFactory, 
+            StudentsServiceClient studentsService,
+            ProfessorsServiceClient professorsClient)
         {
             this.studentsService = studentsService;
+            this.professorsClient = professorsClient;
             this.logger = loggerFactory.Create(LOGGER, LOGGER);
         }
 
