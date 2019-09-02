@@ -48,6 +48,8 @@
     <Compile Include="Builders\StudentDetails\StudentsBuilder.cs" />
     <Compile Include="Commands\Professors\CreateProfessorCommandHandler.cs" />
     <Compile Include="Commands\Professors\ProfessorCommand.cs" />
+    <Compile Include="Commands\Professors\UpdateProfessorCommand.cs" />
+    <Compile Include="Commands\Professors\UpdateProfessorCommandHandler.cs" />
     <Compile Include="Commands\Students\StudentCommand.cs" />
     <Compile Include="Commands\Students\CreateStudentCommandHandler.cs" />
     <Compile Include="Commands\Students\UpdateStudentCommandHandler.cs" />

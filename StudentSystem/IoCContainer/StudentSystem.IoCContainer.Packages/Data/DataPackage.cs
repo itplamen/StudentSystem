@@ -62,6 +62,7 @@
             container.Register<ICommandHandler<StudentCommand, int>, CreateStudentCommandHandler>(Lifestyle.Transient);
             container.Register<ICommandHandler<StudentCommand, bool>, UpdateStudentCommandHandler>(Lifestyle.Transient);
             container.Register<ICommandHandler<ProfessorCommand, int>, CreateProfessorCommandHandler>(Lifestyle.Transient);
+            container.Register<ICommandHandler<UpdateProfessorCommand, bool>, UpdateProfessorCommandHandler>(Lifestyle.Transient);
         }
     }
 }
