@@ -10,10 +10,13 @@
     {
         public override Professor Map(SqlDataReader from)
         {
-            Professor professor = base.Map(from);
-            professor.FirstName = Convert.ToString(from["FirstName"]);
-            professor.LastName = Convert.ToString(from["LastName"]);
-
+            Professor professor = new Professor()
+            {
+                Id = Convert.ToInt32(from["Id"]),
+                FirstName = Convert.ToString(from["FirstName"]),
+                LastName = Convert.ToString(from["LastName"])
+            };
+            
             return professor;
         }
     }
