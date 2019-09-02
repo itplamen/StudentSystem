@@ -13,6 +13,7 @@
         public void RegisterServices(Container container)
         {
             container.Register<IRequestsExecutor, RequestsExecutor>(Lifestyle.Singleton);
+            container.RegisterDecorator<IRequestsExecutor, RequestsExecutorLoggingDecorator>(Lifestyle.Singleton);
 
             container.Register<IStudentSystemApi, StudentSystemApi>(Lifestyle.Singleton);
             container.Register(() => new ProfessorsServiceClient(), Lifestyle.Singleton);

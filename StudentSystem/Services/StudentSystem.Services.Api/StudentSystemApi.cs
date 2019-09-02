@@ -1,109 +1,44 @@
 ﻿namespace StudentSystem.Services.Api
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
-    using Newtonsoft.Json;
-
-    using StudentSystem.Common.Contracts;
     using StudentSystem.Services.Api.Contracts;
     using StudentSystem.Services.Api.ProfessorsServiceSoap;
     using StudentSystem.Services.Api.StudentsServiceSoap;
 
     public class StudentSystemApi : IStudentSystemApi
     {
-        private const string LOGGER = "StudentSystemApi";
-
-        private readonly ILogger logger;
-        private readonly StudentsServiceClient studentsService;
+        private readonly IRequestsExecutor requestsExecutor;
+        private readonly StudentsServiceClient studentsClient;
         private readonly ProfessorsServiceClient professorsClient;
 
-        public StudentSystemApi(
-            ILoggerFactory loggerFactory, 
-            StudentsServiceClient studentsService,
-            ProfessorsServiceClient professorsClient)
+        public StudentSystemApi(IRequestsExecutor requestsExecutor, StudentsServiceClient studentsClient, ProfessorsServiceClient professorsClient)
         {
-            this.studentsService = studentsService;
+            this.requestsExecutor = requestsExecutor;
+            this.studentsClient = studentsClient;
             this.professorsClient = professorsClient;
-            this.logger = loggerFactory.Create(LOGGER, LOGGER);
         }
 
         public async Task<bool> CreateStudent(StudentRequestModel request)
         {
-            try
-            {
-                bool isCreated = await studentsService.CreateAsync(request);
-                Log($"{nameof(CreateStudent)} - {ToJson(request)}", isCreated);
+            bool isCreated = await requestsExecutor.Execute(studentsClient.CreateAsync, request);
 
-                return isCreated;
-            }
-            catch (Exception ex)
-            {
-                logger.LogError($"Request to {nameof(CreateStudent)} failed", ex);
-
-                return await Task.FromResult(false);
-            }
+            return isCreated;
         }
 
         public async Task<IEnumerable<SemesterResponseModel>> GetStudentDetailsAsync()
         {
-            try
-            {
-                IEnumerable<SemesterResponseModel> response = await studentsService.GetAsync();
-                Log(nameof(GetStudentDetailsAsync), response);
+            IEnumerable<SemesterResponseModel> response = await requestsExecutor.Execute(studentsClient.GetAsync);
 
-                return response;
-            }
-            catch (Exception ex)
-            {
-                logger.LogError($"Request to {nameof(GetStudentDetailsAsync)} failed", ex);
-
-                return await Task.FromResult(Enumerable.Empty<SemesterResponseModel>());
-            }
+            return response;
         }
 
         public async Task<bool> UpdateStudent(StudentRequestModel request)
         {
-            try
-            {
-                bool isUpdated = await studentsService.UpdateAsync(request);
-                Log($"{nameof(UpdateStudent)} - {ToJson(request)}", isUpdated);
+            bool isUpdated = await requestsExecutor.Execute(studentsClient.UpdateAsync, request);
 
-                return isUpdated;
-            }
-            catch (Exception ex)
-            {
-                logger.LogError($"Request to {nameof(UpdateStudent)} failed", ex);
-
-                return await Task.FromResult(false);
-            }
-        }
-
-        private void Log<TModel>(string request, TModel response)
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine($"Request: {request}");
-            stringBuilder.AppendLine($"Response: {ToJson(response)}");
-
-            logger.LogInfo(stringBuilder.ToString());
-        }
-
-        private string ToJson<TModel>(TModel model)
-        {
-            try
-            {
-                return JsonConvert.SerializeObject(model);
-            }
-            catch (Exception ex)
-            {
-                string type = model.GetType().ToString();
-                logger.LogError($"Could not serialize model{type}", ex);
-
-                return type;
-            }
+            return isUpdated;
         }
     }
 }
