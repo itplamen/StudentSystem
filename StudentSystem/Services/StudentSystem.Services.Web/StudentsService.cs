@@ -61,7 +61,7 @@
             return semestersResponse;
         }
 
-        public bool Update(StudentRequestModel request)
+        public bool Update(UpdateStudentRequestModel request)
         {
             ValidationResult validationResult = validator.Validate(request);
 
