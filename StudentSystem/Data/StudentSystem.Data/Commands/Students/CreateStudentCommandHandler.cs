@@ -24,10 +24,10 @@
 
             sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@firstName", $"{command.FirstName}"),
-                new SqlParameter("@lastName", $"{command.LastName}"),
-                new SqlParameter("@email", $"{command.Email}"),
-                new SqlParameter("@dateOfBirth", $"{command.DateOfBirth}")
+                new SqlParameter("@firstName", command.FirstName),
+                new SqlParameter("@lastName", command.LastName),
+                new SqlParameter("@email", command.Email),
+                new SqlParameter("@dateOfBirth", command.DateOfBirth)
             };
 
             int id = sqlQueryExecutor.Execute(query, Create);

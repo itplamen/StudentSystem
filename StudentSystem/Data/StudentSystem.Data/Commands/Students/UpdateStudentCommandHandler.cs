@@ -25,12 +25,12 @@
 
             sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@firstName", $"{command.FirstName}"),
-                new SqlParameter("@lastName", $"{command.LastName}"),
-                new SqlParameter("@email", $"{command.Email}"),
-                new SqlParameter("@dateOfBirth", $"{command.DateOfBirth}"),
-                new SqlParameter("@modifiedOn", $"{DateTime.UtcNow}"),
-                new SqlParameter("@id", $"{command.Id}")
+                new SqlParameter("@firstName", command.FirstName),
+                new SqlParameter("@lastName", command.LastName),
+                new SqlParameter("@email", command.Email),
+                new SqlParameter("@dateOfBirth", command.DateOfBirth),
+                new SqlParameter("@modifiedOn", DateTime.UtcNow),
+                new SqlParameter("@id", command.Id)
             };
 
             bool isUpdated = sqlQueryExecutor.Execute(query, Update);
