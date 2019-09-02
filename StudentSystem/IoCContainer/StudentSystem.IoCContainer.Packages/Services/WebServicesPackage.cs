@@ -11,8 +11,6 @@
     using StudentSystem.Services.Models.Web.Scores;
     using StudentSystem.Services.Models.Web.Semesters;
     using StudentSystem.Services.Models.Web.Students;
-    using StudentSystem.Services.Web;
-    using StudentSystem.Services.Web.Contracts;
     using StudentSystem.Services.Web.Mappers;
     using StudentSystem.Services.Web.Validators.Students;
 
@@ -20,14 +18,8 @@
     {
         public void RegisterServices(Container container)
         {
-            RegisterWebServices(container);
             RegisterMappers(container);
             RegisterValidators(container);
-        }
-
-        public void RegisterWebServices(Container container)
-        {
-            container.Register<IStudentsService, StudentsService>(Lifestyle.Transient);
         }
 
         public void RegisterMappers(Container container)
