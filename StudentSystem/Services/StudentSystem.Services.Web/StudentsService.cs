@@ -15,17 +15,19 @@
 
     public class StudentsService : IStudentsService
     {
+        private const string TABLE_NAME = "Students";
+
         private readonly IValidator<StudentRequestModel> validator;
         private readonly IMapper<Semester, SemesterResponseModel> semestersMapper;
-        private readonly ICommandHandler<StudentCommand, int> createStudentHandler;
+        private readonly ICommandHandler<CreateEntityCommand, int> createStudentHandler;
         private readonly ICommandHandler<UpdateStudentCommand, bool> updateStudentHandler;
         private readonly IQueryHandler<IEnumerable<Semester>> studentDetailsHandler;
         private readonly ICommandHandler<DeleteEntityCommand, bool> deleteStudentHandler;
 
         public StudentsService(
             IValidator<StudentRequestModel> validator,
-            IMapper<Semester, SemesterResponseModel> semestersMapper, 
-            ICommandHandler<StudentCommand, int> createStudentHandler,
+            IMapper<Semester, SemesterResponseModel> semestersMapper,
+            ICommandHandler<CreateEntityCommand, int> createStudentHandler,
             ICommandHandler<UpdateStudentCommand, bool> updateStudentHandler,
             IQueryHandler<IEnumerable<Semester>> studentDetailsHandler,
             ICommandHandler<DeleteEntityCommand, bool> deleteStudentHandler)
@@ -47,7 +49,12 @@
                 return false;
             }
 
-            StudentCommand command = new StudentCommand(request.FirstName, request.LastName, request.Email, request.DateOfBirth);
+            CreateEntityCommand command = new CreateEntityCommand(TABLE_NAME);
+            command.Columns.Add(nameof(request.FirstName), request.FirstName);
+            command.Columns.Add(nameof(request.LastName), request.LastName);
+            command.Columns.Add(nameof(request.Email), request.Email);
+            command.Columns.Add(nameof(request.DateOfBirth), request.DateOfBirth);
+
             int id = createStudentHandler.Handle(command);
 
             return id > 0;
@@ -84,7 +91,7 @@
 
         public bool Delete(int id)
         {
-            DeleteEntityCommand command = new DeleteEntityCommand(id, "Students");
+            DeleteEntityCommand command = new DeleteEntityCommand(id, TABLE_NAME);
             bool isDeleted = deleteStudentHandler.Handle(command);
 
             return isDeleted;

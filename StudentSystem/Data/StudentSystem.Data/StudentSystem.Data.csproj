@@ -50,16 +50,13 @@
     <Compile Include="Commands\Common\CreateEntityCommandHandler.cs" />
     <Compile Include="Commands\Common\DeleteEntityCommand.cs" />
     <Compile Include="Commands\Common\DeleteEntityCommandHandler.cs" />
-    <Compile Include="Commands\Professors\CreateProfessorCommandHandler.cs" />
     <Compile Include="Commands\Professors\ProfessorCommand.cs" />
     <Compile Include="Commands\Professors\UpdateProfessorCommand.cs" />
     <Compile Include="Commands\Professors\UpdateProfessorCommandHandler.cs" />
-    <Compile Include="Commands\Semesters\CreateSemesterCommandHandler.cs" />
     <Compile Include="Commands\Semesters\SemesterCommand.cs" />
     <Compile Include="Commands\Semesters\UpdateSemesterCommand.cs" />
     <Compile Include="Commands\Semesters\UpdateSemesterCommandHandler.cs" />
     <Compile Include="Commands\Students\StudentCommand.cs" />
-    <Compile Include="Commands\Students\CreateStudentCommandHandler.cs" />
     <Compile Include="Commands\Students\UpdateStudentCommand.cs" />
     <Compile Include="Commands\Students\UpdateStudentCommandHandler.cs" />
     <Compile Include="Contracts\Commands\ICommand.cs" />

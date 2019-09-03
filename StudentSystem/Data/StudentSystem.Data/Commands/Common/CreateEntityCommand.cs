@@ -6,8 +6,9 @@
 
     public class CreateEntityCommand : ICommand
     {
-        public CreateEntityCommand()
+        public CreateEntityCommand(string table)
         {
+            Table = table;
             Columns = new Dictionary<object, object>();
         }
 

@@ -17,14 +17,14 @@
         private const string TABLE_NAME = "Semesters";
 
         private readonly IMapper<Semester, SemesterResponseModel> semestersMapper;
-        private readonly ICommandHandler<SemesterCommand, int> createSemesterHandler;
+        private readonly ICommandHandler<CreateEntityCommand, int> createSemesterHandler;
         private readonly ICommandHandler<DeleteEntityCommand, bool> deleteSemesterHandler;
         private readonly ICommandHandler<UpdateSemesterCommand, bool> updateSemesterHandler;
         private readonly IQueryHandler<AllEntitiesQuery<Semester>, IEnumerable<Semester>> getAllSemestersHandler;
 
         public SemestersService(
             IMapper<Semester, SemesterResponseModel> semestersMapper,
-            ICommandHandler<SemesterCommand, int> createSemesterHandler,
+            ICommandHandler<CreateEntityCommand, int> createSemesterHandler,
             ICommandHandler<DeleteEntityCommand, bool> deleteSemesterHandler,
             ICommandHandler<UpdateSemesterCommand, bool> updateSemesterHandler,
             IQueryHandler<AllEntitiesQuery<Semester>, IEnumerable<Semester>> getAllSemestersHandler)
@@ -38,7 +38,11 @@
 
         public bool Create(SemesterRequestModel request)
         {
-            SemesterCommand command = new SemesterCommand(request.Name, request.StartDate, request.EndDate);
+            CreateEntityCommand command = new CreateEntityCommand(TABLE_NAME);
+            command.Columns.Add(nameof(request.Name), request.Name);
+            command.Columns.Add(nameof(request.StartDate), request.StartDate);
+            command.Columns.Add(nameof(request.EndDate), request.EndDate);
+
             int id = createSemesterHandler.Handle(command);
 
             return id > 0;
