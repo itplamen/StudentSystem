@@ -1,0 +1,40 @@
+﻿@using StudentSystem.Clients.Web.Models.Professors
+
+@model IEnumerable<ProfessorViewModel>
+@{
+    ViewBag.Title = "Professors";
+}
+
+<table id="ProfessorsTable" class="dataTable">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Created On</th>
+            <th>Modified On</th>
+            <th>Is Deleted</th>
+            <th>Deleted On</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var professor in Model)
+        {
+            <tr>
+                <td>@professor.Id</td>
+                <td>@professor.FirstName</td>
+                <td>@professor.LastName</td>
+                <td>@professor.CreatedOn</td>
+                <td>@professor.ModifiedOn</td>
+                <td>@professor.IsDeleted</td>
+                <td>@professor.DeletedOn</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $('#ProfessorsTable').DataTable();
+    </script>
+}
