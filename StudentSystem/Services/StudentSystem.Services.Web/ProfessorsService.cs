@@ -4,7 +4,6 @@
 
     using StudentSystem.Common.Contracts;
     using StudentSystem.Data.Commands.Common;
-    using StudentSystem.Data.Commands.Professors;
     using StudentSystem.Data.Contracts.Commands;
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Models;
@@ -19,14 +18,14 @@
         private readonly IMapper<Professor, ProfessorResponseModel> professorsMapper;
         private readonly ICommandHandler<EntityCommand, int> createProfessorHandler;
         private readonly ICommandHandler<DeleteEntityCommand, bool> deleteProfessorHandler;
-        private readonly ICommandHandler<UpdateProfessorCommand, bool> updateProfessorHandler;
+        private readonly ICommandHandler<UpdateEntityCommand, bool> updateProfessorHandler;
         private readonly IQueryHandler<AllEntitiesQuery<Professor>, IEnumerable<Professor>> getAllProfessorsHandler;
 
         public ProfessorsService(
             IMapper<Professor, ProfessorResponseModel> professorsMapper,
             ICommandHandler<EntityCommand, int> createProfessorHandler,
             ICommandHandler<DeleteEntityCommand, bool> deleteProfessorHandler,
-            ICommandHandler<UpdateProfessorCommand, bool> updateProfessorHandler,
+            ICommandHandler<UpdateEntityCommand, bool> updateProfessorHandler,
             IQueryHandler<AllEntitiesQuery<Professor>, IEnumerable<Professor>> getAllProfessorsHandler)
         {
             this.professorsMapper = professorsMapper;
@@ -59,7 +58,10 @@
 
         public bool Update(UpdateProfessorRequestModel request)
         {
-            UpdateProfessorCommand command = new UpdateProfessorCommand(request.Id, request.FirstName, request.LastName);
+            UpdateEntityCommand command = new UpdateEntityCommand(TABLE_NAME, request.Id);
+            command.Columns.Add(nameof(request.FirstName), request.FirstName);
+            command.Columns.Add(nameof(request.LastName), request.LastName);
+
             bool isUpdated = updateProfessorHandler.Handle(command);
 
             return isUpdated;

@@ -52,15 +52,6 @@
     <Compile Include="Commands\Common\DeleteEntityCommandHandler.cs" />
     <Compile Include="Commands\Common\UpdateEntityCommand.cs" />
     <Compile Include="Commands\Common\UpdateEntityCommandHandler.cs" />
-    <Compile Include="Commands\Professors\ProfessorCommand.cs" />
-    <Compile Include="Commands\Professors\UpdateProfessorCommand.cs" />
-    <Compile Include="Commands\Professors\UpdateProfessorCommandHandler.cs" />
-    <Compile Include="Commands\Semesters\SemesterCommand.cs" />
-    <Compile Include="Commands\Semesters\UpdateSemesterCommand.cs" />
-    <Compile Include="Commands\Semesters\UpdateSemesterCommandHandler.cs" />
-    <Compile Include="Commands\Students\StudentCommand.cs" />
-    <Compile Include="Commands\Students\UpdateStudentCommand.cs" />
-    <Compile Include="Commands\Students\UpdateStudentCommandHandler.cs" />
     <Compile Include="Contracts\Commands\ICommand.cs" />
     <Compile Include="Contracts\Commands\ICommandHandler.cs" />
     <Compile Include="Contracts\ISqlQueryExecutor.cs" />

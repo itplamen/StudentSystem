@@ -4,7 +4,6 @@
 
     using StudentSystem.Common.Contracts;
     using StudentSystem.Data.Commands.Common;
-    using StudentSystem.Data.Commands.Semesters;
     using StudentSystem.Data.Contracts.Commands;
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Models;
@@ -19,14 +18,14 @@
         private readonly IMapper<Semester, SemesterResponseModel> semestersMapper;
         private readonly ICommandHandler<EntityCommand, int> createSemesterHandler;
         private readonly ICommandHandler<DeleteEntityCommand, bool> deleteSemesterHandler;
-        private readonly ICommandHandler<UpdateSemesterCommand, bool> updateSemesterHandler;
+        private readonly ICommandHandler<UpdateEntityCommand, bool> updateSemesterHandler;
         private readonly IQueryHandler<AllEntitiesQuery<Semester>, IEnumerable<Semester>> getAllSemestersHandler;
 
         public SemestersService(
             IMapper<Semester, SemesterResponseModel> semestersMapper,
             ICommandHandler<EntityCommand, int> createSemesterHandler,
             ICommandHandler<DeleteEntityCommand, bool> deleteSemesterHandler,
-            ICommandHandler<UpdateSemesterCommand, bool> updateSemesterHandler,
+            ICommandHandler<UpdateEntityCommand, bool> updateSemesterHandler,
             IQueryHandler<AllEntitiesQuery<Semester>, IEnumerable<Semester>> getAllSemestersHandler)
         {
             this.semestersMapper = semestersMapper;
@@ -60,7 +59,11 @@
 
         public bool Update(UpdateSemesterRequestModel request)
         {
-            UpdateSemesterCommand command = new UpdateSemesterCommand(request.Id, request.Name, request.StartDate, request.EndDate);
+            UpdateEntityCommand command = new UpdateEntityCommand(TABLE_NAME, request.Id);
+            command.Columns.Add(nameof(request.Name), request.Name);
+            command.Columns.Add(nameof(request.StartDate), request.StartDate);
+            command.Columns.Add(nameof(request.EndDate), request.EndDate);
+
             bool isUpdated = updateSemesterHandler.Handle(command);
 
             return isUpdated;
