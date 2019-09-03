@@ -235,6 +235,9 @@ GO
 
 -------------------- Create sp_GetActiveStudentDetails procedure --------------------
 
+USE StudentSystemDb
+GO
+
 CREATE PROCEDURE [dbo].[sp_GetActiveStudentDetails]
 AS
 
@@ -262,6 +265,10 @@ BEGIN
 		professors.Id AS [ProfessorId],
 		professors.FirstName AS [ProfessorFirstName],
 		professors.LastName AS [ProfessorLastName],
+		professors.CreatedOn AS [ProfessorCreatedOn],
+		professors.ModifiedOn AS [ProfessorModifiedOn],
+		professors.IsDeleted AS [ProfessorIsDeleted],
+		professors.DeletedOn AS [ProfessorDeletedOn],
 		scores.Mark AS [Mark]
 	INTO #ActiveStudentDetails
 	FROM [dbo].[Students] students
@@ -301,12 +308,20 @@ BEGIN
 	SELECT 
 		ProfessorId AS [Id],
 		ProfessorFirstName AS [FirstName],
-		ProfessorLastName AS [LastName]
+		ProfessorLastName AS [LastName],
+		ProfessorCreatedOn AS [CreatedOn],
+		ProfessorModifiedOn AS [ModifiedOn],
+		ProfessorIsDeleted AS [IsDeleted],
+		ProfessorDeletedOn AS [DeletedOn]
 	FROM #ActiveStudentDetails
 	GROUP BY 
 		ProfessorId,
 		ProfessorFirstName,
-		ProfessorLastName
+		ProfessorLastName,
+		ProfessorCreatedOn,
+		ProfessorModifiedOn,
+		ProfessorIsDeleted,
+		ProfessorDeletedOn
 
 	--Scores
 	SELECT 
