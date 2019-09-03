@@ -24,11 +24,10 @@
 
         public IEnumerable<TEntity> Handle(AllEntitiesQuery<TEntity> query)
         {
-            string sqlQuery = @"SELECT * FROM @table WHERE IsDeleted = @withDeleted";
+            string sqlQuery = $@"SELECT * FROM {query.Table} WHERE IsDeleted = @withDeleted";
 
             sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@table", $"{query.Table}"),
                 new SqlParameter("@withDeleted", $"{query.WithDeleted}")
             };
 
