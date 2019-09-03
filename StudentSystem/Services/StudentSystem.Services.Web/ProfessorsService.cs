@@ -46,10 +46,10 @@
             return id > 0;
         }
 
-        public IEnumerable<ProfessorResponseModel> GetAll()
+        public IEnumerable<ProfessorResponseModel> Get()
         {
             AllEntitiesQuery<Professor> query = new AllEntitiesQuery<Professor>(TABLE_NAME, false);
-            IEnumerable <Professor> professors = getAllProfessorsHandler.Handle(query);
+            IEnumerable<Professor> professors = getAllProfessorsHandler.Handle(query);
 
             IEnumerable<ProfessorResponseModel> responseModels = professorsMapper.Map(professors);
 

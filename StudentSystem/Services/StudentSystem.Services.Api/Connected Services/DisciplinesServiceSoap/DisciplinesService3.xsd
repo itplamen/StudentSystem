@@ -3,7 +3,9 @@
   <xs:complexType name="BaseResponseModel">
     <xs:sequence>
       <xs:element minOccurs="0" name="CreatedOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DeletedOn" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDeleted" type="xs:boolean" />
       <xs:element minOccurs="0" name="ModifiedOn" nillable="true" type="xs:dateTime" />
     </xs:sequence>
   </xs:complexType>

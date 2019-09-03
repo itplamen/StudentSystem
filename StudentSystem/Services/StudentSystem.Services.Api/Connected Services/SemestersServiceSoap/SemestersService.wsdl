@@ -18,11 +18,11 @@
   <wsdl:message name="ISemestersService_Create_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateResponse" />
   </wsdl:message>
-  <wsdl:message name="ISemestersService_GetAll_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAll" />
+  <wsdl:message name="ISemestersService_Get_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get" />
   </wsdl:message>
-  <wsdl:message name="ISemestersService_GetAll_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllResponse" />
+  <wsdl:message name="ISemestersService_Get_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetResponse" />
   </wsdl:message>
   <wsdl:message name="ISemestersService_Update_InputMessage">
     <wsdl:part name="parameters" element="tns:Update" />
@@ -41,9 +41,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISemestersService/Create" message="tns:ISemestersService_Create_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISemestersService/CreateResponse" message="tns:ISemestersService_Create_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAll">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISemestersService/GetAll" message="tns:ISemestersService_GetAll_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISemestersService/GetAllResponse" message="tns:ISemestersService_GetAll_OutputMessage" />
+    <wsdl:operation name="Get">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISemestersService/Get" message="tns:ISemestersService_Get_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISemestersService/GetResponse" message="tns:ISemestersService_Get_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Update">
       <wsdl:input wsaw:Action="http://tempuri.org/ISemestersService/Update" message="tns:ISemestersService_Update_InputMessage" />
@@ -65,8 +65,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAll">
-      <soap:operation soapAction="http://tempuri.org/ISemestersService/GetAll" style="document" />
+    <wsdl:operation name="Get">
+      <soap:operation soapAction="http://tempuri.org/ISemestersService/Get" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

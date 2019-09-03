@@ -154,7 +154,13 @@ namespace StudentSystem.Services.Api.ProfessorsServiceSoap {
         private System.DateTime CreatedOnField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> DeletedOnField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsDeletedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> ModifiedOnField;
@@ -183,6 +189,19 @@ namespace StudentSystem.Services.Api.ProfessorsServiceSoap {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> DeletedOn {
+            get {
+                return this.DeletedOnField;
+            }
+            set {
+                if ((this.DeletedOnField.Equals(value) != true)) {
+                    this.DeletedOnField = value;
+                    this.RaisePropertyChanged("DeletedOn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Id {
             get {
                 return this.IdField;
@@ -191,6 +210,19 @@ namespace StudentSystem.Services.Api.ProfessorsServiceSoap {
                 if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
                 }
             }
         }
@@ -228,11 +260,11 @@ namespace StudentSystem.Services.Api.ProfessorsServiceSoap {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfessorsService/Create", ReplyAction="http://tempuri.org/IProfessorsService/CreateResponse")]
         System.Threading.Tasks.Task<bool> CreateAsync(StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorRequestModel request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfessorsService/GetAll", ReplyAction="http://tempuri.org/IProfessorsService/GetAllResponse")]
-        StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel[] GetAll();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfessorsService/Get", ReplyAction="http://tempuri.org/IProfessorsService/GetResponse")]
+        StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel[] Get();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfessorsService/GetAll", ReplyAction="http://tempuri.org/IProfessorsService/GetAllResponse")]
-        System.Threading.Tasks.Task<StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel[]> GetAllAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfessorsService/Get", ReplyAction="http://tempuri.org/IProfessorsService/GetResponse")]
+        System.Threading.Tasks.Task<StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel[]> GetAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfessorsService/Update", ReplyAction="http://tempuri.org/IProfessorsService/UpdateResponse")]
         bool Update(StudentSystem.Services.Api.ProfessorsServiceSoap.UpdateProfessorRequestModel request);
@@ -282,12 +314,12 @@ namespace StudentSystem.Services.Api.ProfessorsServiceSoap {
             return base.Channel.CreateAsync(request);
         }
         
-        public StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel[] GetAll() {
-            return base.Channel.GetAll();
+        public StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel[] Get() {
+            return base.Channel.Get();
         }
         
-        public System.Threading.Tasks.Task<StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel[]> GetAllAsync() {
-            return base.Channel.GetAllAsync();
+        public System.Threading.Tasks.Task<StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel[]> GetAsync() {
+            return base.Channel.GetAsync();
         }
         
         public bool Update(StudentSystem.Services.Api.ProfessorsServiceSoap.UpdateProfessorRequestModel request) {
