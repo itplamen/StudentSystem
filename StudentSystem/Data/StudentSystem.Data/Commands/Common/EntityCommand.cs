@@ -4,9 +4,9 @@
 
     using StudentSystem.Data.Contracts.Commands;
 
-    public class CreateEntityCommand : ICommand
+    public class EntityCommand : ICommand
     {
-        public CreateEntityCommand(string table)
+        public EntityCommand(string table)
         {
             Table = table;
             Columns = new Dictionary<object, object>();

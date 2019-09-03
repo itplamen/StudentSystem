@@ -17,14 +17,14 @@
         private const string TABLE_NAME = "Professors";
 
         private readonly IMapper<Professor, ProfessorResponseModel> professorsMapper;
-        private readonly ICommandHandler<CreateEntityCommand, int> createProfessorHandler;
+        private readonly ICommandHandler<EntityCommand, int> createProfessorHandler;
         private readonly ICommandHandler<DeleteEntityCommand, bool> deleteProfessorHandler;
         private readonly ICommandHandler<UpdateProfessorCommand, bool> updateProfessorHandler;
         private readonly IQueryHandler<AllEntitiesQuery<Professor>, IEnumerable<Professor>> getAllProfessorsHandler;
 
         public ProfessorsService(
             IMapper<Professor, ProfessorResponseModel> professorsMapper,
-            ICommandHandler<CreateEntityCommand, int> createProfessorHandler,
+            ICommandHandler<EntityCommand, int> createProfessorHandler,
             ICommandHandler<DeleteEntityCommand, bool> deleteProfessorHandler,
             ICommandHandler<UpdateProfessorCommand, bool> updateProfessorHandler,
             IQueryHandler<AllEntitiesQuery<Professor>, IEnumerable<Professor>> getAllProfessorsHandler)
@@ -38,7 +38,7 @@
 
         public bool Create(ProfessorRequestModel request)
         {
-            CreateEntityCommand command = new CreateEntityCommand(TABLE_NAME);
+            EntityCommand command = new EntityCommand(TABLE_NAME);
             command.Columns.Add(nameof(request.FirstName), request.FirstName);
             command.Columns.Add(nameof(request.LastName), request.LastName);
 

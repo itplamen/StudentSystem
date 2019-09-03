@@ -46,10 +46,12 @@
     <Compile Include="Builders\StudentDetails\ScoresBuilder.cs" />
     <Compile Include="Builders\StudentDetails\SemestersBuilder.cs" />
     <Compile Include="Builders\StudentDetails\StudentsBuilder.cs" />
-    <Compile Include="Commands\Common\CreateEntityCommand.cs" />
+    <Compile Include="Commands\Common\EntityCommand.cs" />
     <Compile Include="Commands\Common\CreateEntityCommandHandler.cs" />
     <Compile Include="Commands\Common\DeleteEntityCommand.cs" />
     <Compile Include="Commands\Common\DeleteEntityCommandHandler.cs" />
+    <Compile Include="Commands\Common\UpdateEntityCommand.cs" />
+    <Compile Include="Commands\Common\UpdateEntityCommandHandler.cs" />
     <Compile Include="Commands\Professors\ProfessorCommand.cs" />
     <Compile Include="Commands\Professors\UpdateProfessorCommand.cs" />
     <Compile Include="Commands\Professors\UpdateProfessorCommandHandler.cs" />

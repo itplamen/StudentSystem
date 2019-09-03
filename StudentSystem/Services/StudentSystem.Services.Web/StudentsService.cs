@@ -19,16 +19,16 @@
 
         private readonly IValidator<StudentRequestModel> validator;
         private readonly IMapper<Semester, SemesterResponseModel> semestersMapper;
-        private readonly ICommandHandler<CreateEntityCommand, int> createStudentHandler;
-        private readonly ICommandHandler<UpdateStudentCommand, bool> updateStudentHandler;
+        private readonly ICommandHandler<EntityCommand, int> createStudentHandler;
+        private readonly ICommandHandler<UpdateEntityCommand, bool> updateStudentHandler;
         private readonly IQueryHandler<IEnumerable<Semester>> studentDetailsHandler;
         private readonly ICommandHandler<DeleteEntityCommand, bool> deleteStudentHandler;
 
         public StudentsService(
             IValidator<StudentRequestModel> validator,
             IMapper<Semester, SemesterResponseModel> semestersMapper,
-            ICommandHandler<CreateEntityCommand, int> createStudentHandler,
-            ICommandHandler<UpdateStudentCommand, bool> updateStudentHandler,
+            ICommandHandler<EntityCommand, int> createStudentHandler,
+            ICommandHandler<UpdateEntityCommand, bool> updateStudentHandler,
             IQueryHandler<IEnumerable<Semester>> studentDetailsHandler,
             ICommandHandler<DeleteEntityCommand, bool> deleteStudentHandler)
         {
@@ -49,7 +49,7 @@
                 return false;
             }
 
-            CreateEntityCommand command = new CreateEntityCommand(TABLE_NAME);
+            EntityCommand command = new EntityCommand(TABLE_NAME);
             command.Columns.Add(nameof(request.FirstName), request.FirstName);
             command.Columns.Add(nameof(request.LastName), request.LastName);
             command.Columns.Add(nameof(request.Email), request.Email);
@@ -77,12 +77,11 @@
                 return false;
             }
 
-            UpdateStudentCommand command = new UpdateStudentCommand(
-                request.Id, 
-                request.FirstName, 
-                request.LastName, 
-                request.Email, 
-                request.DateOfBirth);
+            UpdateEntityCommand command = new UpdateEntityCommand(TABLE_NAME, request.Id);
+            command.Columns.Add(nameof(request.FirstName), request.FirstName);
+            command.Columns.Add(nameof(request.LastName), request.LastName);
+            command.Columns.Add(nameof(request.Email), request.Email);
+            command.Columns.Add(nameof(request.DateOfBirth), request.DateOfBirth);
 
             bool isUpdated = updateStudentHandler.Handle(command);
 

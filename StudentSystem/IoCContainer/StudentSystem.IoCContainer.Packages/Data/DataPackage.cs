@@ -63,9 +63,10 @@
 
         private void RegisterCommandHandlers(Container container)
         {
+            container.Register<ICommandHandler<EntityCommand, int>, CreateEntityCommandHandler>(Lifestyle.Transient);
+            container.Register<ICommandHandler<UpdateEntityCommand, bool>, UpdateEntityCommandHandler> (Lifestyle.Transient);
             container.Register<ICommandHandler<DeleteEntityCommand, bool>, DeleteEntityCommandHandler>(Lifestyle.Transient);
-            container.Register<ICommandHandler<CreateEntityCommand, int>, CreateEntityCommandHandler>(Lifestyle.Transient);
-
+            
             container.Register<ICommandHandler<UpdateStudentCommand, bool>, UpdateStudentCommandHandler>(Lifestyle.Transient);
             container.Register<ICommandHandler<UpdateProfessorCommand, bool>, UpdateProfessorCommandHandler>(Lifestyle.Transient);
             container.Register<ICommandHandler<UpdateSemesterCommand, bool>, UpdateSemesterCommandHandler>(Lifestyle.Transient);

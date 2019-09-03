@@ -7,7 +7,7 @@
     using StudentSystem.Data.Contracts;
     using StudentSystem.Data.Contracts.Commands;
 
-    public class CreateEntityCommandHandler : ICommandHandler<CreateEntityCommand, int>
+    public class CreateEntityCommandHandler : ICommandHandler<EntityCommand, int>
     {
         private readonly ISqlQueryExecutor sqlQueryExecutor;
 
@@ -18,10 +18,10 @@
             this.sqlQueryExecutor = sqlQueryExecutor;
         }
 
-        public int Handle(CreateEntityCommand command)
+        public int Handle(EntityCommand command)
         {
             string columnKeys = string.Join(", ", command.Columns.Keys);
-            string columnVariables = string.Join(", ", command.Columns.Keys.SelectMany(x => "@" + x));
+            string columnVariables = string.Join(", ", command.Columns.Keys.Select(x => "@" + x));
 
             string query = $@"INSERT INTO {command.Table}({columnKeys})
                             OUTPUT INSERTED.ID
