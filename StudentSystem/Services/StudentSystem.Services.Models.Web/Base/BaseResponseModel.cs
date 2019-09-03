@@ -14,5 +14,11 @@
 
         [DataMember]
         public DateTime? ModifiedOn { get; set; }
+
+        [DataMember]
+        public bool IsDeleted { get; set; }
+
+        [DataMember]
+        public DateTime? DeletedOn { get; set; }
     }
 }
