@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7d966e9f-42aa-4132-8e88-b2777168f83a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:49158/DisciplinesService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DisciplinesService.xsd" MetadataType="Schema" ID="be2be5f9-f633-4d89-b866-64d5283200f9" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?xsd=xsd0" />
+    <MetadataFile FileName="DisciplinesService1.xsd" MetadataType="Schema" ID="a4a4f53d-1ab3-4fe1-a3c9-bd1774638a1c" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DisciplinesService2.xsd" MetadataType="Schema" ID="d994ce93-0c02-4ac1-8a5e-d6ae925f2206" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DisciplinesService3.xsd" MetadataType="Schema" ID="3b4f9855-a437-4867-8878-abcd6999f160" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?xsd=xsd3" />
+    <MetadataFile FileName="DisciplinesService.wsdl" MetadataType="Wsdl" ID="b68c191a-7783-4521-930c-efcb133ef494" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?wsdl" />
+    <MetadataFile FileName="DisciplinesService4.xsd" MetadataType="Schema" ID="7e2a5599-061e-405d-b75d-ac1bfd5f059d" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?xsd=xsd4" />
+    <MetadataFile FileName="DisciplinesService5.xsd" MetadataType="Schema" ID="09e9f5c1-c871-475b-9ee6-6746ac40c5b4" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?xsd=xsd5" />
+    <MetadataFile FileName="DisciplinesService6.xsd" MetadataType="Schema" ID="3fa51cb6-43b5-4805-a0e5-efdbfaf90c6a" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?xsd=xsd6" />
+    <MetadataFile FileName="DisciplinesService.disco" MetadataType="Disco" ID="e38798c0-89d7-46ee-9528-9384c07f060c" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

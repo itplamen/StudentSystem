@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8a9d5590-dd6f-4ab0-9502-43338e9fc1ae" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:49158/ScoresService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ScoresService.xsd" MetadataType="Schema" ID="c90c89ee-f840-43cd-851e-4c59e18a7b9c" SourceId="1" SourceUrl="http://localhost:49158/ScoresService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ScoresService.wsdl" MetadataType="Wsdl" ID="ad79ebf0-7695-48bf-ba64-3bed626e3917" SourceId="1" SourceUrl="http://localhost:49158/ScoresService.svc?wsdl" />
+    <MetadataFile FileName="ScoresService1.xsd" MetadataType="Schema" ID="450850f0-6e15-4a50-a380-cf7c14e31ec5" SourceId="1" SourceUrl="http://localhost:49158/ScoresService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ScoresService2.xsd" MetadataType="Schema" ID="d3b3dbf6-f291-48f3-b7a7-f62224c235c3" SourceId="1" SourceUrl="http://localhost:49158/ScoresService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ScoresService3.xsd" MetadataType="Schema" ID="8ed6c7ef-0067-4ba1-b80b-91ff18ba5b67" SourceId="1" SourceUrl="http://localhost:49158/ScoresService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ScoresService.disco" MetadataType="Disco" ID="39305822-767c-4e0d-a401-24809c60d404" SourceId="1" SourceUrl="http://localhost:49158/ScoresService.svc?disco" />
+    <MetadataFile FileName="ScoresService4.xsd" MetadataType="Schema" ID="47e9e077-9f9f-4f7b-87cd-074300e4ed22" SourceId="1" SourceUrl="http://localhost:49158/ScoresService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

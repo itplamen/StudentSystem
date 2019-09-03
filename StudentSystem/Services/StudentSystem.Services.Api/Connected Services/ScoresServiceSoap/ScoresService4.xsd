@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:49158/ScoresService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Students" />
+  <xs:import schemaLocation="http://localhost:49158/ScoresService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" />
+  <xs:complexType name="ScoreRequestModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DisciplineId" type="xs:int" />
+      <xs:element minOccurs="0" name="Mark" type="xs:float" />
+      <xs:element minOccurs="0" name="StudentId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScoreRequestModel" nillable="true" type="tns:ScoreRequestModel" />
+  <xs:complexType name="ArrayOfScoreResponseModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScoreResponseModel" nillable="true" type="tns:ScoreResponseModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfScoreResponseModel" nillable="true" type="tns:ArrayOfScoreResponseModel" />
+  <xs:complexType name="ScoreResponseModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" base="q1:BaseResponseModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DisciplineId" type="xs:int" />
+          <xs:element minOccurs="0" name="Mark" type="xs:float" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Students" minOccurs="0" name="Student" nillable="true" type="q2:StudentResponseModel" />
+          <xs:element minOccurs="0" name="StudentId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ScoreResponseModel" nillable="true" type="tns:ScoreResponseModel" />
+  <xs:complexType name="UpdateScoreRequestModel">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ScoreRequestModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateScoreRequestModel" nillable="true" type="tns:UpdateScoreRequestModel" />
+</xs:schema>
