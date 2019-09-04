@@ -102,46 +102,6 @@ namespace StudentSystem.Services.Api.ProfessorsServiceSoap {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ProfessorResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Profess" +
-        "ors")]
-    [System.SerializableAttribute()]
-    public partial class ProfessorResponseModel : StudentSystem.Services.Api.ProfessorsServiceSoap.BaseResponseModel {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
-            get {
-                return this.FirstNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel))]
@@ -250,15 +210,55 @@ namespace StudentSystem.Services.Api.ProfessorsServiceSoap {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProfessorResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Profess" +
+        "ors")]
+    [System.SerializableAttribute()]
+    public partial class ProfessorResponseModel : StudentSystem.Services.Api.ProfessorsServiceSoap.BaseResponseModel {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastNameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FirstName {
+            get {
+                return this.FirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
+                    this.FirstNameField = value;
+                    this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProfessorsServiceSoap.IProfessorsService")]
     public interface IProfessorsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfessorsService/Create", ReplyAction="http://tempuri.org/IProfessorsService/CreateResponse")]
-        bool Create(StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorRequestModel request);
+        StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel Create(StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfessorsService/Create", ReplyAction="http://tempuri.org/IProfessorsService/CreateResponse")]
-        System.Threading.Tasks.Task<bool> CreateAsync(StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorRequestModel request);
+        System.Threading.Tasks.Task<StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel> CreateAsync(StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfessorsService/Get", ReplyAction="http://tempuri.org/IProfessorsService/GetResponse")]
         StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel[] Get();
@@ -306,11 +306,11 @@ namespace StudentSystem.Services.Api.ProfessorsServiceSoap {
                 base(binding, remoteAddress) {
         }
         
-        public bool Create(StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorRequestModel request) {
+        public StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel Create(StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorRequestModel request) {
             return base.Channel.Create(request);
         }
         
-        public System.Threading.Tasks.Task<bool> CreateAsync(StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorRequestModel request) {
+        public System.Threading.Tasks.Task<StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel> CreateAsync(StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorRequestModel request) {
             return base.Channel.CreateAsync(request);
         }
         

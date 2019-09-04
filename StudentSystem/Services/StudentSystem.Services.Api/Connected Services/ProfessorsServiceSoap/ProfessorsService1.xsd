@@ -8,12 +8,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ProfessorRequestModel" nillable="true" type="tns:ProfessorRequestModel" />
-  <xs:complexType name="ArrayOfProfessorResponseModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProfessorResponseModel" nillable="true" type="tns:ProfessorResponseModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfProfessorResponseModel" nillable="true" type="tns:ArrayOfProfessorResponseModel" />
   <xs:complexType name="ProfessorResponseModel">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" base="q1:BaseResponseModel">
@@ -25,6 +19,12 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="ProfessorResponseModel" nillable="true" type="tns:ProfessorResponseModel" />
+  <xs:complexType name="ArrayOfProfessorResponseModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProfessorResponseModel" nillable="true" type="tns:ProfessorResponseModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProfessorResponseModel" nillable="true" type="tns:ArrayOfProfessorResponseModel" />
   <xs:complexType name="UpdateProfessorRequestModel">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:ProfessorRequestModel">
