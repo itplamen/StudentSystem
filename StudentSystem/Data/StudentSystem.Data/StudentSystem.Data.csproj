@@ -52,6 +52,8 @@
     <Compile Include="Commands\Common\DeleteEntityCommandHandler.cs" />
     <Compile Include="Commands\Common\UpdateEntityCommand.cs" />
     <Compile Include="Commands\Common\UpdateEntityCommandHandler.cs" />
+    <Compile Include="Commands\Professors\CreateProfessorCommand.cs" />
+    <Compile Include="Commands\Professors\CreateProfessorCommandHandler.cs" />
     <Compile Include="Contracts\Commands\ICommand.cs" />
     <Compile Include="Contracts\Commands\ICommandHandler.cs" />
     <Compile Include="Contracts\ISqlQueryExecutor.cs" />
