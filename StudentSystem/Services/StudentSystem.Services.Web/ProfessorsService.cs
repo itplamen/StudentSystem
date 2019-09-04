@@ -4,6 +4,7 @@
 
     using StudentSystem.Common.Contracts;
     using StudentSystem.Data.Commands.Common;
+    using StudentSystem.Data.Commands.Professors;
     using StudentSystem.Data.Contracts.Commands;
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Models;
@@ -16,16 +17,16 @@
         private const string TABLE_NAME = "Professors";
 
         private readonly IMapper<Professor, ProfessorResponseModel> professorsMapper;
-        private readonly ICommandHandler<EntityCommand, int> createProfessorHandler;
         private readonly ICommandHandler<DeleteEntityCommand, bool> deleteProfessorHandler;
         private readonly ICommandHandler<UpdateEntityCommand, bool> updateProfessorHandler;
+        private readonly ICommandHandler<CreateProfessorCommand, Professor> createProfessorHandler;
         private readonly IQueryHandler<AllEntitiesQuery<Professor>, IEnumerable<Professor>> getAllProfessorsHandler;
 
         public ProfessorsService(
             IMapper<Professor, ProfessorResponseModel> professorsMapper,
-            ICommandHandler<EntityCommand, int> createProfessorHandler,
             ICommandHandler<DeleteEntityCommand, bool> deleteProfessorHandler,
             ICommandHandler<UpdateEntityCommand, bool> updateProfessorHandler,
+            ICommandHandler<CreateProfessorCommand, Professor> createProfessorHandler,
             IQueryHandler<AllEntitiesQuery<Professor>, IEnumerable<Professor>> getAllProfessorsHandler)
         {
             this.professorsMapper = professorsMapper;
@@ -35,15 +36,14 @@
             this.getAllProfessorsHandler = getAllProfessorsHandler;
         }
 
-        public bool Create(ProfessorRequestModel request)
+        public ProfessorResponseModel Create(ProfessorRequestModel request)
         {
-            EntityCommand command = new EntityCommand(TABLE_NAME);
-            command.Columns.Add(nameof(request.FirstName), request.FirstName);
-            command.Columns.Add(nameof(request.LastName), request.LastName);
+            CreateProfessorCommand command = new CreateProfessorCommand(request.FirstName, request.LastName);
+            Professor professor = createProfessorHandler.Handle(command);
 
-            int id = createProfessorHandler.Handle(command);
+            ProfessorResponseModel response = professorsMapper.Map(professor);
 
-            return id > 0;
+            return response;
         }
 
         public IEnumerable<ProfessorResponseModel> Get()

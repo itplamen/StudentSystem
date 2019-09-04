@@ -9,7 +9,7 @@
     public interface IProfessorsService
     {
         [OperationContract]
-        bool Create(ProfessorRequestModel request);
+        ProfessorResponseModel Create(ProfessorRequestModel request);
 
         [OperationContract]
         IEnumerable<ProfessorResponseModel> Get();

@@ -11,10 +11,12 @@
             ProfessorResponseModel professor = new ProfessorResponseModel()
             {
                 Id = from.Id,
+                FirstName = from.FirstName,
+                LastName = from.LastName,
                 CreatedOn = from.CreatedOn,
                 ModifiedOn = from.ModifiedOn,
-                FirstName = from.FirstName,
-                LastName = from.LastName
+                IsDeleted = from.IsDeleted,
+                DeletedOn = from.DeletedOn
             };
 
             return professor;
