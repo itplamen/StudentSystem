@@ -55,6 +55,7 @@
         private void RegisterQueryHandlers(Container container)
         {
             container.Register(typeof(IQueryHandler<,>), typeof(AllEntitiesQueryHandler<>), Lifestyle.Transient);
+            container.Register(typeof(IQueryHandler<,>), typeof(EntityByIdQueryHandler<>), Lifestyle.Transient);
             container.Register<IQueryHandler<IEnumerable<Semester>>, ActiveStudentDetailsQueryHandler>(Lifestyle.Transient);
         }
 

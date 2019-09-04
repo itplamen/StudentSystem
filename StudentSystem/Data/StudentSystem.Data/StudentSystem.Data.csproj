@@ -66,6 +66,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\Common\AllEntitiesQuery.cs" />
     <Compile Include="Queries\Common\AllEntitiesQueryHandler.cs" />
+    <Compile Include="Queries\Common\EntityByIdQuery.cs" />
+    <Compile Include="Queries\Common\EntityByIdQueryHandler.cs" />
     <Compile Include="Queries\Students\ActiveStudentDetailsQueryHandler.cs" />
     <Compile Include="SqlQueryExecutor.cs" />
   </ItemGroup>
