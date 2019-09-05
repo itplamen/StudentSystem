@@ -43,19 +43,24 @@
             <th>Modified On</th>
             <th>Is Deleted</th>
             <th>Deleted On</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var professor in Model)
         {
             <tr>
-                <td class="ddd-ddd">@professor.Id</td>
+                <td class="professor-id">@professor.Id</td>
                 <td>@professor.FirstName</td>
                 <td>@professor.LastName</td>
                 <td>@professor.CreatedOn</td>
                 <td>@professor.ModifiedOn</td>
                 <td>@professor.IsDeleted</td>
                 <td>@professor.DeletedOn</td>
+                <td>
+                    <button class="update ui-button ui-corner-all">Update</button>
+                    <button class="delete ui-button ui-corner-all">Delete </button>
+                </td>
             </tr>
         }
     </tbody>
@@ -141,6 +146,33 @@
                     }
                 });
             }
+
+            $('.delete').click(function () {
+                let row = $(this).parent();
+                let professorId = row.siblings('.professor-id').html();
+
+                $.ajax({
+                    url: '/Professors/Delete',
+                    dataType: 'json',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ "id": professorId }),
+                    success: function (data) {
+                        if (data == true) {
+                            var professorsTable = $('#ProfessorsTable').DataTable();
+
+                            professorsTable.fnDeleteRow(row);
+
+                            alert('Sucessfully deleted professor with Id ' + professorId);
+                        }
+                    },
+                    error: function (err) {
+                        alert('Could not delete professor with Id ' + professorId);
+
+                        console.log("Error ", err);
+                    }
+                });
+            });
         });
     </script>
 }

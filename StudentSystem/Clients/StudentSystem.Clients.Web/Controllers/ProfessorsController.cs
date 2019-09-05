@@ -1,13 +1,10 @@
 ﻿namespace StudentSystem.Clients.Web.Controllers
 {
-    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using System.Web.Mvc;
 
     using AutoMapper;
-
-    using Newtonsoft.Json;
 
     using StudentSystem.Clients.Web.Attributes;
     using StudentSystem.Clients.Web.Models.Professors;
@@ -44,6 +41,15 @@
             ProfessorViewModel viewResponse = Mapper.Map<ProfessorViewModel>(response);
 
             return Json(viewResponse);
+        }
+
+        [HttpPost]
+        [AjaxOnly]
+        public async Task<JsonResult> Delete(int id)
+        {
+            bool response = await studentSystemApi.Execute(professorsClient.DeleteAsync, id);
+
+            return Json(response);
         }
      }
 }
