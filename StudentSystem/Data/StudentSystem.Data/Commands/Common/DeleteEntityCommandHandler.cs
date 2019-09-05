@@ -19,13 +19,12 @@
 
         public bool Handle(DeleteEntityCommand command)
         {
-            string query = @"UPDATE @table
+            string query = $@"UPDATE {command.Table}
                             SET IsDeleted = @isDeleted, DeletedOn = @deletedOn
                             WHERE Id = @id";
 
             sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@table", command.Table),
                 new SqlParameter("@id", command.Id),
                 new SqlParameter("@isDeleted", true),
                 new SqlParameter("@deletedOn", DateTime.UtcNow)
