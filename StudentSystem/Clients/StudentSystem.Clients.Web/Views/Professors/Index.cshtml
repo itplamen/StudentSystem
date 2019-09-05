@@ -5,6 +5,34 @@
     ViewBag.Title = "Professors";
 }
 
+<style>
+    label, input {
+        display: block;
+    }
+    
+    input.text {
+        margin-bottom: 12px;
+        width: 95%;
+        padding: .4em;
+    }
+
+    fieldset {
+        padding: 0;
+        border: 0;
+        margin-top: 25px;
+    }
+
+    .ui-dialog {
+        padding: .3em;
+    }
+
+    #create {
+        margin-bottom: 10px;
+    }
+</style>
+
+<button id="create">Create</button>
+
 <table id="ProfessorsTable" class="dataTable">
     <thead>
         <tr>
@@ -21,7 +49,7 @@
         @foreach (var professor in Model)
         {
             <tr>
-                <td>@professor.Id</td>
+                <td class="ddd-ddd">@professor.Id</td>
                 <td>@professor.FirstName</td>
                 <td>@professor.LastName</td>
                 <td>@professor.CreatedOn</td>
@@ -33,8 +61,86 @@
     </tbody>
 </table>
 
+<div id="dialog-form" title="Create new professor">
+    <form>
+        <fieldset>
+            <label for="first-name">First Name</label>
+            <input type="text" name="first-name" id="first-name" class="text ui-widget-content ui-corner-all">
+
+            <label for="last-name">Last Name</label>
+            <input type="text" name="last-name" id="last-name" class="text ui-widget-content ui-corner-all">
+
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </fieldset>
+    </form>
+</div>
+
 @section Scripts {
     <script>
-        $('#ProfessorsTable').DataTable();
+        $(document).ready(function () {
+            var oTable = $('#ProfessorsTable').DataTable({
+                "sPaginationType": "full_numbers",
+                "aaSorting": [[0, 'asc']],
+            });
+
+            var dialog = $("#dialog-form").dialog({
+                autoOpen: false,
+                height: 300,
+                width: 350,
+                modal: true,
+                buttons: {
+                    "Create professor": createProfessor,
+                    Cancel: function () {
+                        dialog.dialog("close");
+                    }
+                },
+                close: function () {
+                    $('#first-name').val('');
+                    $('#last-name').val('');
+                }
+            });
+
+            $("#create").button().on("click", function () {
+                dialog.dialog("open");
+            });
+
+            function createProfessor() {
+                var firstName = $('#first-name').val();
+                var lastName = $('#last-name').val();
+
+                $.ajax({
+                    url: '/Professors/Create',
+                    dataType: 'json',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ "FirstName": firstName, "LastName": lastName }),
+                    success: function (data) {
+                        var professorsTable = $('#ProfessorsTable').DataTable();
+
+                        professorsTable.fnAddData([
+                            data.Id,
+                            data.FirstName,
+                            data.LastName,
+                            data.CreatedOn,
+                            data.ModifiedOn,
+                            data.IsDeleted,
+                            data.DeletedOn]);
+
+                        alert('Sucessfully created new professor!');
+                    },
+                    error: function (err) {
+                        alert('Could not create new professor!');
+
+                        console.log("Error ", err);
+                    },
+                    complete: function () {
+                        $('#first-name').val('');
+                        $('#last-name').val('');
+
+                        dialog.dialog("close");
+                    }
+                });
+            }
+        });
     </script>
 }

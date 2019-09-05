@@ -1,5 +1,6 @@
 ﻿namespace StudentSystem.Clients.Web.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using System.Web.Mvc;
@@ -35,12 +36,14 @@
 
         [HttpPost]
         [AjaxOnly]
-        public async Task<JsonResult> Create(ProfessorCreateViewModel viewModel)
+        public async Task<JsonResult> Create(ProfessorCreateViewModel viewRequest)
         {
-            ProfessorRequestModel request = Mapper.Map<ProfessorRequestModel>(viewModel);
+            ProfessorRequestModel request = Mapper.Map<ProfessorRequestModel>(viewRequest);
             ProfessorResponseModel response = await studentSystemApi.Execute(professorsClient.CreateAsync, request);
 
-            return Json(JsonConvert.SerializeObject(response));
+            ProfessorViewModel viewResponse = Mapper.Map<ProfessorViewModel>(response);
+
+            return Json(viewResponse);
         }
      }
 }
