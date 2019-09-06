@@ -36,6 +36,7 @@
 <table id="ProfessorsTable" class="dataTable">
     <thead>
         <tr>
+            <th>Details</th>
             <th>Id</th>
             <th>First Name</th>
             <th>Last Name</th>
@@ -48,6 +49,7 @@
         @foreach (var professor in Model)
         {
             <tr>
+                <td class="professor-details"><img class="details-img" src="~/Content/Images/details_open.png" /></td>
                 <td class="professor-id">@professor.Id</td>
                 <td class="professor-first-name">@professor.FirstName</td>
                 <td class="professor-last-name">@professor.LastName</td>
@@ -196,6 +198,34 @@
                     alert('Sucessfully deleted professor!');
                 }
             }
+
+            function fnFormatDetails(data, detailsRow) {
+                let result = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+              
+                $(data.Disciplines).each(function (index, value) {
+                    result += '<tr><td>Discipline | Semester:</td><td>' + value.Name + ' | ' + value.Semester.Name + '</td></tr>';
+                })
+
+                result += '</table>';
+
+                professorsTable.fnOpen(detailsRow, result, 'details');   
+            }
+
+            $('#ProfessorsTable tbody .professor-details').on('click', function () {
+                let detailsRow = $(this).parents('tr')[0];
+                let professorId = $(detailsRow).children('.professor-id').html();
+                let image = $(detailsRow).children('.professor-details').children('.details-img')[0];
+
+                if (professorsTable.fnIsOpen(detailsRow)) {
+                    image.src = "../Content/Images/details_open.png";
+                    professorsTable.fnClose(detailsRow);
+                }
+                else {
+                    image.src = '../Content/Images/details_close.png';
+                    studentSystemApi.get('/Professors/Get', { Id: professorId }, fnFormatDetails, detailsRow);              
+                }
+            });
         });
+
     </script>
 }
