@@ -25,7 +25,7 @@
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-            IEnumerable<ProfessorResponseModel> response = await studentSystemApi.Execute(professorsClient.GetAsync);
+            IEnumerable<ProfessorResponseModel> response = await studentSystemApi.Execute(professorsClient.AllAsync);
             IEnumerable<ProfessorResponseViewModel> professors = Mapper.Map<IEnumerable<ProfessorResponseViewModel>>(response);
 
             return View(professors);
@@ -38,6 +38,16 @@
             ProfessorRequestModel request = Mapper.Map<ProfessorRequestModel>(viewRequest);
             ProfessorResponseModel response = await studentSystemApi.Execute(professorsClient.CreateAsync, request);
 
+            ProfessorResponseViewModel viewResponse = Mapper.Map<ProfessorResponseViewModel>(response);
+
+            return Json(viewResponse);
+        }
+
+        [HttpGet]
+        [AjaxOnly]
+        public async Task<JsonResult> Get(int id)
+        {
+            ProfessorResponseModel response = await studentSystemApi.Execute(professorsClient.GetAsync, id);
             ProfessorResponseViewModel viewResponse = Mapper.Map<ProfessorResponseViewModel>(response);
 
             return Json(viewResponse);
