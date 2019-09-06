@@ -190,10 +190,8 @@
             }
 
             function successfullyDeletedProfessor(isDeleted, row) {
-                var dd = row.parent()[0];
-
                 if (isDeleted == true) {
-                    professorsTable.fnDeleteRow(dd);
+                    professorsTable.fnDeleteRow(row.parent()[0]);
 
                     alert('Sucessfully deleted professor!');
                 }

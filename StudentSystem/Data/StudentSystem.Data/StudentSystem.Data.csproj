@@ -56,8 +56,10 @@
     <Compile Include="Commands\Professors\CreateProfessorCommandHandler.cs" />
     <Compile Include="Commands\Professors\UpdateProfessorCommand.cs" />
     <Compile Include="Commands\Professors\UpdateProfessorCommandHandler.cs" />
+    <Compile Include="Commands\Students\CreateStudentCommandHandler.cs" />
     <Compile Include="Contracts\Commands\ICommand.cs" />
     <Compile Include="Contracts\Commands\ICommandHandler.cs" />
+    <Compile Include="Commands\Students\CreateStudentCommand.cs" />
     <Compile Include="Contracts\ISqlQueryExecutor.cs" />
     <Compile Include="Contracts\Queries\IQuery.cs" />
     <Compile Include="Contracts\Queries\IQueryHandler.cs" />
