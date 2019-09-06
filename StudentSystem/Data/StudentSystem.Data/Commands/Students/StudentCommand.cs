@@ -4,9 +4,9 @@
 
     using StudentSystem.Data.Contracts.Commands;
 
-    public class CreateStudentCommand : ICommand
+    public class StudentCommand : ICommand
     {
-        public CreateStudentCommand(string firstName, string lastName, string email, DateTime dateOfBirth)
+        public StudentCommand(string firstName, string lastName, string email, DateTime dateOfBirth)
         {
             FirstName = firstName;
             LastName = lastName;

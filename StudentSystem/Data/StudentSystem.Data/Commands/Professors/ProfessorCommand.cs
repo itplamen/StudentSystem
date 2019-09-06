@@ -2,9 +2,9 @@
 {
     using StudentSystem.Data.Contracts.Commands;
 
-    public class CreateProfessorCommand : ICommand
+    public class ProfessorCommand : ICommand
     {
-        public CreateProfessorCommand(string firstName, string lastName)
+        public ProfessorCommand(string firstName, string lastName)
         {
             FirstName = firstName;
             LastName = lastName;

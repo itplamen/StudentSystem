@@ -6,7 +6,7 @@
     using StudentSystem.Data.Contracts.Commands;
     using StudentSystem.Data.Models;
 
-    public class CreateProfessorCommandHandler : ICommandHandler<CreateProfessorCommand, Professor>
+    public class CreateProfessorCommandHandler : ICommandHandler<ProfessorCommand, Professor>
     {
         private const string TABLE_NAME = "Professors";
 
@@ -17,7 +17,7 @@
             this.createEntityHandler = createEntityHandler;
         }
 
-        public Professor Handle(CreateProfessorCommand command)
+        public Professor Handle(ProfessorCommand command)
         {
             DateTime createdOn = DateTime.UtcNow;
 

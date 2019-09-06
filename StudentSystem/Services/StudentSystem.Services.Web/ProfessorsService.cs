@@ -18,14 +18,14 @@
 
         private readonly IMapper<Professor, ProfessorResponseModel> professorsMapper;
         private readonly ICommandHandler<DeleteEntityCommand, bool> deleteProfessorHandler;
-        private readonly ICommandHandler<CreateProfessorCommand, Professor> createProfessorHandler;
+        private readonly ICommandHandler<ProfessorCommand, Professor> createProfessorHandler;
         private readonly ICommandHandler<UpdateProfessorCommand, Professor> updateProfessorHandler;
         private readonly IQueryHandler<AllEntitiesQuery<Professor>, IEnumerable<Professor>> getAllProfessorsHandler;
 
         public ProfessorsService(
             IMapper<Professor, ProfessorResponseModel> professorsMapper,
             ICommandHandler<DeleteEntityCommand, bool> deleteProfessorHandler,
-            ICommandHandler<CreateProfessorCommand, Professor> createProfessorHandler,
+            ICommandHandler<ProfessorCommand, Professor> createProfessorHandler,
             ICommandHandler<UpdateProfessorCommand, Professor> updateProfessorHandler,
             IQueryHandler<AllEntitiesQuery<Professor>, IEnumerable<Professor>> getAllProfessorsHandler)
         {
@@ -38,7 +38,7 @@
 
         public ProfessorResponseModel Create(ProfessorRequestModel request)
         {
-            CreateProfessorCommand command = new CreateProfessorCommand(request.FirstName, request.LastName);
+            ProfessorCommand command = new ProfessorCommand(request.FirstName, request.LastName);
             Professor professor = createProfessorHandler.Handle(command);
 
             ProfessorResponseModel response = professorsMapper.Map(professor);
