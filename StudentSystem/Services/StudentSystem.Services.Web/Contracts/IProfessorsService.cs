@@ -12,7 +12,10 @@
         ProfessorResponseModel Create(ProfessorRequestModel request);
 
         [OperationContract]
-        IEnumerable<ProfessorResponseModel> Get();
+        ProfessorResponseModel Get(int id);
+
+        [OperationContract]
+        IEnumerable<ProfessorResponseModel> All();
 
         [OperationContract]
         ProfessorResponseModel Update(int id, ProfessorRequestModel request);

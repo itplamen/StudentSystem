@@ -1,6 +1,5 @@
 ﻿namespace StudentSystem.Data.Commands.Common
 {
-    using System;
     using System.Collections.Generic;
     using System.Data.SqlClient;
     using System.Linq;
@@ -21,31 +20,23 @@
 
         public bool Handle(UpdateEntityCommand command)
         {
-            try
-            {
-                string setQuery = string.Join(", ", command.Columns.Keys.Select(x => x + " = @" + x));
+            string setQuery = string.Join(", ", command.Columns.Keys.Select(x => x + " = @" + x));
 
-                string query = $@"UPDATE {command.Table}
+            string query = $@"UPDATE {command.Table}
                             SET {setQuery}
                             WHERE Id = @id";
 
-                sqlParameters = new List<SqlParameter>();
-                sqlParameters.Add(new SqlParameter("@id", command.Id));
-                
-                foreach (var column in command.Columns)
-                {
-                    sqlParameters.Add(new SqlParameter($"@{column.Key}", column.Value));
-                }
+            sqlParameters = new List<SqlParameter>();
+            sqlParameters.Add(new SqlParameter("@id", command.Id));
 
-                bool isUpdated = sqlQueryExecutor.Execute(query, Update);
-
-                return isUpdated;
-            }
-            catch (Exception ex)
+            foreach (var column in command.Columns)
             {
-
-                return false;
+                sqlParameters.Add(new SqlParameter($"@{column.Key}", column.Value));
             }
+
+            bool isUpdated = sqlQueryExecutor.Execute(query, Update);
+
+            return isUpdated;
         }
 
         private bool Update(SqlCommand sqlCommand)
