@@ -68,6 +68,7 @@
             container.Register<ICommandHandler<DeleteEntityCommand, bool>, DeleteEntityCommandHandler>(Lifestyle.Transient);
 
             container.Register<ICommandHandler<StudentCommand, Student>, CreateStudentCommandHandler>(Lifestyle.Transient);
+            container.Register<ICommandHandler<UpdateStudentCommand, Student>, UpdateStudentCommandHandler>(Lifestyle.Transient);
 
             container.Register<ICommandHandler<ProfessorCommand, Professor>, CreateProfessorCommandHandler>(Lifestyle.Transient);
             container.Register<ICommandHandler<UpdateProfessorCommand, Professor>, UpdateProfessorCommandHandler>(Lifestyle.Transient);
