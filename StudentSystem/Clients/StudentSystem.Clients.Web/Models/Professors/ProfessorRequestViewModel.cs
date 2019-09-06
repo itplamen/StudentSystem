@@ -5,7 +5,7 @@
     using StudentSystem.Common.Infrastructure.Mapping;
     using StudentSystem.Services.Api.ProfessorsServiceSoap;
 
-    public class ProfessorCreateViewModel : IMapTo<ProfessorRequestModel>, IHaveCustomMappings
+    public class ProfessorRequestViewModel : IMapTo<ProfessorRequestModel>, IHaveCustomMappings
     {
         public string FirstName { get; set; }
 
@@ -13,7 +13,7 @@
 
         public void CreateMappings(IProfileExpression configuration)
         {
-            configuration.CreateMap<ProfessorCreateViewModel, ProfessorRequestModel>()
+            configuration.CreateMap<ProfessorRequestViewModel, ProfessorRequestModel>()
                 .ForMember(x => x.FirstName, opt => opt.MapFrom(x => x.FirstName))
                 .ForMember(x => x.LastName, opt => opt.MapFrom(x => x.LastName));
         }

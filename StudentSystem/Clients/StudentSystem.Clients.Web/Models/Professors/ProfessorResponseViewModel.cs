@@ -4,7 +4,7 @@
     using StudentSystem.Common.Infrastructure.Mapping;
     using StudentSystem.Services.Api.ProfessorsServiceSoap;
 
-    public class ProfessorViewModel : BaseViewModel, IMapFrom<ProfessorResponseModel>
+    public class ProfessorResponseViewModel : BaseViewModel, IMapFrom<ProfessorResponseModel>
     {
         public string FirstName { get; set; }
 

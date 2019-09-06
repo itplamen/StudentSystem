@@ -1,6 +1,6 @@
 ﻿@using StudentSystem.Clients.Web.Models.Professors
 
-@model IEnumerable<ProfessorViewModel>
+@model IEnumerable<ProfessorResponseViewModel>
 @{
     ViewBag.Title = "Professors";
 }
@@ -41,8 +41,6 @@
             <th>Last Name</th>
             <th>Created On</th>
             <th>Modified On</th>
-            <th>Is Deleted</th>
-            <th>Deleted On</th>
             <th></th>
         </tr>
     </thead>
@@ -51,12 +49,10 @@
         {
             <tr>
                 <td class="professor-id">@professor.Id</td>
-                <td>@professor.FirstName</td>
-                <td>@professor.LastName</td>
+                <td class="professor-first-name">@professor.FirstName</td>
+                <td class="professor-last-name">@professor.LastName</td>
                 <td>@professor.CreatedOn</td>
                 <td>@professor.ModifiedOn</td>
-                <td>@professor.IsDeleted</td>
-                <td>@professor.DeletedOn</td>
                 <td>
                     <button class="update ui-button ui-corner-all">Update</button>
                     <button class="delete ui-button ui-corner-all">Delete </button>
@@ -66,7 +62,7 @@
     </tbody>
 </table>
 
-<div id="dialog-form" title="Create new professor">
+<div id="dialog-form">
     <form>
         <fieldset>
             <label for="first-name">First Name</label>
@@ -74,8 +70,6 @@
 
             <label for="last-name">Last Name</label>
             <input type="text" name="last-name" id="last-name" class="text ui-widget-content ui-corner-all">
-
-            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
         </fieldset>
     </form>
 </div>
@@ -83,35 +77,47 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            var oTable = $('#ProfessorsTable').DataTable({
+            let professorsTable = $('#ProfessorsTable').DataTable({
                 "sPaginationType": "full_numbers",
                 "aaSorting": [[0, 'asc']],
             });
 
-            var dialog = $("#dialog-form").dialog({
+            let dialog = $("#dialog-form").dialog({
                 autoOpen: false,
                 height: 300,
                 width: 350,
                 modal: true,
-                buttons: {
-                    "Create professor": createProfessor,
-                    Cancel: function () {
-                        dialog.dialog("close");
-                    }
-                },
-                close: function () {
-                    $('#first-name').val('');
-                    $('#last-name').val('');
-                }
+                close: clearForm
             });
 
+            function clearForm() {
+                $('#first-name').val('');
+                $('#last-name').val('');
+            }
+
             $("#create").button().on("click", function () {
+                dialog.dialog("option", "title", "Create new professor");
+                dialog.dialog("option", "buttons",
+                    [
+                        {
+                            text: "Create",
+                            click: createProfessor
+                        },
+                        {
+                            text: "Close",
+                            click: function () {
+                                dialog.dialog("close");
+                            }
+                        }
+                    ]
+                );
+
                 dialog.dialog("open");
             });
 
             function createProfessor() {
-                var firstName = $('#first-name').val();
-                var lastName = $('#last-name').val();
+                let firstName = $('#first-name').val();
+                let lastName = $('#last-name').val();
 
                 $.ajax({
                     url: '/Professors/Create',
@@ -120,7 +126,7 @@
                     contentType: 'application/json',
                     data: JSON.stringify({ "FirstName": firstName, "LastName": lastName }),
                     success: function (data) {
-                        var professorsTable = $('#ProfessorsTable').DataTable();
+                        let professorsTable = $('#ProfessorsTable').DataTable();
 
                         professorsTable.fnAddData([
                             data.Id,
@@ -147,6 +153,64 @@
                 });
             }
 
+            $(".update").on("click", function () {
+                let row = $(this).parent();
+                let rowIndex = row.parent().index();
+                let professorId = row.siblings('.professor-id').html();
+
+                $('#first-name').val(row.siblings('.professor-first-name').html());
+                $('#last-name').val(row.siblings('.professor-last-name').html());
+
+                dialog.dialog("option", "title", "Update professor")
+                dialog.dialog("option", "buttons",
+                    [
+                        {
+                            text: "Update",
+                            click: function () {
+                                let firstName = $('#first-name').val();
+                                let lastName = $('#last-name').val();
+
+                                $.ajax({
+                                    url: '/Professors/Update',
+                                    dataType: 'json',
+                                    type: 'POST',
+                                    contentType: 'application/json',
+                                    data: JSON.stringify({ id: professorId, "FirstName": firstName, "LastName": lastName }),
+                                    success: function (data) {
+                                        let professorsTable = $('#ProfessorsTable').DataTable();
+
+                                        professorsTable.fnUpdate(data.FirstName, rowIndex, 1);
+                                        professorsTable.fnUpdate(data.LastName, rowIndex, 2);
+                                        professorsTable.fnUpdate(data.ModifiedOn, rowIndex, 4);
+
+                                        alert('Sucessfully updated professor!');
+                                    },
+                                    error: function (err) {
+                                        alert('Could not updated professor!');
+
+                                        console.log("Error ", err);
+                                    },
+                                    complete: function () {
+                                        $('#first-name').val('');
+                                        $('#last-name').val('');
+
+                                        dialog.dialog("close");
+                                    }
+                                });
+                            }
+                        },
+                        {
+                            text: "Close",
+                            click: function () {
+                                dialog.dialog("close");
+                            }
+                        }
+                    ]
+                );
+
+                dialog.dialog("open");
+            });
+            
             $('.delete').click(function () {
                 let row = $(this).parent();
                 let professorId = row.siblings('.professor-id').html();

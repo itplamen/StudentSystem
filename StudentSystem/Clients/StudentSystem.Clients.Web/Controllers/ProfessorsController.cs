@@ -26,19 +26,31 @@
         public async Task<ActionResult> Index()
         {
             IEnumerable<ProfessorResponseModel> response = await studentSystemApi.Execute(professorsClient.GetAsync);
-            IEnumerable<ProfessorViewModel> professors = Mapper.Map<IEnumerable<ProfessorViewModel>>(response);
+            IEnumerable<ProfessorResponseViewModel> professors = Mapper.Map<IEnumerable<ProfessorResponseViewModel>>(response);
 
             return View(professors);
         }
 
         [HttpPost]
         [AjaxOnly]
-        public async Task<JsonResult> Create(ProfessorCreateViewModel viewRequest)
+        public async Task<JsonResult> Create(ProfessorRequestViewModel viewRequest)
         {
             ProfessorRequestModel request = Mapper.Map<ProfessorRequestModel>(viewRequest);
             ProfessorResponseModel response = await studentSystemApi.Execute(professorsClient.CreateAsync, request);
 
-            ProfessorViewModel viewResponse = Mapper.Map<ProfessorViewModel>(response);
+            ProfessorResponseViewModel viewResponse = Mapper.Map<ProfessorResponseViewModel>(response);
+
+            return Json(viewResponse);
+        }
+
+        [HttpPost]
+        [AjaxOnly]
+        public async Task<JsonResult> Update(int id, ProfessorRequestViewModel viewRequest)
+        {
+            ProfessorRequestModel request = Mapper.Map<ProfessorRequestModel>(viewRequest);
+            ProfessorResponseModel response = await studentSystemApi.Execute(professorsClient.UpdateAsync, id, request);
+
+            ProfessorResponseViewModel viewResponse = Mapper.Map<ProfessorResponseViewModel>(response);
 
             return Json(viewResponse);
         }
