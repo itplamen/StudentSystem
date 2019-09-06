@@ -56,6 +56,23 @@
             }
         }
 
+        public async Task<TResponse> Execute<TRequest, TResponse>(Func<int, TRequest, Task<TResponse>> request, int id, TRequest model)
+        {
+            try
+            {
+                TResponse response = await requestsExecutor.Execute(request, id, model);
+                Log($"{nameof(request)} - Id: {id}, {ToJson(request)}", response);
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError($"Request to {nameof(request)} failed", ex);
+
+                return await Task.FromResult(default(TResponse));
+            }
+        }
+
         private void Log<TModel>(string request, TModel response)
         {
             StringBuilder stringBuilder = new StringBuilder();

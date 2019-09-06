@@ -18,7 +18,6 @@ namespace StudentSystem.Services.Api.ProfessorsServiceSoap {
     [System.Runtime.Serialization.DataContractAttribute(Name="ProfessorRequestModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Profess" +
         "ors")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudentSystem.Services.Api.ProfessorsServiceSoap.UpdateProfessorRequestModel))]
     public partial class ProfessorRequestModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -72,30 +71,6 @@ namespace StudentSystem.Services.Api.ProfessorsServiceSoap {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateProfessorRequestModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Profess" +
-        "ors")]
-    [System.SerializableAttribute()]
-    public partial class UpdateProfessorRequestModel : StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorRequestModel {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
             }
         }
     }
@@ -267,10 +242,10 @@ namespace StudentSystem.Services.Api.ProfessorsServiceSoap {
         System.Threading.Tasks.Task<StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel[]> GetAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfessorsService/Update", ReplyAction="http://tempuri.org/IProfessorsService/UpdateResponse")]
-        bool Update(StudentSystem.Services.Api.ProfessorsServiceSoap.UpdateProfessorRequestModel request);
+        StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel Update(int id, StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfessorsService/Update", ReplyAction="http://tempuri.org/IProfessorsService/UpdateResponse")]
-        System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.ProfessorsServiceSoap.UpdateProfessorRequestModel request);
+        System.Threading.Tasks.Task<StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel> UpdateAsync(int id, StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfessorsService/Delete", ReplyAction="http://tempuri.org/IProfessorsService/DeleteResponse")]
         bool Delete(int id);
@@ -322,12 +297,12 @@ namespace StudentSystem.Services.Api.ProfessorsServiceSoap {
             return base.Channel.GetAsync();
         }
         
-        public bool Update(StudentSystem.Services.Api.ProfessorsServiceSoap.UpdateProfessorRequestModel request) {
-            return base.Channel.Update(request);
+        public StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel Update(int id, StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorRequestModel request) {
+            return base.Channel.Update(id, request);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.ProfessorsServiceSoap.UpdateProfessorRequestModel request) {
-            return base.Channel.UpdateAsync(request);
+        public System.Threading.Tasks.Task<StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel> UpdateAsync(int id, StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorRequestModel request) {
+            return base.Channel.UpdateAsync(id, request);
         }
         
         public bool Delete(int id) {

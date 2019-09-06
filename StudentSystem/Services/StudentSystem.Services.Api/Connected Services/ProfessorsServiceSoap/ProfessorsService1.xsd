@@ -25,14 +25,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfProfessorResponseModel" nillable="true" type="tns:ArrayOfProfessorResponseModel" />
-  <xs:complexType name="UpdateProfessorRequestModel">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:ProfessorRequestModel">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Id" type="xs:int" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="UpdateProfessorRequestModel" nillable="true" type="tns:UpdateProfessorRequestModel" />
 </xs:schema>

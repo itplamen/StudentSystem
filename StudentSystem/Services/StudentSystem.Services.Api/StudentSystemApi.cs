@@ -20,5 +20,12 @@
 
             return response;
         }
+
+        public async Task<TResponse> Execute<TRequest, TResponse>(Func<int, TRequest, Task<TResponse>> request, int id, TRequest model)
+        {
+            TResponse response = await request(id, model);
+
+            return response;
+        }
     }
 }
