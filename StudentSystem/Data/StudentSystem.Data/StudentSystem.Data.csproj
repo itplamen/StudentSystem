@@ -56,6 +56,8 @@
     <Compile Include="Commands\Professors\CreateProfessorCommandHandler.cs" />
     <Compile Include="Commands\Professors\UpdateProfessorCommand.cs" />
     <Compile Include="Commands\Professors\UpdateProfessorCommandHandler.cs" />
+    <Compile Include="Commands\Semesters\CreateSemesterCommandHandler.cs" />
+    <Compile Include="Commands\Semesters\SemesterCommand.cs" />
     <Compile Include="Commands\Students\CreateStudentCommandHandler.cs" />
     <Compile Include="Commands\Students\UpdateStudentCommand.cs" />
     <Compile Include="Commands\Students\UpdateStudentCommandHandler.cs" />

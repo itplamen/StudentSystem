@@ -11,6 +11,7 @@
     using StudentSystem.Data.Builders.StudentDetails;
     using StudentSystem.Data.Commands.Common;
     using StudentSystem.Data.Commands.Professors;
+    using StudentSystem.Data.Commands.Semesters;
     using StudentSystem.Data.Commands.Students;
     using StudentSystem.Data.Contracts;
     using StudentSystem.Data.Contracts.Commands;
@@ -69,6 +70,8 @@
 
             container.Register<ICommandHandler<StudentCommand, Student>, CreateStudentCommandHandler>(Lifestyle.Transient);
             container.Register<ICommandHandler<UpdateStudentCommand, Student>, UpdateStudentCommandHandler>(Lifestyle.Transient);
+
+            container.Register<ICommandHandler<SemesterCommand, Semester>, CreateSemesterCommandHandler>(Lifestyle.Transient);
 
             container.Register<ICommandHandler<ProfessorCommand, Professor>, CreateProfessorCommandHandler>(Lifestyle.Transient);
             container.Register<ICommandHandler<UpdateProfessorCommand, Professor>, UpdateProfessorCommandHandler>(Lifestyle.Transient);
