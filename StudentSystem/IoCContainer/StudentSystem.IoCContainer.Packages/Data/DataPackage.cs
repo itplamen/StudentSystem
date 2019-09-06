@@ -66,6 +66,7 @@
             container.Register<ICommandHandler<UpdateEntityCommand, bool>, UpdateEntityCommandHandler> (Lifestyle.Transient);
             container.Register<ICommandHandler<DeleteEntityCommand, bool>, DeleteEntityCommandHandler>(Lifestyle.Transient);
             container.Register<ICommandHandler<CreateProfessorCommand, Professor>, CreateProfessorCommandHandler>(Lifestyle.Transient);
+            container.Register<ICommandHandler<UpdateProfessorCommand, Professor>, UpdateProfessorCommandHandler>(Lifestyle.Transient);
         }
     }
 }
