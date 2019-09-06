@@ -7,9 +7,6 @@
       <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Students" />
       <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semesters" />
       <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" />
-      <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" />
-      <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" />
-      <xsd:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IStudentsService_Create_InputMessage">
