@@ -5,6 +5,7 @@
     using AutoMapper;
 
     using StudentSystem.Clients.Web.Models.Home;
+    using StudentSystem.Services.Api.DisciplinesServiceSoap;
     using StudentSystem.Services.Api.StudentsServiceSoap;
 
     public class ScoresBuilder
@@ -15,11 +16,11 @@
 
             foreach (var discipline in disciplines)
             {
-                foreach (var score in discipline.Scores)
-                {
-                    ScoreViewModel viewModel = Mapper.Map<ScoreViewModel>(discipline);
-                    viewModel.Score = score.Mark;
-                }
+                //foreach (var score in discipline.Scores)
+                //{
+                //    ScoreViewModel viewModel = Mapper.Map<ScoreViewModel>(discipline);
+                //    viewModel.Score = score.Mark;
+                //}
             }
 
             return viewModels;

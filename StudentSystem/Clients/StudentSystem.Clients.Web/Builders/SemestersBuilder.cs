@@ -15,10 +15,10 @@
 
             foreach (var semester in semesters)
             {
-                SemesterViewModel viewModel = Mapper.Map<SemesterViewModel>(semester);
-                viewModel.Scores = ScoresBuilder.Build(semester.Disciplines);
+                //SemesterViewModel viewModel = Mapper.Map<SemesterViewModel>(semester);
+                //viewModel.Scores = ScoresBuilder.Build(semester.Disciplines);
 
-                viewModels.Add(viewModel);
+                //viewModels.Add(viewModel);
             }
 
             return viewModels;
