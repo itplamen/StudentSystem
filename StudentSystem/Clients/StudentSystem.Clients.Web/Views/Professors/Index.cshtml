@@ -101,7 +101,17 @@
                     [
                         {
                             text: "Create",
-                            click: createProfessor
+                            click: function() {
+                                const requestModel = {
+                                    FirstName: $('#first-name').val(),
+                                    LastName: $('#last-name').val()
+                                };
+
+                                studentSystemApi.post('/Professors/Create', requestModel, successfullyCreatedProfessor);
+                                clearForm();
+
+                                dialog.dialog("close");
+                            }
                         },
                         {
                             text: "Close",
@@ -115,51 +125,11 @@
                 dialog.dialog("open");
             });
 
-            function createProfessor() {
-                let firstName = $('#first-name').val();
-                let lastName = $('#last-name').val();
-
-                $.ajax({
-                    url: '/Professors/Create',
-                    dataType: 'json',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({ "FirstName": firstName, "LastName": lastName }),
-                    success: function (data) {
-                        let professorsTable = $('#ProfessorsTable').DataTable();
-
-                        professorsTable.fnAddData([
-                            data.Id,
-                            data.FirstName,
-                            data.LastName,
-                            data.CreatedOn,
-                            data.ModifiedOn,
-                            data.IsDeleted,
-                            data.DeletedOn]);
-
-                        alert('Sucessfully created new professor!');
-                    },
-                    error: function (err) {
-                        alert('Could not create new professor!');
-
-                        console.log("Error ", err);
-                    },
-                    complete: function () {
-                        $('#first-name').val('');
-                        $('#last-name').val('');
-
-                        dialog.dialog("close");
-                    }
-                });
-            }
-
-            $(".update").on("click", function () {
-                let row = $(this).parent();
-                let rowIndex = row.parent().index();
-                let professorId = row.siblings('.professor-id').html();
-
-                $('#first-name').val(row.siblings('.professor-first-name').html());
-                $('#last-name').val(row.siblings('.professor-last-name').html());
+            $(".update").click(function () {
+                let column = $(this).parent();
+                
+                $('#first-name').val(column.siblings('.professor-first-name').html());
+                $('#last-name').val(column.siblings('.professor-last-name').html());
 
                 dialog.dialog("option", "title", "Update professor")
                 dialog.dialog("option", "buttons",
@@ -167,36 +137,16 @@
                         {
                             text: "Update",
                             click: function () {
-                                let firstName = $('#first-name').val();
-                                let lastName = $('#last-name').val();
+                                const requestModel = {
+                                    Id: column.siblings('.professor-id').html(),
+                                    FirstName: $('#first-name').val(),
+                                    LastName: $('#last-name').val()
+                                };
 
-                                $.ajax({
-                                    url: '/Professors/Update',
-                                    dataType: 'json',
-                                    type: 'POST',
-                                    contentType: 'application/json',
-                                    data: JSON.stringify({ id: professorId, "FirstName": firstName, "LastName": lastName }),
-                                    success: function (data) {
-                                        let professorsTable = $('#ProfessorsTable').DataTable();
+                                studentSystemApi.post('/Professors/Update', requestModel, successfullyUpdatedProfessor, column.parent().index());
+                                clearForm();
 
-                                        professorsTable.fnUpdate(data.FirstName, rowIndex, 1);
-                                        professorsTable.fnUpdate(data.LastName, rowIndex, 2);
-                                        professorsTable.fnUpdate(data.ModifiedOn, rowIndex, 4);
-
-                                        alert('Sucessfully updated professor!');
-                                    },
-                                    error: function (err) {
-                                        alert('Could not updated professor!');
-
-                                        console.log("Error ", err);
-                                    },
-                                    complete: function () {
-                                        $('#first-name').val('');
-                                        $('#last-name').val('');
-
-                                        dialog.dialog("close");
-                                    }
-                                });
+                                dialog.dialog("close");
                             }
                         },
                         {
@@ -211,32 +161,43 @@
                 dialog.dialog("open");
             });
             
-            $('.delete').click(function () {
+            $('.delete').on("click", function () {
                 let row = $(this).parent();
                 let professorId = row.siblings('.professor-id').html();
 
-                $.ajax({
-                    url: '/Professors/Delete',
-                    dataType: 'json',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({ "id": professorId }),
-                    success: function (data) {
-                        if (data == true) {
-                            var professorsTable = $('#ProfessorsTable').DataTable();
-
-                            professorsTable.fnDeleteRow(row);
-
-                            alert('Sucessfully deleted professor with Id ' + professorId);
-                        }
-                    },
-                    error: function (err) {
-                        alert('Could not delete professor with Id ' + professorId);
-
-                        console.log("Error ", err);
-                    }
-                });
+                studentSystemApi.post('/Professors/Delete', { "Id": professorId }, successfullyDeletedProfessor, row);
             });
+
+            function successfullyCreatedProfessor(data) {
+                professorsTable.fnAddData([
+                    data.Id,
+                    data.FirstName,
+                    data.LastName,
+                    data.CreatedOn,
+                    data.ModifiedOn]);
+
+                alert('Sucessfully created new professor!');
+            }
+
+            function successfullyUpdatedProfessor(data, rowIndex) {
+                let professorsTable = $('#ProfessorsTable').DataTable();
+
+                professorsTable.fnUpdate(data.FirstName, rowIndex, 1);
+                professorsTable.fnUpdate(data.LastName, rowIndex, 2);
+                professorsTable.fnUpdate(data.ModifiedOn, rowIndex, 4);
+
+                alert('Sucessfully updated professor!');
+            }
+
+            function successfullyDeletedProfessor(isDeleted, row) {
+                var dd = row.parent()[0];
+
+                if (isDeleted == true) {
+                    professorsTable.fnDeleteRow(dd);
+
+                    alert('Sucessfully deleted professor!');
+                }
+            }
         });
     </script>
 }
