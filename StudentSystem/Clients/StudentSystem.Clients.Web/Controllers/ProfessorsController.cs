@@ -50,7 +50,7 @@
             ProfessorResponseModel response = await studentSystemApi.Execute(professorsClient.GetAsync, id);
             ProfessorResponseViewModel viewResponse = Mapper.Map<ProfessorResponseViewModel>(response);
 
-            return Json(viewResponse);
+            return Json(viewResponse, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

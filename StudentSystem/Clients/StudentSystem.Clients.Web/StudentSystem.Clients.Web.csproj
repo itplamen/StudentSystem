@@ -152,11 +152,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Base\BaseViewModel.cs" />
+    <Compile Include="Models\Professors\ProfessorDisciplinesViewModel.cs" />
     <Compile Include="Models\Home\ScoreViewModel.cs" />
     <Compile Include="Models\Home\SemesterViewModel.cs" />
     <Compile Include="Models\Home\StudentViewModel.cs" />
     <Compile Include="Models\Professors\ProfessorRequestViewModel.cs" />
     <Compile Include="Models\Professors\ProfessorResponseViewModel.cs" />
+    <Compile Include="Models\Professors\ProfessorSemestersViewModel.cs" />
+    <Compile Include="Models\Semesters\SemesterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
