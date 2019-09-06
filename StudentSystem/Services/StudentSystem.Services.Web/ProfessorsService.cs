@@ -18,15 +18,15 @@
 
         private readonly IMapper<Professor, ProfessorResponseModel> professorsMapper;
         private readonly ICommandHandler<DeleteEntityCommand, bool> deleteProfessorHandler;
-        private readonly ICommandHandler<UpdateEntityCommand, bool> updateProfessorHandler;
         private readonly ICommandHandler<CreateProfessorCommand, Professor> createProfessorHandler;
+        private readonly ICommandHandler<UpdateProfessorCommand, Professor> updateProfessorHandler;
         private readonly IQueryHandler<AllEntitiesQuery<Professor>, IEnumerable<Professor>> getAllProfessorsHandler;
 
         public ProfessorsService(
             IMapper<Professor, ProfessorResponseModel> professorsMapper,
             ICommandHandler<DeleteEntityCommand, bool> deleteProfessorHandler,
-            ICommandHandler<UpdateEntityCommand, bool> updateProfessorHandler,
             ICommandHandler<CreateProfessorCommand, Professor> createProfessorHandler,
+            ICommandHandler<UpdateProfessorCommand, Professor> updateProfessorHandler,
             IQueryHandler<AllEntitiesQuery<Professor>, IEnumerable<Professor>> getAllProfessorsHandler)
         {
             this.professorsMapper = professorsMapper;
@@ -56,15 +56,14 @@
             return responseModels;
         }
 
-        public bool Update(UpdateProfessorRequestModel request)
+        public ProfessorResponseModel Update(int id, ProfessorRequestModel request)
         {
-            UpdateEntityCommand command = new UpdateEntityCommand(TABLE_NAME, request.Id);
-            command.Columns.Add(nameof(request.FirstName), request.FirstName);
-            command.Columns.Add(nameof(request.LastName), request.LastName);
+            UpdateProfessorCommand command = new UpdateProfessorCommand(id, request.FirstName, request.LastName);
+            Professor professor = updateProfessorHandler.Handle(command);
 
-            bool isUpdated = updateProfessorHandler.Handle(command);
+            ProfessorResponseModel response = professorsMapper.Map(professor);
 
-            return isUpdated;
+            return response;
         }
 
         public bool Delete(int id)

@@ -48,7 +48,6 @@
     <Compile Include="Disciplines\UpdateDisciplineRequestModel.cs" />
     <Compile Include="Professors\ProfessorRequestModel.cs" />
     <Compile Include="Professors\ProfessorResponseModel.cs" />
-    <Compile Include="Professors\UpdateProfessorRequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scores\ScoreRequestModel.cs" />
     <Compile Include="Scores\ScoreResponseModel.cs" />

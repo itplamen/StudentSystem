@@ -15,7 +15,7 @@
         IEnumerable<ProfessorResponseModel> Get();
 
         [OperationContract]
-        bool Update(UpdateProfessorRequestModel request);
+        ProfessorResponseModel Update(int id, ProfessorRequestModel request);
 
         [OperationContract]
         bool Delete(int id);
