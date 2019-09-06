@@ -1,7 +1,5 @@
 ﻿namespace StudentSystem.Data.Models
 {
-    using System.Collections.Generic;
-
     using StudentSystem.Data.Models.Base;
 
     public class Discipline : BaseModel
@@ -14,6 +12,6 @@
 
         public Professor Professor { get; set; }
 
-        public IEnumerable<Score> Scores { get; set; }
+        public Semester Semester { get; set; }
     }
 }
