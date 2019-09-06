@@ -21,24 +21,31 @@
 
         public bool Handle(UpdateEntityCommand command)
         {
-            string setQuery = string.Join(", ", command.Columns.Keys.Select(x => x + " = @" + x));
+            try
+            {
+                string setQuery = string.Join(", ", command.Columns.Keys.Select(x => x + " = @" + x));
 
-            string query = $@"UPDATE {command.Table}
-                            SET {setQuery}, ModifiedOn = @modifiedOn
+                string query = $@"UPDATE {command.Table}
+                            SET {setQuery}
                             WHERE Id = @id";
 
-            sqlParameters = new List<SqlParameter>();
-            sqlParameters.Add(new SqlParameter("@id", command.Id));
-            sqlParameters.Add(new SqlParameter("@modifiedOn", DateTime.UtcNow));
+                sqlParameters = new List<SqlParameter>();
+                sqlParameters.Add(new SqlParameter("@id", command.Id));
+                
+                foreach (var column in command.Columns)
+                {
+                    sqlParameters.Add(new SqlParameter($"@{column.Key}", column.Value));
+                }
 
-            foreach (var column in command.Columns)
-            {
-                sqlParameters.Add(new SqlParameter($"@{column.Key}", column.Value));
+                bool isUpdated = sqlQueryExecutor.Execute(query, Update);
+
+                return isUpdated;
             }
+            catch (Exception ex)
+            {
 
-            bool isUpdated = sqlQueryExecutor.Execute(query, Update);
-
-            return isUpdated;
+                return false;
+            }
         }
 
         private bool Update(SqlCommand sqlCommand)
