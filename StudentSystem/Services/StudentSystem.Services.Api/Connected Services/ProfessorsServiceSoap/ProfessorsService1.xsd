@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:49158/ProfessorsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" />
   <xs:import schemaLocation="http://localhost:49158/ProfessorsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" />
   <xs:complexType name="ProfessorRequestModel">
     <xs:sequence>
@@ -12,6 +13,7 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" base="q1:BaseResponseModel">
         <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" minOccurs="0" name="Disciplines" nillable="true" type="q2:ArrayOfDisciplineResponseModel" />
           <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
         </xs:sequence>

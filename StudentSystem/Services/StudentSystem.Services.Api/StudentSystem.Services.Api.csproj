@@ -116,6 +116,12 @@
     <None Include="Connected Services\ProfessorsServiceSoap\ProfessorsService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ProfessorsServiceSoap\ProfessorsService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProfessorsServiceSoap\ProfessorsService41.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ProfessorsServiceSoap\StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

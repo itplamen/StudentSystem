@@ -17,13 +17,27 @@
   </xs:element>
   <xs:element name="Get">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" minOccurs="0" name="GetResult" nillable="true" type="q3:ArrayOfProfessorResponseModel" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" minOccurs="0" name="GetResult" nillable="true" type="q3:ProfessorResponseModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="All">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" minOccurs="0" name="AllResult" nillable="true" type="q4:ArrayOfProfessorResponseModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -31,14 +45,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" type="xs:int" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" minOccurs="0" name="request" nillable="true" type="q4:ProfessorRequestModel" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" minOccurs="0" name="request" nillable="true" type="q5:ProfessorRequestModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" minOccurs="0" name="UpdateResult" nillable="true" type="q5:ProfessorResponseModel" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" minOccurs="0" name="UpdateResult" nillable="true" type="q6:ProfessorResponseModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
