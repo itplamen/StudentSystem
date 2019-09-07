@@ -8,17 +8,22 @@
     {
         public override SemesterResponseModel Map(Semester from)
         {
-            SemesterResponseModel semester = new SemesterResponseModel()
+            if (from != null)
             {
-                Id = from.Id,
-                CreatedOn = from.CreatedOn,
-                ModifiedOn = from.ModifiedOn,
-                Name = from.Name,
-                StartDate = from.StartDate,
-                EndDate = from.EndDate
-            };
+                SemesterResponseModel semester = new SemesterResponseModel()
+                {
+                    Id = from.Id,
+                    CreatedOn = from.CreatedOn,
+                    ModifiedOn = from.ModifiedOn,
+                    Name = from.Name,
+                    StartDate = from.StartDate,
+                    EndDate = from.EndDate
+                };
 
-            return semester;
+                return semester;
+            }
+
+            return null;
         }
     }
 }

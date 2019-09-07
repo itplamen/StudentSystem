@@ -17,18 +17,23 @@
 
         public override DisciplineResponseModel Map(Discipline from)
         {
-            DisciplineResponseModel discipline = new DisciplineResponseModel()
+            if (from != null)
             {
-                Id = from.Id,
-                CreatedOn = from.CreatedOn,
-                ModifiedOn = from.ModifiedOn,
-                Name = from.Name,
-                SemesterId = from.SemesterId,
-                ProfessorId = from.ProfessorId,
-                Semester = semestersMapper.Map(from.Semester)
-            };
+                DisciplineResponseModel discipline = new DisciplineResponseModel()
+                {
+                    Id = from.Id,
+                    CreatedOn = from.CreatedOn,
+                    ModifiedOn = from.ModifiedOn,
+                    Name = from.Name,
+                    SemesterId = from.SemesterId,
+                    ProfessorId = from.ProfessorId,
+                    Semester = semestersMapper.Map(from.Semester)
+                };
 
-            return discipline;
+                return discipline;
+            }
+
+            return null;
         }
     }
 }
