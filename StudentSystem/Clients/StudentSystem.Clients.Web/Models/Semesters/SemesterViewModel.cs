@@ -4,11 +4,10 @@
 
     using AutoMapper;
 
-    using StudentSystem.Clients.Web.Models.Base;
     using StudentSystem.Common.Infrastructure.Mapping;
     using StudentSystem.Services.Api.ProfessorsServiceSoap;
 
-    public class SemesterViewModel : BaseViewModel, IMapFrom<SemesterResponseModel>, IHaveCustomMappings
+    public class SemesterViewModel : IMapFrom<SemesterResponseModel>, IHaveCustomMappings
     {
         public string Name { get; set; }
 

@@ -48,6 +48,12 @@
         public async Task<JsonResult> Get(int id)
         {
             ProfessorResponseModel response = await studentSystemApi.Execute(professorsClient.GetAsync, id);
+
+            if (response == null)
+            {
+                return Json(new ProfessorResponseViewModel(), JsonRequestBehavior.AllowGet);
+            }
+
             ProfessorResponseViewModel viewResponse = Mapper.Map<ProfessorResponseViewModel>(response);
 
             return Json(viewResponse, JsonRequestBehavior.AllowGet);

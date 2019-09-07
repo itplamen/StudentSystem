@@ -172,11 +172,13 @@
 
             function successfullyCreatedProfessor(data) {
                 professorsTable.fnAddData([
+                    '<td class="professor-details"><img class="details-img" src="../Content/Images/details_open.png" /></td>',
                     data.Id,
                     data.FirstName,
                     data.LastName,
                     data.CreatedOn,
-                    data.ModifiedOn]);
+                    data.ModifiedOn,
+                    '<td><button class="update ui-button ui-corner-all">Update</button><button class="delete ui-button ui-corner-all">Delete </button></td>']);
 
                 alert('Sucessfully created new professor!');
             }
@@ -184,9 +186,9 @@
             function successfullyUpdatedProfessor(data, rowIndex) {
                 let professorsTable = $('#ProfessorsTable').DataTable();
 
-                professorsTable.fnUpdate(data.FirstName, rowIndex, 1);
-                professorsTable.fnUpdate(data.LastName, rowIndex, 2);
-                professorsTable.fnUpdate(data.ModifiedOn, rowIndex, 4);
+                professorsTable.fnUpdate(data.FirstName, rowIndex, 2);
+                professorsTable.fnUpdate(data.LastName, rowIndex, 3);
+                professorsTable.fnUpdate(data.ModifiedOn, rowIndex, 5);
 
                 alert('Sucessfully updated professor!');
             }
@@ -202,9 +204,14 @@
             function fnFormatDetails(data, detailsRow) {
                 let result = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
               
-                $(data.Disciplines).each(function (index, value) {
-                    result += '<tr><td>Discipline | Semester:</td><td>' + value.Name + ' | ' + value.Semester.Name + '</td></tr>';
-                })
+                if (data.Disciplines) {
+                    $(data.Disciplines).each(function (index, value) {
+                        result += '<tr><td>Discipline | Semester:</td><td>' + value.Name + ' | ' + value.Semester.Name + '</td></tr>';
+                    })
+                }
+                else {
+                    result += '<tr><td>Could not find any disciplines</td></tr>';
+                }
 
                 result += '</table>';
 
