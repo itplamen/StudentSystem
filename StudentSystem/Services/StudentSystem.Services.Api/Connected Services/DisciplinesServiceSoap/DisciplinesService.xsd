@@ -11,33 +11,33 @@
   <xs:element name="CreateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="CreateResult" type="xs:boolean" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" minOccurs="0" name="CreateResult" nillable="true" type="q2:DisciplineResponseModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Get">
+  <xs:element name="All">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetResponse">
+  <xs:element name="AllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" minOccurs="0" name="GetResult" nillable="true" type="q2:ArrayOfDisciplineResponseModel" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" minOccurs="0" name="AllResult" nillable="true" type="q3:ArrayOfDisciplineResponseModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Update">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" minOccurs="0" name="request" nillable="true" type="q3:UpdateDisciplineRequestModel" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" minOccurs="0" name="request" nillable="true" type="q4:UpdateDisciplineRequestModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="UpdateResult" type="xs:boolean" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" minOccurs="0" name="UpdateResult" nillable="true" type="q5:DisciplineResponseModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

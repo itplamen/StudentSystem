@@ -12,7 +12,7 @@
         DisciplineResponseModel Create(DisciplineRequestModel request);
 
         [OperationContract]
-        IEnumerable<DisciplineResponseModel> Get();
+        IEnumerable<DisciplineResponseModel> All();
 
         [OperationContract]
         DisciplineResponseModel Update(UpdateDisciplineRequestModel request);

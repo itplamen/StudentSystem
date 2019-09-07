@@ -16,11 +16,11 @@
   <wsdl:message name="IDisciplinesService_Create_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateResponse" />
   </wsdl:message>
-  <wsdl:message name="IDisciplinesService_Get_InputMessage">
-    <wsdl:part name="parameters" element="tns:Get" />
+  <wsdl:message name="IDisciplinesService_All_InputMessage">
+    <wsdl:part name="parameters" element="tns:All" />
   </wsdl:message>
-  <wsdl:message name="IDisciplinesService_Get_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetResponse" />
+  <wsdl:message name="IDisciplinesService_All_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllResponse" />
   </wsdl:message>
   <wsdl:message name="IDisciplinesService_Update_InputMessage">
     <wsdl:part name="parameters" element="tns:Update" />
@@ -39,9 +39,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IDisciplinesService/Create" message="tns:IDisciplinesService_Create_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDisciplinesService/CreateResponse" message="tns:IDisciplinesService_Create_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Get">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDisciplinesService/Get" message="tns:IDisciplinesService_Get_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDisciplinesService/GetResponse" message="tns:IDisciplinesService_Get_OutputMessage" />
+    <wsdl:operation name="All">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDisciplinesService/All" message="tns:IDisciplinesService_All_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDisciplinesService/AllResponse" message="tns:IDisciplinesService_All_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Update">
       <wsdl:input wsaw:Action="http://tempuri.org/IDisciplinesService/Update" message="tns:IDisciplinesService_Update_InputMessage" />
@@ -63,8 +63,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Get">
-      <soap:operation soapAction="http://tempuri.org/IDisciplinesService/Get" style="document" />
+    <wsdl:operation name="All">
+      <soap:operation soapAction="http://tempuri.org/IDisciplinesService/All" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

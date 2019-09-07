@@ -46,7 +46,7 @@
             return response;
         }
 
-        public IEnumerable<DisciplineResponseModel> Get()
+        public IEnumerable<DisciplineResponseModel> All()
         {
             AllEntitiesQuery<Discipline> query = new AllEntitiesQuery<Discipline>(TABLE_NAME, false);
             IEnumerable<Discipline> disciplines = getAllDisciplinesHandler.Handle(query);

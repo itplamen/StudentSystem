@@ -11,12 +11,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DisciplineRequestModel" nillable="true" type="tns:DisciplineRequestModel" />
-  <xs:complexType name="ArrayOfDisciplineResponseModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="DisciplineResponseModel" nillable="true" type="tns:DisciplineResponseModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfDisciplineResponseModel" nillable="true" type="tns:ArrayOfDisciplineResponseModel" />
   <xs:complexType name="DisciplineResponseModel">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" base="q1:BaseResponseModel">
@@ -31,6 +25,12 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="DisciplineResponseModel" nillable="true" type="tns:DisciplineResponseModel" />
+  <xs:complexType name="ArrayOfDisciplineResponseModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DisciplineResponseModel" nillable="true" type="tns:DisciplineResponseModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDisciplineResponseModel" nillable="true" type="tns:ArrayOfDisciplineResponseModel" />
   <xs:complexType name="UpdateDisciplineRequestModel">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:DisciplineRequestModel">

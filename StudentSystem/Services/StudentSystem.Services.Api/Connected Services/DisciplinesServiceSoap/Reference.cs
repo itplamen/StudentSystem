@@ -118,94 +118,6 @@ namespace StudentSystem.Services.Api.DisciplinesServiceSoap {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DisciplineResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Discipl" +
-        "ines")]
-    [System.SerializableAttribute()]
-    public partial class DisciplineResponseModel : StudentSystem.Services.Api.DisciplinesServiceSoap.BaseResponseModel {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private StudentSystem.Services.Api.DisciplinesServiceSoap.ProfessorResponseModel ProfessorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ProfessorIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private StudentSystem.Services.Api.DisciplinesServiceSoap.SemesterResponseModel SemesterField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int SemesterIdField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public StudentSystem.Services.Api.DisciplinesServiceSoap.ProfessorResponseModel Professor {
-            get {
-                return this.ProfessorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ProfessorField, value) != true)) {
-                    this.ProfessorField = value;
-                    this.RaisePropertyChanged("Professor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ProfessorId {
-            get {
-                return this.ProfessorIdField;
-            }
-            set {
-                if ((this.ProfessorIdField.Equals(value) != true)) {
-                    this.ProfessorIdField = value;
-                    this.RaisePropertyChanged("ProfessorId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public StudentSystem.Services.Api.DisciplinesServiceSoap.SemesterResponseModel Semester {
-            get {
-                return this.SemesterField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SemesterField, value) != true)) {
-                    this.SemesterField = value;
-                    this.RaisePropertyChanged("Semester");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int SemesterId {
-            get {
-                return this.SemesterIdField;
-            }
-            set {
-                if ((this.SemesterIdField.Equals(value) != true)) {
-                    this.SemesterIdField = value;
-                    this.RaisePropertyChanged("SemesterId");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudentSystem.Services.Api.DisciplinesServiceSoap.ProfessorResponseModel))]
@@ -428,27 +340,115 @@ namespace StudentSystem.Services.Api.DisciplinesServiceSoap {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DisciplineResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Discipl" +
+        "ines")]
+    [System.SerializableAttribute()]
+    public partial class DisciplineResponseModel : StudentSystem.Services.Api.DisciplinesServiceSoap.BaseResponseModel {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private StudentSystem.Services.Api.DisciplinesServiceSoap.ProfessorResponseModel ProfessorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProfessorIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private StudentSystem.Services.Api.DisciplinesServiceSoap.SemesterResponseModel SemesterField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SemesterIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public StudentSystem.Services.Api.DisciplinesServiceSoap.ProfessorResponseModel Professor {
+            get {
+                return this.ProfessorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProfessorField, value) != true)) {
+                    this.ProfessorField = value;
+                    this.RaisePropertyChanged("Professor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProfessorId {
+            get {
+                return this.ProfessorIdField;
+            }
+            set {
+                if ((this.ProfessorIdField.Equals(value) != true)) {
+                    this.ProfessorIdField = value;
+                    this.RaisePropertyChanged("ProfessorId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public StudentSystem.Services.Api.DisciplinesServiceSoap.SemesterResponseModel Semester {
+            get {
+                return this.SemesterField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SemesterField, value) != true)) {
+                    this.SemesterField = value;
+                    this.RaisePropertyChanged("Semester");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SemesterId {
+            get {
+                return this.SemesterIdField;
+            }
+            set {
+                if ((this.SemesterIdField.Equals(value) != true)) {
+                    this.SemesterIdField = value;
+                    this.RaisePropertyChanged("SemesterId");
+                }
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DisciplinesServiceSoap.IDisciplinesService")]
     public interface IDisciplinesService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisciplinesService/Create", ReplyAction="http://tempuri.org/IDisciplinesService/CreateResponse")]
-        bool Create(StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineRequestModel request);
+        StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel Create(StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisciplinesService/Create", ReplyAction="http://tempuri.org/IDisciplinesService/CreateResponse")]
-        System.Threading.Tasks.Task<bool> CreateAsync(StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineRequestModel request);
+        System.Threading.Tasks.Task<StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel> CreateAsync(StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineRequestModel request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisciplinesService/Get", ReplyAction="http://tempuri.org/IDisciplinesService/GetResponse")]
-        StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel[] Get();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisciplinesService/All", ReplyAction="http://tempuri.org/IDisciplinesService/AllResponse")]
+        StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel[] All();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisciplinesService/Get", ReplyAction="http://tempuri.org/IDisciplinesService/GetResponse")]
-        System.Threading.Tasks.Task<StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel[]> GetAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisciplinesService/Update", ReplyAction="http://tempuri.org/IDisciplinesService/UpdateResponse")]
-        bool Update(StudentSystem.Services.Api.DisciplinesServiceSoap.UpdateDisciplineRequestModel request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisciplinesService/All", ReplyAction="http://tempuri.org/IDisciplinesService/AllResponse")]
+        System.Threading.Tasks.Task<StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel[]> AllAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisciplinesService/Update", ReplyAction="http://tempuri.org/IDisciplinesService/UpdateResponse")]
-        System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.DisciplinesServiceSoap.UpdateDisciplineRequestModel request);
+        StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel Update(StudentSystem.Services.Api.DisciplinesServiceSoap.UpdateDisciplineRequestModel request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisciplinesService/Update", ReplyAction="http://tempuri.org/IDisciplinesService/UpdateResponse")]
+        System.Threading.Tasks.Task<StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel> UpdateAsync(StudentSystem.Services.Api.DisciplinesServiceSoap.UpdateDisciplineRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisciplinesService/Delete", ReplyAction="http://tempuri.org/IDisciplinesService/DeleteResponse")]
         bool Delete(int id);
@@ -484,27 +484,27 @@ namespace StudentSystem.Services.Api.DisciplinesServiceSoap {
                 base(binding, remoteAddress) {
         }
         
-        public bool Create(StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineRequestModel request) {
+        public StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel Create(StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineRequestModel request) {
             return base.Channel.Create(request);
         }
         
-        public System.Threading.Tasks.Task<bool> CreateAsync(StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineRequestModel request) {
+        public System.Threading.Tasks.Task<StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel> CreateAsync(StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineRequestModel request) {
             return base.Channel.CreateAsync(request);
         }
         
-        public StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel[] Get() {
-            return base.Channel.Get();
+        public StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel[] All() {
+            return base.Channel.All();
         }
         
-        public System.Threading.Tasks.Task<StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel[]> GetAsync() {
-            return base.Channel.GetAsync();
+        public System.Threading.Tasks.Task<StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel[]> AllAsync() {
+            return base.Channel.AllAsync();
         }
         
-        public bool Update(StudentSystem.Services.Api.DisciplinesServiceSoap.UpdateDisciplineRequestModel request) {
+        public StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel Update(StudentSystem.Services.Api.DisciplinesServiceSoap.UpdateDisciplineRequestModel request) {
             return base.Channel.Update(request);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.DisciplinesServiceSoap.UpdateDisciplineRequestModel request) {
+        public System.Threading.Tasks.Task<StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel> UpdateAsync(StudentSystem.Services.Api.DisciplinesServiceSoap.UpdateDisciplineRequestModel request) {
             return base.Channel.UpdateAsync(request);
         }
         
