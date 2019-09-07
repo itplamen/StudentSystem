@@ -10,13 +10,10 @@
     {
         public override Semester Map(SqlDataReader from)
         {
-            Semester semester = new Semester()
-            {
-                Id = Convert.ToInt32(from["Id"]),
-                Name = Convert.ToString(from["Name"]),
-                StartDate = Convert.ToDateTime(from["StartDate"]),
-                EndDate = Convert.ToDateTime(from["EndDate"])
-            };
+            Semester semester = base.Map(from);
+            semester.Name = Convert.ToString(from["Name"]);
+            semester.StartDate = Convert.ToDateTime(from["StartDate"]);
+            semester.EndDate = Convert.ToDateTime(from["EndDate"]);
 
             return semester;
         }
