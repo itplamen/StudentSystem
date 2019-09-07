@@ -10,6 +10,7 @@
     using StudentSystem.Data;
     using StudentSystem.Data.Builders.StudentDetails;
     using StudentSystem.Data.Commands.Common;
+    using StudentSystem.Data.Commands.Disciplines;
     using StudentSystem.Data.Commands.Professors;
     using StudentSystem.Data.Commands.Semesters;
     using StudentSystem.Data.Commands.Students;
@@ -79,6 +80,8 @@
 
             container.Register<ICommandHandler<ProfessorCommand, Professor>, CreateProfessorCommandHandler>(Lifestyle.Transient);
             container.Register<ICommandHandler<UpdateProfessorCommand, Professor>, UpdateProfessorCommandHandler>(Lifestyle.Transient);
+
+            container.Register<ICommandHandler<DisciplineCommand, Discipline>, CreateDisciplineCommandHandler>(Lifestyle.Transient);
         }
     }
 }

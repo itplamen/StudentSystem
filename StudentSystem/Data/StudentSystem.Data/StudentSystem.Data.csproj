@@ -52,6 +52,8 @@
     <Compile Include="Commands\Common\DeleteEntityCommandHandler.cs" />
     <Compile Include="Commands\Common\UpdateEntityCommand.cs" />
     <Compile Include="Commands\Common\UpdateEntityCommandHandler.cs" />
+    <Compile Include="Commands\Disciplines\CreateDisciplineCommandHandler.cs" />
+    <Compile Include="Commands\Disciplines\DisciplineCommand.cs" />
     <Compile Include="Commands\Professors\ProfessorCommand.cs" />
     <Compile Include="Commands\Professors\CreateProfessorCommandHandler.cs" />
     <Compile Include="Commands\Professors\UpdateProfessorCommand.cs" />
