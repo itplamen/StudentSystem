@@ -12,7 +12,7 @@
         bool Create(ScoreRequestModel request);
 
         [OperationContract]
-        IEnumerable<ScoreResponseModel> Get();
+        IEnumerable<ScoreResponseModel> All();
 
         [OperationContract]
         bool Update(UpdateScoreRequestModel request);

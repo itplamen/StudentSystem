@@ -15,15 +15,15 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Get">
+  <xs:element name="All">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetResponse">
+  <xs:element name="AllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores" minOccurs="0" name="GetResult" nillable="true" type="q2:ArrayOfScoreResponseModel" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores" minOccurs="0" name="AllResult" nillable="true" type="q2:ArrayOfScoreResponseModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

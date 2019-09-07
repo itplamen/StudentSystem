@@ -47,7 +47,7 @@
             return id > 0;
         }
 
-        public IEnumerable<ScoreResponseModel> Get()
+        public IEnumerable<ScoreResponseModel> All()
         {
             AllEntitiesQuery<Score> query = new AllEntitiesQuery<Score>(TABLE_NAME, false);
             IEnumerable<Score> scores = getAllScoresHandler.Handle(query);

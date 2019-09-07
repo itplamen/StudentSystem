@@ -15,11 +15,11 @@
   <wsdl:message name="IScoresService_Create_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateResponse" />
   </wsdl:message>
-  <wsdl:message name="IScoresService_Get_InputMessage">
-    <wsdl:part name="parameters" element="tns:Get" />
+  <wsdl:message name="IScoresService_All_InputMessage">
+    <wsdl:part name="parameters" element="tns:All" />
   </wsdl:message>
-  <wsdl:message name="IScoresService_Get_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetResponse" />
+  <wsdl:message name="IScoresService_All_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllResponse" />
   </wsdl:message>
   <wsdl:message name="IScoresService_Update_InputMessage">
     <wsdl:part name="parameters" element="tns:Update" />
@@ -38,9 +38,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IScoresService/Create" message="tns:IScoresService_Create_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IScoresService/CreateResponse" message="tns:IScoresService_Create_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Get">
-      <wsdl:input wsaw:Action="http://tempuri.org/IScoresService/Get" message="tns:IScoresService_Get_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IScoresService/GetResponse" message="tns:IScoresService_Get_OutputMessage" />
+    <wsdl:operation name="All">
+      <wsdl:input wsaw:Action="http://tempuri.org/IScoresService/All" message="tns:IScoresService_All_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IScoresService/AllResponse" message="tns:IScoresService_All_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Update">
       <wsdl:input wsaw:Action="http://tempuri.org/IScoresService/Update" message="tns:IScoresService_Update_InputMessage" />
@@ -62,8 +62,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Get">
-      <soap:operation soapAction="http://tempuri.org/IScoresService/Get" style="document" />
+    <wsdl:operation name="All">
+      <soap:operation soapAction="http://tempuri.org/IScoresService/All" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

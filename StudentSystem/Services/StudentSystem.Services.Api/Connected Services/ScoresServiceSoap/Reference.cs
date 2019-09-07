@@ -378,11 +378,11 @@ namespace StudentSystem.Services.Api.ScoresServiceSoap {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScoresService/Create", ReplyAction="http://tempuri.org/IScoresService/CreateResponse")]
         System.Threading.Tasks.Task<bool> CreateAsync(StudentSystem.Services.Api.ScoresServiceSoap.ScoreRequestModel request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScoresService/Get", ReplyAction="http://tempuri.org/IScoresService/GetResponse")]
-        StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel[] Get();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScoresService/All", ReplyAction="http://tempuri.org/IScoresService/AllResponse")]
+        StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel[] All();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScoresService/Get", ReplyAction="http://tempuri.org/IScoresService/GetResponse")]
-        System.Threading.Tasks.Task<StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel[]> GetAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScoresService/All", ReplyAction="http://tempuri.org/IScoresService/AllResponse")]
+        System.Threading.Tasks.Task<StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel[]> AllAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScoresService/Update", ReplyAction="http://tempuri.org/IScoresService/UpdateResponse")]
         bool Update(StudentSystem.Services.Api.ScoresServiceSoap.UpdateScoreRequestModel request);
@@ -432,12 +432,12 @@ namespace StudentSystem.Services.Api.ScoresServiceSoap {
             return base.Channel.CreateAsync(request);
         }
         
-        public StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel[] Get() {
-            return base.Channel.Get();
+        public StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel[] All() {
+            return base.Channel.All();
         }
         
-        public System.Threading.Tasks.Task<StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel[]> GetAsync() {
-            return base.Channel.GetAsync();
+        public System.Threading.Tasks.Task<StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel[]> AllAsync() {
+            return base.Channel.AllAsync();
         }
         
         public bool Update(StudentSystem.Services.Api.ScoresServiceSoap.UpdateScoreRequestModel request) {
