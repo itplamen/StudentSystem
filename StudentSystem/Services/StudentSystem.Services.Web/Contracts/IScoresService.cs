@@ -9,13 +9,13 @@
     public interface IScoresService
     {
         [OperationContract]
-        bool Create(ScoreRequestModel request);
+        ScoreResponseModel Create(ScoreRequestModel request);
 
         [OperationContract]
         IEnumerable<ScoreResponseModel> All();
 
         [OperationContract]
-        bool Update(UpdateScoreRequestModel request);
+        ScoreResponseModel Update(int id, ScoreRequestModel request);
 
         [OperationContract]
         bool Delete(int id);

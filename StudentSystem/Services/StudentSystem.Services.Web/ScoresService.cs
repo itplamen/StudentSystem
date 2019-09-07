@@ -4,6 +4,7 @@
 
     using StudentSystem.Common.Contracts;
     using StudentSystem.Data.Commands.Common;
+    using StudentSystem.Data.Commands.Scores;
     using StudentSystem.Data.Contracts.Commands;
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Models;
@@ -16,16 +17,16 @@
         private const string TABLE_NAME = "Scores";
 
         private readonly IMapper<Score, ScoreResponseModel> scoresMapper;
-        private readonly ICommandHandler<EntityCommand, int> createScoreHandler;
+        private readonly ICommandHandler<ScoreCommand, Score> createScoreHandler;
         private readonly ICommandHandler<DeleteEntityCommand, bool> deleteScoreHandler;
-        private readonly ICommandHandler<UpdateEntityCommand, bool> updateScoreHandler;
+        private readonly ICommandHandler<UpdateScoreCommand, Score> updateScoreHandler;
         private readonly IQueryHandler<AllEntitiesQuery<Score>, IEnumerable<Score>> getAllScoresHandler;
 
         public ScoresService(
             IMapper<Score, ScoreResponseModel> scoresMapper,
-            ICommandHandler<EntityCommand, int> createScoreHandler,
+            ICommandHandler<ScoreCommand, Score> createScoreHandler,
             ICommandHandler<DeleteEntityCommand, bool> deleteScoreHandler,
-            ICommandHandler<UpdateEntityCommand, bool> updateScoreHandler,
+            ICommandHandler<UpdateScoreCommand, Score> updateScoreHandler,
             IQueryHandler<AllEntitiesQuery<Score>, IEnumerable<Score>> getAllScoresHandler)
         {
             this.scoresMapper = scoresMapper;
@@ -35,16 +36,14 @@
             this.getAllScoresHandler = getAllScoresHandler;
         }
 
-        public bool Create(ScoreRequestModel request)
+        public ScoreResponseModel Create(ScoreRequestModel request)
         {
-            EntityCommand command = new EntityCommand(TABLE_NAME);
-            command.Columns.Add(nameof(request.Mark), request.Mark);
-            command.Columns.Add(nameof(request.StudentId), request.StudentId);
-            command.Columns.Add(nameof(request.DisciplineId), request.DisciplineId);
+            ScoreCommand command = new ScoreCommand(request.Mark, request.StudentId, request.DisciplineId);
+            Score score = createScoreHandler.Handle(command);
 
-            int id = createScoreHandler.Handle(command);
+            ScoreResponseModel response = scoresMapper.Map(score);
 
-            return id > 0;
+            return response;
         }
 
         public IEnumerable<ScoreResponseModel> All()
@@ -57,16 +56,14 @@
             return responseModels;
         }
 
-        public bool Update(UpdateScoreRequestModel request)
+        public ScoreResponseModel Update(int id, ScoreRequestModel request)
         {
-            UpdateEntityCommand command = new UpdateEntityCommand(TABLE_NAME, request.Id);
-            command.Columns.Add(nameof(request.Mark), request.Mark);
-            command.Columns.Add(nameof(request.StudentId), request.StudentId);
-            command.Columns.Add(nameof(request.DisciplineId), request.DisciplineId);
+            UpdateScoreCommand command = new UpdateScoreCommand(id, request.Mark, request.StudentId, request.DisciplineId);
+            Score score = updateScoreHandler.Handle(command);
 
-            bool isUpdated = updateScoreHandler.Handle(command);
+            ScoreResponseModel response = scoresMapper.Map(score);
 
-            return isUpdated;
+            return response;
         }
 
         public bool Delete(int id)

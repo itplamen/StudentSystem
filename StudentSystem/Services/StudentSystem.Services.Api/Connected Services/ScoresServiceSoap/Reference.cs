@@ -17,7 +17,6 @@ namespace StudentSystem.Services.Api.ScoresServiceSoap {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ScoreRequestModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudentSystem.Services.Api.ScoresServiceSoap.UpdateScoreRequestModel))]
     public partial class ScoreRequestModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -87,100 +86,6 @@ namespace StudentSystem.Services.Api.ScoresServiceSoap {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateScoreRequestModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores")]
-    [System.SerializableAttribute()]
-    public partial class UpdateScoreRequestModel : StudentSystem.Services.Api.ScoresServiceSoap.ScoreRequestModel {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ScoreResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores")]
-    [System.SerializableAttribute()]
-    public partial class ScoreResponseModel : StudentSystem.Services.Api.ScoresServiceSoap.BaseResponseModel {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int DisciplineIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private float MarkField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private StudentSystem.Services.Api.ScoresServiceSoap.StudentResponseModel StudentField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int StudentIdField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int DisciplineId {
-            get {
-                return this.DisciplineIdField;
-            }
-            set {
-                if ((this.DisciplineIdField.Equals(value) != true)) {
-                    this.DisciplineIdField = value;
-                    this.RaisePropertyChanged("DisciplineId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public float Mark {
-            get {
-                return this.MarkField;
-            }
-            set {
-                if ((this.MarkField.Equals(value) != true)) {
-                    this.MarkField = value;
-                    this.RaisePropertyChanged("Mark");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public StudentSystem.Services.Api.ScoresServiceSoap.StudentResponseModel Student {
-            get {
-                return this.StudentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StudentField, value) != true)) {
-                    this.StudentField = value;
-                    this.RaisePropertyChanged("Student");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int StudentId {
-            get {
-                return this.StudentIdField;
-            }
-            set {
-                if ((this.StudentIdField.Equals(value) != true)) {
-                    this.StudentIdField = value;
-                    this.RaisePropertyChanged("StudentId");
-                }
             }
         }
     }
@@ -368,15 +273,86 @@ namespace StudentSystem.Services.Api.ScoresServiceSoap {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ScoreResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores")]
+    [System.SerializableAttribute()]
+    public partial class ScoreResponseModel : StudentSystem.Services.Api.ScoresServiceSoap.BaseResponseModel {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DisciplineIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float MarkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private StudentSystem.Services.Api.ScoresServiceSoap.StudentResponseModel StudentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StudentIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DisciplineId {
+            get {
+                return this.DisciplineIdField;
+            }
+            set {
+                if ((this.DisciplineIdField.Equals(value) != true)) {
+                    this.DisciplineIdField = value;
+                    this.RaisePropertyChanged("DisciplineId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float Mark {
+            get {
+                return this.MarkField;
+            }
+            set {
+                if ((this.MarkField.Equals(value) != true)) {
+                    this.MarkField = value;
+                    this.RaisePropertyChanged("Mark");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public StudentSystem.Services.Api.ScoresServiceSoap.StudentResponseModel Student {
+            get {
+                return this.StudentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StudentField, value) != true)) {
+                    this.StudentField = value;
+                    this.RaisePropertyChanged("Student");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StudentId {
+            get {
+                return this.StudentIdField;
+            }
+            set {
+                if ((this.StudentIdField.Equals(value) != true)) {
+                    this.StudentIdField = value;
+                    this.RaisePropertyChanged("StudentId");
+                }
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ScoresServiceSoap.IScoresService")]
     public interface IScoresService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScoresService/Create", ReplyAction="http://tempuri.org/IScoresService/CreateResponse")]
-        bool Create(StudentSystem.Services.Api.ScoresServiceSoap.ScoreRequestModel request);
+        StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel Create(StudentSystem.Services.Api.ScoresServiceSoap.ScoreRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScoresService/Create", ReplyAction="http://tempuri.org/IScoresService/CreateResponse")]
-        System.Threading.Tasks.Task<bool> CreateAsync(StudentSystem.Services.Api.ScoresServiceSoap.ScoreRequestModel request);
+        System.Threading.Tasks.Task<StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel> CreateAsync(StudentSystem.Services.Api.ScoresServiceSoap.ScoreRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScoresService/All", ReplyAction="http://tempuri.org/IScoresService/AllResponse")]
         StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel[] All();
@@ -385,10 +361,10 @@ namespace StudentSystem.Services.Api.ScoresServiceSoap {
         System.Threading.Tasks.Task<StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel[]> AllAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScoresService/Update", ReplyAction="http://tempuri.org/IScoresService/UpdateResponse")]
-        bool Update(StudentSystem.Services.Api.ScoresServiceSoap.UpdateScoreRequestModel request);
+        StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel Update(int id, StudentSystem.Services.Api.ScoresServiceSoap.ScoreRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScoresService/Update", ReplyAction="http://tempuri.org/IScoresService/UpdateResponse")]
-        System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.ScoresServiceSoap.UpdateScoreRequestModel request);
+        System.Threading.Tasks.Task<StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel> UpdateAsync(int id, StudentSystem.Services.Api.ScoresServiceSoap.ScoreRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScoresService/Delete", ReplyAction="http://tempuri.org/IScoresService/DeleteResponse")]
         bool Delete(int id);
@@ -424,11 +400,11 @@ namespace StudentSystem.Services.Api.ScoresServiceSoap {
                 base(binding, remoteAddress) {
         }
         
-        public bool Create(StudentSystem.Services.Api.ScoresServiceSoap.ScoreRequestModel request) {
+        public StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel Create(StudentSystem.Services.Api.ScoresServiceSoap.ScoreRequestModel request) {
             return base.Channel.Create(request);
         }
         
-        public System.Threading.Tasks.Task<bool> CreateAsync(StudentSystem.Services.Api.ScoresServiceSoap.ScoreRequestModel request) {
+        public System.Threading.Tasks.Task<StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel> CreateAsync(StudentSystem.Services.Api.ScoresServiceSoap.ScoreRequestModel request) {
             return base.Channel.CreateAsync(request);
         }
         
@@ -440,12 +416,12 @@ namespace StudentSystem.Services.Api.ScoresServiceSoap {
             return base.Channel.AllAsync();
         }
         
-        public bool Update(StudentSystem.Services.Api.ScoresServiceSoap.UpdateScoreRequestModel request) {
-            return base.Channel.Update(request);
+        public StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel Update(int id, StudentSystem.Services.Api.ScoresServiceSoap.ScoreRequestModel request) {
+            return base.Channel.Update(id, request);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.ScoresServiceSoap.UpdateScoreRequestModel request) {
-            return base.Channel.UpdateAsync(request);
+        public System.Threading.Tasks.Task<StudentSystem.Services.Api.ScoresServiceSoap.ScoreResponseModel> UpdateAsync(int id, StudentSystem.Services.Api.ScoresServiceSoap.ScoreRequestModel request) {
+            return base.Channel.UpdateAsync(id, request);
         }
         
         public bool Delete(int id) {
