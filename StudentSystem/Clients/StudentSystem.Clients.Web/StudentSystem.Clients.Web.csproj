@@ -149,6 +149,7 @@
     <Compile Include="Controllers\DisciplinesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfessorsController.cs" />
+    <Compile Include="Controllers\ScoresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -161,6 +162,7 @@
     <Compile Include="Models\Professors\ProfessorRequestViewModel.cs" />
     <Compile Include="Models\Professors\ProfessorResponseViewModel.cs" />
     <Compile Include="Models\Professors\ProfessorSemestersViewModel.cs" />
+    <Compile Include="Models\Scores\ScoreResponseViewModel.cs" />
     <Compile Include="Models\Semesters\SemesterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -193,6 +195,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Professors\Index.cshtml" />
     <Content Include="Views\Disciplines\Index.cshtml" />
+    <Content Include="Views\Scores\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\StudentSystem.Common.Infrastructure\StudentSystem.Common.Infrastructure.csproj">

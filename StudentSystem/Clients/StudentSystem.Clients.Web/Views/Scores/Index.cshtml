@@ -1,0 +1,49 @@
+﻿@using StudentSystem.Clients.Web.Models.Scores
+
+@model IEnumerable<ScoreResponseViewModel>
+@{
+    ViewBag.Title = "Scores";
+}
+
+<table id="ScoresTable" class="dataTable">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Mark</th>
+            <th>Student Id</th>
+            <th>Discipline Id</th>
+            <th>Created On</th>
+            <th>Modified On</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var score in Model)
+        {
+            <tr>
+                <td>@score.Id</td>
+                <td>@score.Mark</td>
+                <td>@score.StudentId</td>
+                <td>@score.DisciplineId</td>
+                <td>@score.CreatedOn</td>
+                <td>@score.ModifiedOn</td>
+                <td>
+                    <button class="update ui-button ui-corner-all">Update</button>
+                    <button class="delete ui-button ui-corner-all">Delete </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            let scoresTable = $('#ScoresTable').DataTable({
+                "sPaginationType": "full_numbers",
+                "aaSorting": [[0, 'asc']]
+            });
+        });
+
+    </script>
+}
