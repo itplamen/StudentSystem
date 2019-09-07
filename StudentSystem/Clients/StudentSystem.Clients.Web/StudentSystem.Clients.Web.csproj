@@ -164,6 +164,7 @@
     <Compile Include="Models\Professors\ProfessorRequestViewModel.cs" />
     <Compile Include="Models\Professors\ProfessorResponseViewModel.cs" />
     <Compile Include="Models\Professors\ProfessorSemestersViewModel.cs" />
+    <Compile Include="Models\Scores\ScoreRequestViewModel.cs" />
     <Compile Include="Models\Scores\ScoreResponseViewModel.cs" />
     <Compile Include="Models\Semesters\SemesterResponseViewModel.cs" />
     <Compile Include="Models\Semesters\SemesterViewModel.cs" />

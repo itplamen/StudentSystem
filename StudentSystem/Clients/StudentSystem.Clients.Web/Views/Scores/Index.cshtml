@@ -5,6 +5,16 @@
     ViewBag.Title = "Scores";
 }
 
+<style>
+    #SaveChanges {
+        float: right;
+        margin-bottom: 20px;
+    }
+</style>
+
+<button id="Create">Create</button>
+<button id="SaveChanges">Save Changes</button>
+
 <table id="ScoresTable" class="dataTable">
     <thead>
         <tr>
@@ -39,11 +49,43 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            let scoresTable = $('#ScoresTable').DataTable({
+            let $scoresTable = $('#ScoresTable').DataTable({
                 "sPaginationType": "full_numbers",
                 "aaSorting": [[0, 'asc']]
             });
-        });
 
+            $('#Create').button().on('click', function () {
+                const mark = '<input type="text" name="score-mark" style="width:400px" />';
+                const studentId = '<input type="text" name="score-studentId" style="width:400px" />';
+                const disciplineId = '<input type="text" name="score-disciplineId" style="width:400px" />';
+
+                $scoresTable.fnAddData(['', mark, studentId, disciplineId, '', '', '']);
+            });
+
+            $('#SaveChanges').button().on("click", function () {
+                $('input').hide();
+
+                const requestModel = {
+                    Mark: $('table tbody input[name="score-mark"]').val(),
+                    StudentId: $('table tbody input[name="score-studentId"]').val(),
+                    DisciplineId: $('table tbody input[name="score-disciplineId"]').val()
+                };
+
+                const rowIndex = $('table tbody input[name="score-mark"]').parent().parent().index();
+
+                studentSystemApi.post('/Scores/Create', requestModel, successfullyCreatedScore, rowIndex);
+            });
+
+            function successfullyCreatedScore(data, rowIndex) {
+                $scoresTable.fnUpdate(data.Id, rowIndex, 0);
+                $scoresTable.fnUpdate(data.Mark, rowIndex, 1);
+                $scoresTable.fnUpdate(data.StudentId, rowIndex, 2);
+                $scoresTable.fnUpdate(data.DisciplineId, rowIndex, 3);
+                $scoresTable.fnUpdate(data.CreatedOn, rowIndex, 4);
+                $scoresTable.fnUpdate(data.ModifiedOn, rowIndex, 5);
+
+                alert('Sucessfully created score!');
+            }
+        });
     </script>
 }
