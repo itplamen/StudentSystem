@@ -1,0 +1,49 @@
+﻿@using StudentSystem.Clients.Web.Models.Semesters
+
+@model IEnumerable<SemesterResponseViewModel>
+@{
+    ViewBag.Title = "Semesters";
+}
+
+<table id="SemestersTable" class="dataTable">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Created On</th>
+            <th>Modified On</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var semester in Model)
+        {
+            <tr>
+                <td>@semester.Id</td>
+                <td>@semester.Name</td>
+                <td>@semester.StartDate</td>
+                <td>@semester.EndDate</td>
+                <td>@semester.CreatedOn</td>
+                <td>@semester.ModifiedOn</td>
+                <td>
+                    <button class="update ui-button ui-corner-all">Update</button>
+                    <button class="delete ui-button ui-corner-all">Delete </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            let semestersTable = $('#SemestersTable').DataTable({
+                "sPaginationType": "full_numbers",
+                "aaSorting": [[0, 'asc']]
+            });
+        });
+
+    </script>
+}
