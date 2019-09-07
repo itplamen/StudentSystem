@@ -25,8 +25,8 @@
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<ProfessorResponseModel, ProfessorResponseViewModel>()
-                .ForMember(x => x.CreatedOn, opt => opt.MapFrom(x => DatTimeMapper.Map(x.CreatedOn)))
-                .ForMember(x => x.ModifiedOn, opt => opt.MapFrom(x => DatTimeMapper.Map(x.ModifiedOn)));
+                .ForMember(x => x.CreatedOn, opt => opt.MapFrom(x => DateTimeMapper.Map(x.CreatedOn)))
+                .ForMember(x => x.ModifiedOn, opt => opt.MapFrom(x => DateTimeMapper.Map(x.ModifiedOn)));
         }
     }
 }
