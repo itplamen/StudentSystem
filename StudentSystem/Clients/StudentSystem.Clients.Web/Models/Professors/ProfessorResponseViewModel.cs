@@ -1,10 +1,10 @@
 ﻿namespace StudentSystem.Clients.Web.Models.Professors
 {
-    using System;
     using System.Collections.Generic;
 
     using AutoMapper;
 
+    using StudentSystem.Clients.Web.Mappers;
     using StudentSystem.Common.Infrastructure.Mapping;
     using StudentSystem.Services.Api.ProfessorsServiceSoap;
 
@@ -25,18 +25,8 @@
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<ProfessorResponseModel, ProfessorResponseViewModel>()
-                .ForMember(x => x.CreatedOn, opt => opt.MapFrom(x => MapDateTime(x.CreatedOn)))
-                .ForMember(x => x.ModifiedOn, opt => opt.MapFrom(x => MapDateTime(x.ModifiedOn)));
-        }
-
-        private string MapDateTime(DateTime? dateTime)
-        {
-            if (dateTime.HasValue)
-            {
-                return dateTime.Value.ToString("dd/MM/yyyy HH:mm");
-            }
-
-            return string.Empty;
+                .ForMember(x => x.CreatedOn, opt => opt.MapFrom(x => DatTimeMapper.Map(x.CreatedOn)))
+                .ForMember(x => x.ModifiedOn, opt => opt.MapFrom(x => DatTimeMapper.Map(x.ModifiedOn)));
         }
     }
 }

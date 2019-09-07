@@ -151,6 +151,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\DatTimeMapper.cs" />
     <Compile Include="Models\Professors\ProfessorDisciplinesViewModel.cs" />
     <Compile Include="Models\Home\ScoreViewModel.cs" />
     <Compile Include="Models\Home\SemesterViewModel.cs" />
