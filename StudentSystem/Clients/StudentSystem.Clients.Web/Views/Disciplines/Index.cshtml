@@ -107,6 +107,13 @@
                 studentSystemApi.post('/Disciplines/Update', requestModel, successfullyUpdatedDiscipline, rowIndex);
             });
 
+            $('.delete').on("click", function () {
+                let row = $(this).parent();
+                let disciplineId = row.siblings('.discipline-id').html();
+
+                studentSystemApi.post('/Disciplines/Delete', { "Id": disciplineId }, successfullyDeletedDiscipline, row);
+            });
+
             function successfullyUpdatedDiscipline(data, rowIndex) {
                 $disciplinesTable.fnUpdate(data.Name, rowIndex, 1);
                 $disciplinesTable.fnUpdate(data.SemesterId, rowIndex, 2);
@@ -114,6 +121,14 @@
                 $disciplinesTable.fnUpdate(data.ModifiedOn, rowIndex, 5);
 
                 alert('Sucessfully updated discipline!');
+            }
+
+            function successfullyDeletedDiscipline(isDeleted, row) {
+                if (isDeleted == true) {
+                    $disciplinesTable.fnDeleteRow(row.parent()[0]);
+
+                    alert('Sucessfully deleted discipline!');
+                }
             }
         });
 

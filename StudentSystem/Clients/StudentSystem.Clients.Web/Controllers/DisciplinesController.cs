@@ -42,5 +42,14 @@
 
             return Json(viewResponse);
         }
+
+        [HttpPost]
+        [AjaxOnly]
+        public async Task<JsonResult> Delete(int id)
+        {
+            bool response = await studentSystemApi.Execute(disciplinesClient.DeleteAsync, id);
+
+            return Json(response);
+        }
     }
 }
