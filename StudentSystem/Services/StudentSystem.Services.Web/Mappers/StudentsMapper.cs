@@ -8,18 +8,23 @@
     {
         public override StudentResponseModel Map(Student from)
         {
-            StudentResponseModel studentModel = new StudentResponseModel()
+            if (from != null)
             {
-                Id = from.Id,
-                CreatedOn = from.CreatedOn,
-                ModifiedOn = from.ModifiedOn,
-                FirstName = from.FirstName,
-                LastName = from.LastName,
-                Email = from.Email,
-                DateOfBirth = from.DateOfBirth
-            };
+                StudentResponseModel studentModel = new StudentResponseModel()
+                {
+                    Id = from.Id,
+                    CreatedOn = from.CreatedOn,
+                    ModifiedOn = from.ModifiedOn,
+                    FirstName = from.FirstName,
+                    LastName = from.LastName,
+                    Email = from.Email,
+                    DateOfBirth = from.DateOfBirth
+                };
 
-            return studentModel;
+                return studentModel;
+            }
+
+            return null;
         }
     }
 }

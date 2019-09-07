@@ -17,18 +17,23 @@
 
         public override ScoreResponseModel Map(Score from)
         {
-            ScoreResponseModel score = new ScoreResponseModel()
+            if (from != null)
             {
-                Id = from.Id,
-                CreatedOn = from.CreatedOn,
-                ModifiedOn = from.ModifiedOn,
-                Mark = from.Mark,
-                DisciplineId = from.DisciplineId,
-                StudentId = from.StudentId,
-                Student = studentsMapper.Map(from.Student)
-            };
+                ScoreResponseModel score = new ScoreResponseModel()
+                {
+                    Id = from.Id,
+                    CreatedOn = from.CreatedOn,
+                    ModifiedOn = from.ModifiedOn,
+                    Mark = from.Mark,
+                    DisciplineId = from.DisciplineId,
+                    StudentId = from.StudentId,
+                    Student = studentsMapper.Map(from.Student)
+                };
 
-            return score;
+                return score;
+            }
+
+            return null;
         }
     }
 }
