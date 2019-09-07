@@ -4,6 +4,7 @@
 
     using StudentSystem.Common.Contracts;
     using StudentSystem.Data.Commands.Common;
+    using StudentSystem.Data.Commands.Disciplines;
     using StudentSystem.Data.Contracts.Commands;
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Models;
@@ -16,16 +17,16 @@
         private const string TABLE_NAME = "Disciplines";
 
         private readonly IMapper<Discipline, DisciplineResponseModel> disciplinesMapper;
-        private readonly ICommandHandler<EntityCommand, int> createDisciplineHandler;
         private readonly ICommandHandler<DeleteEntityCommand, bool> deleteDisciplineHandler;
-        private readonly ICommandHandler<UpdateEntityCommand, bool> updateDisciplineHandler;
+        private readonly ICommandHandler<DisciplineCommand, Discipline> createDisciplineHandler;
+        private readonly ICommandHandler<UpdateDisciplineCommand, Discipline> updateDisciplineHandler;
         private readonly IQueryHandler<AllEntitiesQuery<Discipline>, IEnumerable<Discipline>> getAllDisciplinesHandler;
 
         public DisciplinesService(
             IMapper<Discipline, DisciplineResponseModel> disciplinesMapper,
-            ICommandHandler<EntityCommand, int> createDisciplineHandler,
             ICommandHandler<DeleteEntityCommand, bool> deleteDisciplineHandler,
-            ICommandHandler<UpdateEntityCommand, bool> updateDisciplineHandler,
+            ICommandHandler<DisciplineCommand, Discipline> createDisciplineHandler,
+            ICommandHandler<UpdateDisciplineCommand, Discipline> updateDisciplineHandler,
             IQueryHandler<AllEntitiesQuery<Discipline>, IEnumerable<Discipline>> getAllDisciplinesHandler)
         {
             this.disciplinesMapper = disciplinesMapper;
@@ -35,16 +36,14 @@
             this.getAllDisciplinesHandler = getAllDisciplinesHandler;
         }
 
-        public bool Create(DisciplineRequestModel request)
+        public DisciplineResponseModel Create(DisciplineRequestModel request)
         {
-            EntityCommand command = new EntityCommand(TABLE_NAME);
-            command.Columns.Add(nameof(request.Name), request.Name);
-            command.Columns.Add(nameof(request.SemesterId), request.SemesterId);
-            command.Columns.Add(nameof(request.ProfessorId), request.ProfessorId);
+            DisciplineCommand command = new DisciplineCommand(request.Name, request.SemesterId, request.ProfessorId);
+            Discipline discipline = createDisciplineHandler.Handle(command);
 
-            int id = createDisciplineHandler.Handle(command);
+            DisciplineResponseModel response = disciplinesMapper.Map(discipline);
 
-            return id > 0;
+            return response;
         }
 
         public IEnumerable<DisciplineResponseModel> Get()
@@ -57,16 +56,14 @@
             return responseModels;
         }
 
-        public bool Update(UpdateDisciplineRequestModel request)
+        public DisciplineResponseModel Update(UpdateDisciplineRequestModel request)
         {
-            UpdateEntityCommand command = new UpdateEntityCommand(TABLE_NAME, request.Id);
-            command.Columns.Add(nameof(request.Name), request.Name);
-            command.Columns.Add(nameof(request.SemesterId), request.SemesterId);
-            command.Columns.Add(nameof(request.ProfessorId), request.ProfessorId);
+            UpdateDisciplineCommand command = new UpdateDisciplineCommand(request.Id, request.Name, request.SemesterId, request.ProfessorId);
+            Discipline discipline = updateDisciplineHandler.Handle(command);
 
-            bool isUpdated = updateDisciplineHandler.Handle(command);
+            DisciplineResponseModel response = disciplinesMapper.Map(discipline);
 
-            return isUpdated;
+            return response;
         }
 
         public bool Delete(int id)

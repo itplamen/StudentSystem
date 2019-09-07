@@ -9,13 +9,13 @@
     public interface IDisciplinesService
     {
         [OperationContract]
-        bool Create(DisciplineRequestModel request);
+        DisciplineResponseModel Create(DisciplineRequestModel request);
 
         [OperationContract]
         IEnumerable<DisciplineResponseModel> Get();
 
         [OperationContract]
-        bool Update(UpdateDisciplineRequestModel request);
+        DisciplineResponseModel Update(UpdateDisciplineRequestModel request);
 
         [OperationContract]
         bool Delete(int id);
