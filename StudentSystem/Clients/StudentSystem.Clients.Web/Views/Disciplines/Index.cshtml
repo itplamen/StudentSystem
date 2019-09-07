@@ -11,6 +11,8 @@
         margin-bottom: 20px;
     }
 </style>
+
+<button id="Create">Create</button>
 <button id="SaveChanges">Save Changes</button>
 
 <table id="DisciplinesTable" class="dataTable">
@@ -53,6 +55,14 @@
             let $disciplinesTable = $('#DisciplinesTable').DataTable({
                 "sPaginationType": "full_numbers",
                 "aaSorting": [[0, 'asc']]
+            });
+
+            $('#Create').button().on('click', function () {
+                const name = '<input type="text" name="discipline-name" style="width:400px" />';
+                const semesterId = '<input type="text" name="discipline-semesterId" style="width:400px" />';
+                const professorId = '<input type="text" name="discipline-professorId" style="width:400px" />';
+
+                $disciplinesTable.fnAddData(['', name, semesterId, professorId, '', '', '']);
             });
 
             $(".update").click(function () {
@@ -104,7 +114,12 @@
 
                 const rowIndex = $('table tbody input[name="discipline-name"]').parent().parent().index();
 
-                studentSystemApi.post('/Disciplines/Update', requestModel, successfullyUpdatedDiscipline, rowIndex);
+                if (requestModel.Id) {
+                    studentSystemApi.post('/Disciplines/Update', requestModel, successfullyUpdatedDiscipline, rowIndex);
+                }
+                else {
+                    studentSystemApi.post('/Disciplines/Create', requestModel, successfullyCreatedDiscipline, rowIndex);
+                }
             });
 
             $('.delete').on("click", function () {
@@ -113,6 +128,17 @@
 
                 studentSystemApi.post('/Disciplines/Delete', { "Id": disciplineId }, successfullyDeletedDiscipline, row);
             });
+
+            function successfullyCreatedDiscipline(data, rowIndex) {
+                $disciplinesTable.fnUpdate(data.Id, rowIndex, 0);
+                $disciplinesTable.fnUpdate(data.Name, rowIndex, 1);
+                $disciplinesTable.fnUpdate(data.SemesterId, rowIndex, 2);
+                $disciplinesTable.fnUpdate(data.ProfessorId, rowIndex, 3);
+                $disciplinesTable.fnUpdate(data.CreatedOn, rowIndex, 4);
+                $disciplinesTable.fnUpdate(data.ModifiedOn, rowIndex, 5);
+
+                alert('Sucessfully created discipline!');
+            }
 
             function successfullyUpdatedDiscipline(data, rowIndex) {
                 $disciplinesTable.fnUpdate(data.Name, rowIndex, 1);

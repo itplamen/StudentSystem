@@ -33,6 +33,18 @@
 
         [HttpPost]
         [AjaxOnly]
+        public async Task<JsonResult> Create(DisciplineRequestViewModel viewRequest)
+        {
+            DisciplineRequestModel request = Mapper.Map<DisciplineRequestModel>(viewRequest);
+            DisciplineResponseModel response = await studentSystemApi.Execute(disciplinesClient.CreateAsync, request);
+
+            DisciplineResponseViewModel viewResponse = Mapper.Map<DisciplineResponseViewModel>(response);
+
+            return Json(viewResponse);
+        }
+
+        [HttpPost]
+        [AjaxOnly]
         public async Task<JsonResult> Update(int id, DisciplineRequestViewModel viewRequest)
         {
             DisciplineRequestModel request = Mapper.Map<DisciplineRequestModel>(viewRequest);
