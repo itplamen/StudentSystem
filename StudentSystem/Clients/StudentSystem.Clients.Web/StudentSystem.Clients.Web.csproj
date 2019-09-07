@@ -146,12 +146,14 @@
     <Compile Include="Builders\ScoresBuilder.cs" />
     <Compile Include="Builders\SemestersBuilder.cs" />
     <Compile Include="Builders\StudentsBuilder.cs" />
+    <Compile Include="Controllers\DisciplinesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfessorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Mappers\DatTimeMapper.cs" />
+    <Compile Include="Mappers\DateTimeMapper.cs" />
+    <Compile Include="Models\Disciplines\DisciplineResponseViewModel.cs" />
     <Compile Include="Models\Professors\ProfessorDisciplinesViewModel.cs" />
     <Compile Include="Models\Home\ScoreViewModel.cs" />
     <Compile Include="Models\Home\SemesterViewModel.cs" />
@@ -190,6 +192,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\Professors\Index.cshtml" />
+    <Content Include="Views\Disciplines\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\StudentSystem.Common.Infrastructure\StudentSystem.Common.Infrastructure.csproj">
