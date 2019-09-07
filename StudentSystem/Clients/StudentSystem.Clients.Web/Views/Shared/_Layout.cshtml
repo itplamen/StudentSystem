@@ -8,9 +8,60 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     @Styles.Render("~/Content/css")
+
+    <style>
+        br {
+            clear: left
+        }
+
+        .menu {
+            width: 100%;
+            background-color: #005555;
+            position: relative;
+            top: -50px;
+         }
+
+        .menu ul {
+            margin: 0;
+            padding: 0;
+            float: left;
+        }
+
+        .menu ul li {
+            display: inline;
+        }
+
+        .menu ul li a {
+            float: left;
+            text-decoration: none;
+            color: white;
+            padding: 10.5px 11px;
+            background-color: #005555;
+        }
+
+        .menu ul li a:visited {
+            color: white;
+        }
+
+        .menu ul li a:hover, .menu ul li .current {
+            color: white;
+            background-color: #5FD367;
+        }
+    </style>
 </head>
 <body>
     <div class="container body-content">
+        <div class="menu">
+            <ul>
+                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "" })</li>
+                <li>@Html.ActionLink("Disciplines", "Index", "Disciplines", new { area = "" }, new { @class = "" })</li>
+                <li>@Html.ActionLink("Professors", "Index", "Professors", new { area = "" }, new { @class = "" })</li>
+                <li>@Html.ActionLink("Scores", "Index", "Scores", new { area = "" }, new { @class = "" })</li>
+                <li>@Html.ActionLink("Semesters", "Index", "Semesters", new { area = "" }, new { @class = "" })</li>
+            </ul>
+            <br />
+        </div>
+
         @RenderBody()
         <hr />
         <footer>
