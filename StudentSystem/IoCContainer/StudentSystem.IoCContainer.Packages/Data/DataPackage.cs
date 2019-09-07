@@ -82,6 +82,7 @@
             container.Register<ICommandHandler<UpdateProfessorCommand, Professor>, UpdateProfessorCommandHandler>(Lifestyle.Transient);
 
             container.Register<ICommandHandler<DisciplineCommand, Discipline>, CreateDisciplineCommandHandler>(Lifestyle.Transient);
+            container.Register<ICommandHandler<UpdateDisciplineCommand, Discipline>, UpdateDisciplineCommandHandler>(Lifestyle.Transient);
         }
     }
 }
