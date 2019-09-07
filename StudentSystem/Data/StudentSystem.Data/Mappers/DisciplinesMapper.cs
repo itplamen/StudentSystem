@@ -10,13 +10,10 @@
     {
         public override Discipline Map(SqlDataReader from)
         {
-            Discipline discipline = new Discipline()
-            {
-                Id = Convert.ToInt32(from["Id"]),
-                Name = Convert.ToString(from["Name"]),
-                SemesterId = Convert.ToInt32(from["SemesterId"]),
-                ProfessorId = Convert.ToInt32(from["ProfessorId"])
-            };
+            Discipline discipline = base.Map(from);
+            discipline.Name = Convert.ToString(from["Name"]);
+            discipline.SemesterId = Convert.ToInt32(from["SemesterId"]);
+            discipline.ProfessorId = Convert.ToInt32(from["ProfessorId"]);
 
             return discipline;
         }
