@@ -56,9 +56,9 @@
             return responseModels;
         }
 
-        public DisciplineResponseModel Update(UpdateDisciplineRequestModel request)
+        public DisciplineResponseModel Update(int id, DisciplineRequestModel request)
         {
-            UpdateDisciplineCommand command = new UpdateDisciplineCommand(request.Id, request.Name, request.SemesterId, request.ProfessorId);
+            UpdateDisciplineCommand command = new UpdateDisciplineCommand(id, request.Name, request.SemesterId, request.ProfessorId);
             Discipline discipline = updateDisciplineHandler.Handle(command);
 
             DisciplineResponseModel response = disciplinesMapper.Map(discipline);

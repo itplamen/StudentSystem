@@ -30,7 +30,8 @@
   <xs:element name="Update">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" minOccurs="0" name="request" nillable="true" type="q4:UpdateDisciplineRequestModel" />
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" minOccurs="0" name="request" nillable="true" type="q4:DisciplineRequestModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

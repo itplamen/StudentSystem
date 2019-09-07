@@ -15,7 +15,7 @@
         IEnumerable<DisciplineResponseModel> All();
 
         [OperationContract]
-        DisciplineResponseModel Update(UpdateDisciplineRequestModel request);
+        DisciplineResponseModel Update(int id, DisciplineRequestModel request);
 
         [OperationContract]
         bool Delete(int id);

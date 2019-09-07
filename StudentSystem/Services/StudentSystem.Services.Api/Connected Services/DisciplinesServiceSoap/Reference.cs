@@ -18,7 +18,6 @@ namespace StudentSystem.Services.Api.DisciplinesServiceSoap {
     [System.Runtime.Serialization.DataContractAttribute(Name="DisciplineRequestModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Discipl" +
         "ines")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudentSystem.Services.Api.DisciplinesServiceSoap.UpdateDisciplineRequestModel))]
     public partial class DisciplineRequestModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -88,30 +87,6 @@ namespace StudentSystem.Services.Api.DisciplinesServiceSoap {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateDisciplineRequestModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Discipl" +
-        "ines")]
-    [System.SerializableAttribute()]
-    public partial class UpdateDisciplineRequestModel : StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineRequestModel {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
             }
         }
     }
@@ -445,10 +420,10 @@ namespace StudentSystem.Services.Api.DisciplinesServiceSoap {
         System.Threading.Tasks.Task<StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel[]> AllAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisciplinesService/Update", ReplyAction="http://tempuri.org/IDisciplinesService/UpdateResponse")]
-        StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel Update(StudentSystem.Services.Api.DisciplinesServiceSoap.UpdateDisciplineRequestModel request);
+        StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel Update(int id, StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisciplinesService/Update", ReplyAction="http://tempuri.org/IDisciplinesService/UpdateResponse")]
-        System.Threading.Tasks.Task<StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel> UpdateAsync(StudentSystem.Services.Api.DisciplinesServiceSoap.UpdateDisciplineRequestModel request);
+        System.Threading.Tasks.Task<StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel> UpdateAsync(int id, StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDisciplinesService/Delete", ReplyAction="http://tempuri.org/IDisciplinesService/DeleteResponse")]
         bool Delete(int id);
@@ -500,12 +475,12 @@ namespace StudentSystem.Services.Api.DisciplinesServiceSoap {
             return base.Channel.AllAsync();
         }
         
-        public StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel Update(StudentSystem.Services.Api.DisciplinesServiceSoap.UpdateDisciplineRequestModel request) {
-            return base.Channel.Update(request);
+        public StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel Update(int id, StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineRequestModel request) {
+            return base.Channel.Update(id, request);
         }
         
-        public System.Threading.Tasks.Task<StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel> UpdateAsync(StudentSystem.Services.Api.DisciplinesServiceSoap.UpdateDisciplineRequestModel request) {
-            return base.Channel.UpdateAsync(request);
+        public System.Threading.Tasks.Task<StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel> UpdateAsync(int id, StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineRequestModel request) {
+            return base.Channel.UpdateAsync(id, request);
         }
         
         public bool Delete(int id) {

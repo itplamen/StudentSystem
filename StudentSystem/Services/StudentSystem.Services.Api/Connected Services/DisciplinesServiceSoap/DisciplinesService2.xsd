@@ -31,14 +31,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfDisciplineResponseModel" nillable="true" type="tns:ArrayOfDisciplineResponseModel" />
-  <xs:complexType name="UpdateDisciplineRequestModel">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:DisciplineRequestModel">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Id" type="xs:int" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="UpdateDisciplineRequestModel" nillable="true" type="tns:UpdateDisciplineRequestModel" />
 </xs:schema>
