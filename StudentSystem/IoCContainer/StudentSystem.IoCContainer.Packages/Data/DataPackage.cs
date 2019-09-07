@@ -12,6 +12,7 @@
     using StudentSystem.Data.Commands.Common;
     using StudentSystem.Data.Commands.Disciplines;
     using StudentSystem.Data.Commands.Professors;
+    using StudentSystem.Data.Commands.Scores;
     using StudentSystem.Data.Commands.Semesters;
     using StudentSystem.Data.Commands.Students;
     using StudentSystem.Data.Contracts;
@@ -71,6 +72,8 @@
             container.Register<ICommandHandler<EntityCommand, int>, CreateEntityCommandHandler>(Lifestyle.Transient);
             container.Register<ICommandHandler<UpdateEntityCommand, bool>, UpdateEntityCommandHandler> (Lifestyle.Transient);
             container.Register<ICommandHandler<DeleteEntityCommand, bool>, DeleteEntityCommandHandler>(Lifestyle.Transient);
+
+            container.Register<ICommandHandler<ScoreCommand, Score>, CreateScoreCommandHandler>(Lifestyle.Transient);
 
             container.Register<ICommandHandler<StudentCommand, Student>, CreateStudentCommandHandler>(Lifestyle.Transient);
             container.Register<ICommandHandler<UpdateStudentCommand, Student>, UpdateStudentCommandHandler>(Lifestyle.Transient);
