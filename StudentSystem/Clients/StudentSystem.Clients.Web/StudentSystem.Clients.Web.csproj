@@ -155,6 +155,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mappers\DateTimeMapper.cs" />
+    <Compile Include="Models\Disciplines\DisciplineRequestViewModel.cs" />
     <Compile Include="Models\Disciplines\DisciplineResponseViewModel.cs" />
     <Compile Include="Models\Professors\ProfessorDisciplinesViewModel.cs" />
     <Compile Include="Models\Home\ScoreViewModel.cs" />

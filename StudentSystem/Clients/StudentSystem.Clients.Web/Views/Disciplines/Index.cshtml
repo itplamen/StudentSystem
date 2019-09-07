@@ -5,6 +5,14 @@
     ViewBag.Title = "Disciplines";
 }
 
+<style>
+    #SaveChanges {
+        float: right;
+        margin-bottom: 20px;
+    }
+</style>
+<button id="SaveChanges">Save Changes</button>
+
 <table id="DisciplinesTable" class="dataTable">
     <thead>
         <tr>
@@ -21,14 +29,15 @@
         @foreach (var discipline in Model)
         {
             <tr>
-                <td>@discipline.Id</td>
-                <td>@discipline.Name</td>
-                <td>@discipline.SemesterId</td>
-                <td>@discipline.ProfessorId</td>
+                <td class="discipline-id">@discipline.Id</td>
+                <td class="discipline-name"><span>@discipline.Name</span></td>
+                <td class="discipline-semesterId"><span>@discipline.SemesterId</span></td>
+                <td class="discipline-professorId"><span>@discipline.ProfessorId</span></td>
                 <td>@discipline.CreatedOn</td>
                 <td>@discipline.ModifiedOn</td>
                 <td>
                     <button class="update ui-button ui-corner-all">Update</button>
+                    <button class="cancel ui-button ui-corner-all">Cancel</button>
                     <button class="delete ui-button ui-corner-all">Delete </button>
                 </td>
             </tr>
@@ -39,11 +48,73 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            let professorsTable = $('#DisciplinesTable').DataTable({
+            $('.cancel').hide();
+
+            let $disciplinesTable = $('#DisciplinesTable').DataTable({
                 "sPaginationType": "full_numbers",
                 "aaSorting": [[0, 'asc']]
             });
-           
+
+            $(".update").click(function () {
+                let $column = $(this).parent();
+                let disciplineName = $column.siblings('.discipline-name').children('span').html();
+                let semesterId = $column.siblings('.discipline-semesterId').children('span').html();
+                let professorId = $column.siblings('.discipline-professorId').children('span').html();
+
+                $column.siblings('.discipline-name').children('span').hide();
+                $column.siblings('.discipline-semesterId').children('span').hide();
+                $column.siblings('.discipline-professorId').children('span').hide();
+
+                $column.siblings('.discipline-name')
+                    .append('<input type="text" name="discipline-name" style="width:400px" value="' + disciplineName + '" />');
+
+                $column.siblings('.discipline-semesterId')
+                    .append('<input type="text" name="discipline-semesterId" style="width:400px" value="' + semesterId + '" />');
+
+                $column.siblings('.discipline-professorId')
+                    .append('<input type="text" name="discipline-professorId" style="width:400px" value="' + professorId + '" />');
+
+                $(this).hide();
+                $(this).siblings('.cancel').show();
+                $('.update').attr("disabled", true);
+            });
+
+            $(".cancel").click(function () {
+                let $column = $(this).parent();
+                $('input').hide();
+
+                $column.siblings('.discipline-name').children('span').show();
+                $column.siblings('.discipline-semesterId').children('span').show();
+                $column.siblings('.discipline-professorId').children('span').show();
+
+                $(this).hide();
+                $(this).siblings('.update').show();
+                $('.update').attr("disabled", false);
+            });
+
+            $('#SaveChanges').button().on("click", function () {
+                $('input').hide();
+
+                const requestModel = {
+                    Id: $('table tbody input[name="discipline-name"]').parent().siblings('.discipline-id').html(),
+                    Name: $('table tbody input[name="discipline-name"]').val(),
+                    SemesterId: $('table tbody input[name="discipline-semesterId"]').val(),
+                    ProfessorId: $('table tbody input[name="discipline-professorId"]').val()
+                };
+
+                const rowIndex = $('table tbody input[name="discipline-name"]').parent().parent().index();
+
+                studentSystemApi.post('/Disciplines/Update', requestModel, successfullyUpdatedDiscipline, rowIndex);
+            });
+
+            function successfullyUpdatedDiscipline(data, rowIndex) {
+                $disciplinesTable.fnUpdate(data.Name, rowIndex, 1);
+                $disciplinesTable.fnUpdate(data.SemesterId, rowIndex, 2);
+                $disciplinesTable.fnUpdate(data.ProfessorId, rowIndex, 3);
+                $disciplinesTable.fnUpdate(data.ModifiedOn, rowIndex, 5);
+
+                alert('Sucessfully updated discipline!');
+            }
         });
 
     </script>
