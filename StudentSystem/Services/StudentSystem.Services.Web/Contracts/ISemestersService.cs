@@ -12,7 +12,7 @@
         bool Create(SemesterRequestModel request);
 
         [OperationContract]
-        IEnumerable<SemesterResponseModel> Get();
+        IEnumerable<SemesterResponseModel> All();
 
         [OperationContract]
         bool Update(UpdateSemesterRequestModel request);

@@ -292,11 +292,11 @@ namespace StudentSystem.Services.Api.SemestersServiceSoap {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISemestersService/Create", ReplyAction="http://tempuri.org/ISemestersService/CreateResponse")]
         System.Threading.Tasks.Task<bool> CreateAsync(StudentSystem.Services.Api.SemestersServiceSoap.SemesterRequestModel request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISemestersService/Get", ReplyAction="http://tempuri.org/ISemestersService/GetResponse")]
-        StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel[] Get();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISemestersService/All", ReplyAction="http://tempuri.org/ISemestersService/AllResponse")]
+        StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel[] All();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISemestersService/Get", ReplyAction="http://tempuri.org/ISemestersService/GetResponse")]
-        System.Threading.Tasks.Task<StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel[]> GetAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISemestersService/All", ReplyAction="http://tempuri.org/ISemestersService/AllResponse")]
+        System.Threading.Tasks.Task<StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel[]> AllAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISemestersService/Update", ReplyAction="http://tempuri.org/ISemestersService/UpdateResponse")]
         bool Update(StudentSystem.Services.Api.SemestersServiceSoap.UpdateSemesterRequestModel request);
@@ -346,12 +346,12 @@ namespace StudentSystem.Services.Api.SemestersServiceSoap {
             return base.Channel.CreateAsync(request);
         }
         
-        public StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel[] Get() {
-            return base.Channel.Get();
+        public StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel[] All() {
+            return base.Channel.All();
         }
         
-        public System.Threading.Tasks.Task<StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel[]> GetAsync() {
-            return base.Channel.GetAsync();
+        public System.Threading.Tasks.Task<StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel[]> AllAsync() {
+            return base.Channel.AllAsync();
         }
         
         public bool Update(StudentSystem.Services.Api.SemestersServiceSoap.UpdateSemesterRequestModel request) {

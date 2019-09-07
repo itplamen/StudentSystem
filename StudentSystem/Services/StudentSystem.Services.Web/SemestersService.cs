@@ -47,7 +47,7 @@
             return id > 0;
         }
 
-        public IEnumerable<SemesterResponseModel> Get()
+        public IEnumerable<SemesterResponseModel> All()
         {
             AllEntitiesQuery<Semester> query = new AllEntitiesQuery<Semester>(TABLE_NAME, false);
             IEnumerable<Semester> semesters = getAllSemestersHandler.Handle(query);
