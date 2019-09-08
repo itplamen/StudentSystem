@@ -11,9 +11,9 @@
         public override Semester Map(SqlDataReader from)
         {
             Semester semester = base.Map(from);
-            semester.Name = Convert.ToString(from["Name"]);
-            semester.StartDate = Convert.ToDateTime(from["StartDate"]);
-            semester.EndDate = Convert.ToDateTime(from["EndDate"]);
+            semester.Name = Map<string>(from, nameof(semester.Name));
+            semester.StartDate = Map<DateTime>(from, nameof(semester.StartDate));
+            semester.EndDate = Map<DateTime>(from, nameof(semester.EndDate));
 
             return semester;
         }

@@ -10,16 +10,11 @@
     {
         public override Student Map(SqlDataReader from)
         {
-            Student student = new Student()
-            {
-                Id = Convert.ToInt32(from["Id"]),
-                CreatedOn = Convert.ToDateTime(from["CreatedOn"]),
-                ModifiedOn = Map(from, "ModifiedOn"),
-                FirstName = Convert.ToString(from["FirstName"]),
-                LastName = Convert.ToString(from["LastName"]),
-                Email = Convert.ToString(from["Email"]),
-                DateOfBirth = Convert.ToDateTime(from["DateOfBirth"])
-            };
+            Student student = base.Map(from);
+            student.FirstName = Map<string>(from, nameof(student.FirstName));
+            student.LastName = Map<string>(from, nameof(student.LastName));
+            student.Email = Map<string>(from, nameof(student.Email));
+            student.DateOfBirth = Map<DateTime>(from, nameof(student.DateOfBirth));
 
             return student;
         }

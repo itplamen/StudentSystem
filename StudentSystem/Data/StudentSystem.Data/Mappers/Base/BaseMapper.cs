@@ -16,11 +16,11 @@
         {
             To to = new To()
             {
-                Id = Convert.ToInt32(from["Id"]),
-                CreatedOn = Convert.ToDateTime(from["CreatedOn"]),
-                ModifiedOn = Map(from, "ModifiedOn"),
-                IsDeleted = Convert.ToBoolean(from["IsDeleted"]),
-                DeletedOn = Map(from, "DeletedOn")
+                Id = Map<int>(from, "Id"),
+                CreatedOn = Map<DateTime>(from, "CreatedOn"),
+                ModifiedOn = Map<DateTime?>(from, "ModifiedOn"),
+                IsDeleted = Map<bool>(from, "IsDeleted"),
+                DeletedOn = Map<DateTime>(from, "DeletedOn")
             };
 
             return to;
@@ -47,16 +47,32 @@
             return Enumerable.Empty<To>();
         }
 
-        protected DateTime? Map(SqlDataReader reader, string columnName)
+        protected T Map<T>(SqlDataReader reader, string columnName)
         {
-            int columnOrdinal = reader.GetOrdinal(columnName);
-
-            if (reader.IsDBNull(columnOrdinal))
+            if (DoesColumnExist(reader, columnName))
             {
-                return null;
+                int columnOrdinal = reader.GetOrdinal(columnName);
+
+                if (!reader.IsDBNull(columnOrdinal))
+                {
+                    return (T)reader[columnName];
+                }
             }
 
-            return (DateTime?)reader.GetDateTime(columnOrdinal);
+            return default(T);
+        }
+
+        private bool DoesColumnExist(SqlDataReader reader, string columnName)
+        {
+            for (int i = 0; i < reader.FieldCount; i++)
+            {
+                if (reader.GetName(i).Equals(columnName, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
