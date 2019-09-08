@@ -9,12 +9,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SemesterRequestModel" nillable="true" type="tns:SemesterRequestModel" />
-  <xs:complexType name="ArrayOfSemesterResponseModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="SemesterResponseModel" nillable="true" type="tns:SemesterResponseModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfSemesterResponseModel" nillable="true" type="tns:ArrayOfSemesterResponseModel" />
   <xs:complexType name="SemesterResponseModel">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" base="q1:BaseResponseModel">
@@ -27,14 +21,10 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="SemesterResponseModel" nillable="true" type="tns:SemesterResponseModel" />
-  <xs:complexType name="UpdateSemesterRequestModel">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:SemesterRequestModel">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Id" type="xs:int" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
+  <xs:complexType name="ArrayOfSemesterResponseModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SemesterResponseModel" nillable="true" type="tns:SemesterResponseModel" />
+    </xs:sequence>
   </xs:complexType>
-  <xs:element name="UpdateSemesterRequestModel" nillable="true" type="tns:UpdateSemesterRequestModel" />
+  <xs:element name="ArrayOfSemesterResponseModel" nillable="true" type="tns:ArrayOfSemesterResponseModel" />
 </xs:schema>

@@ -52,7 +52,6 @@
     <Compile Include="Scores\ScoreResponseModel.cs" />
     <Compile Include="Semesters\SemesterRequestModel.cs" />
     <Compile Include="Semesters\SemesterResponseModel.cs" />
-    <Compile Include="Semesters\UpdateSemesterRequestModel.cs" />
     <Compile Include="Students\StudentRequestModel.cs" />
     <Compile Include="Students\StudentResponseModel.cs" />
     <Compile Include="Students\UpdateStudentRequestModel.cs" />

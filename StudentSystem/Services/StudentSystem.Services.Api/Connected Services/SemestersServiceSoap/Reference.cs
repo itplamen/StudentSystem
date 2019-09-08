@@ -18,7 +18,6 @@ namespace StudentSystem.Services.Api.SemestersServiceSoap {
     [System.Runtime.Serialization.DataContractAttribute(Name="SemesterRequestModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semeste" +
         "rs")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudentSystem.Services.Api.SemestersServiceSoap.UpdateSemesterRequestModel))]
     public partial class SemesterRequestModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -88,86 +87,6 @@ namespace StudentSystem.Services.Api.SemestersServiceSoap {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateSemesterRequestModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semeste" +
-        "rs")]
-    [System.SerializableAttribute()]
-    public partial class UpdateSemesterRequestModel : StudentSystem.Services.Api.SemestersServiceSoap.SemesterRequestModel {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SemesterResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semeste" +
-        "rs")]
-    [System.SerializableAttribute()]
-    public partial class SemesterResponseModel : StudentSystem.Services.Api.SemestersServiceSoap.BaseResponseModel {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime EndDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime StartDateField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime EndDate {
-            get {
-                return this.EndDateField;
-            }
-            set {
-                if ((this.EndDateField.Equals(value) != true)) {
-                    this.EndDateField = value;
-                    this.RaisePropertyChanged("EndDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime StartDate {
-            get {
-                return this.StartDateField;
-            }
-            set {
-                if ((this.StartDateField.Equals(value) != true)) {
-                    this.StartDateField = value;
-                    this.RaisePropertyChanged("StartDate");
-                }
             }
         }
     }
@@ -282,15 +201,71 @@ namespace StudentSystem.Services.Api.SemestersServiceSoap {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SemesterResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semeste" +
+        "rs")]
+    [System.SerializableAttribute()]
+    public partial class SemesterResponseModel : StudentSystem.Services.Api.SemestersServiceSoap.BaseResponseModel {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime EndDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime StartDateField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime EndDate {
+            get {
+                return this.EndDateField;
+            }
+            set {
+                if ((this.EndDateField.Equals(value) != true)) {
+                    this.EndDateField = value;
+                    this.RaisePropertyChanged("EndDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime StartDate {
+            get {
+                return this.StartDateField;
+            }
+            set {
+                if ((this.StartDateField.Equals(value) != true)) {
+                    this.StartDateField = value;
+                    this.RaisePropertyChanged("StartDate");
+                }
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SemestersServiceSoap.ISemestersService")]
     public interface ISemestersService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISemestersService/Create", ReplyAction="http://tempuri.org/ISemestersService/CreateResponse")]
-        bool Create(StudentSystem.Services.Api.SemestersServiceSoap.SemesterRequestModel request);
+        StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel Create(StudentSystem.Services.Api.SemestersServiceSoap.SemesterRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISemestersService/Create", ReplyAction="http://tempuri.org/ISemestersService/CreateResponse")]
-        System.Threading.Tasks.Task<bool> CreateAsync(StudentSystem.Services.Api.SemestersServiceSoap.SemesterRequestModel request);
+        System.Threading.Tasks.Task<StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel> CreateAsync(StudentSystem.Services.Api.SemestersServiceSoap.SemesterRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISemestersService/All", ReplyAction="http://tempuri.org/ISemestersService/AllResponse")]
         StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel[] All();
@@ -299,10 +274,10 @@ namespace StudentSystem.Services.Api.SemestersServiceSoap {
         System.Threading.Tasks.Task<StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel[]> AllAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISemestersService/Update", ReplyAction="http://tempuri.org/ISemestersService/UpdateResponse")]
-        bool Update(StudentSystem.Services.Api.SemestersServiceSoap.UpdateSemesterRequestModel request);
+        StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel Update(int id, StudentSystem.Services.Api.SemestersServiceSoap.SemesterRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISemestersService/Update", ReplyAction="http://tempuri.org/ISemestersService/UpdateResponse")]
-        System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.SemestersServiceSoap.UpdateSemesterRequestModel request);
+        System.Threading.Tasks.Task<StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel> UpdateAsync(int id, StudentSystem.Services.Api.SemestersServiceSoap.SemesterRequestModel request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISemestersService/Delete", ReplyAction="http://tempuri.org/ISemestersService/DeleteResponse")]
         bool Delete(int id);
@@ -338,11 +313,11 @@ namespace StudentSystem.Services.Api.SemestersServiceSoap {
                 base(binding, remoteAddress) {
         }
         
-        public bool Create(StudentSystem.Services.Api.SemestersServiceSoap.SemesterRequestModel request) {
+        public StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel Create(StudentSystem.Services.Api.SemestersServiceSoap.SemesterRequestModel request) {
             return base.Channel.Create(request);
         }
         
-        public System.Threading.Tasks.Task<bool> CreateAsync(StudentSystem.Services.Api.SemestersServiceSoap.SemesterRequestModel request) {
+        public System.Threading.Tasks.Task<StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel> CreateAsync(StudentSystem.Services.Api.SemestersServiceSoap.SemesterRequestModel request) {
             return base.Channel.CreateAsync(request);
         }
         
@@ -354,12 +329,12 @@ namespace StudentSystem.Services.Api.SemestersServiceSoap {
             return base.Channel.AllAsync();
         }
         
-        public bool Update(StudentSystem.Services.Api.SemestersServiceSoap.UpdateSemesterRequestModel request) {
-            return base.Channel.Update(request);
+        public StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel Update(int id, StudentSystem.Services.Api.SemestersServiceSoap.SemesterRequestModel request) {
+            return base.Channel.Update(id, request);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateAsync(StudentSystem.Services.Api.SemestersServiceSoap.UpdateSemesterRequestModel request) {
-            return base.Channel.UpdateAsync(request);
+        public System.Threading.Tasks.Task<StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel> UpdateAsync(int id, StudentSystem.Services.Api.SemestersServiceSoap.SemesterRequestModel request) {
+            return base.Channel.UpdateAsync(id, request);
         }
         
         public bool Delete(int id) {

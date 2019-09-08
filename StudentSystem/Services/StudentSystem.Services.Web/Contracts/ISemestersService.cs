@@ -9,13 +9,13 @@
     public interface ISemestersService
     {
         [OperationContract]
-        bool Create(SemesterRequestModel request);
+        SemesterResponseModel Create(SemesterRequestModel request);
 
         [OperationContract]
         IEnumerable<SemesterResponseModel> All();
 
         [OperationContract]
-        bool Update(UpdateSemesterRequestModel request);
+        SemesterResponseModel Update(int id, SemesterRequestModel request);
 
         [OperationContract]
         bool Delete(int id);

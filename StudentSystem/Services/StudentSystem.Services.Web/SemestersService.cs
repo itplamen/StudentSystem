@@ -4,6 +4,7 @@
 
     using StudentSystem.Common.Contracts;
     using StudentSystem.Data.Commands.Common;
+    using StudentSystem.Data.Commands.Semesters;
     using StudentSystem.Data.Contracts.Commands;
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Models;
@@ -16,16 +17,16 @@
         private const string TABLE_NAME = "Semesters";
 
         private readonly IMapper<Semester, SemesterResponseModel> semestersMapper;
-        private readonly ICommandHandler<EntityCommand, int> createSemesterHandler;
+        private readonly ICommandHandler<SemesterCommand, Semester> createSemesterHandler;
         private readonly ICommandHandler<DeleteEntityCommand, bool> deleteSemesterHandler;
-        private readonly ICommandHandler<UpdateEntityCommand, bool> updateSemesterHandler;
+        private readonly ICommandHandler<UpdateSemesterCommand, Semester> updateSemesterHandler;
         private readonly IQueryHandler<AllEntitiesQuery<Semester>, IEnumerable<Semester>> getAllSemestersHandler;
 
         public SemestersService(
             IMapper<Semester, SemesterResponseModel> semestersMapper,
-            ICommandHandler<EntityCommand, int> createSemesterHandler,
+            ICommandHandler<SemesterCommand, Semester> createSemesterHandler,
             ICommandHandler<DeleteEntityCommand, bool> deleteSemesterHandler,
-            ICommandHandler<UpdateEntityCommand, bool> updateSemesterHandler,
+            ICommandHandler<UpdateSemesterCommand, Semester> updateSemesterHandler,
             IQueryHandler<AllEntitiesQuery<Semester>, IEnumerable<Semester>> getAllSemestersHandler)
         {
             this.semestersMapper = semestersMapper;
@@ -35,16 +36,14 @@
             this.getAllSemestersHandler = getAllSemestersHandler;
         }
 
-        public bool Create(SemesterRequestModel request)
+        public SemesterResponseModel Create(SemesterRequestModel request)
         {
-            EntityCommand command = new EntityCommand(TABLE_NAME);
-            command.Columns.Add(nameof(request.Name), request.Name);
-            command.Columns.Add(nameof(request.StartDate), request.StartDate);
-            command.Columns.Add(nameof(request.EndDate), request.EndDate);
+            SemesterCommand command = new SemesterCommand(request.Name, request.StartDate, request.EndDate);
+            Semester semester = createSemesterHandler.Handle(command);
 
-            int id = createSemesterHandler.Handle(command);
+            SemesterResponseModel response = semestersMapper.Map(semester);
 
-            return id > 0;
+            return response;
         }
 
         public IEnumerable<SemesterResponseModel> All()
@@ -57,16 +56,14 @@
             return responseModels;
         }
 
-        public bool Update(UpdateSemesterRequestModel request)
+        public SemesterResponseModel Update(int id, SemesterRequestModel request)
         {
-            UpdateEntityCommand command = new UpdateEntityCommand(TABLE_NAME, request.Id);
-            command.Columns.Add(nameof(request.Name), request.Name);
-            command.Columns.Add(nameof(request.StartDate), request.StartDate);
-            command.Columns.Add(nameof(request.EndDate), request.EndDate);
+            UpdateSemesterCommand command = new UpdateSemesterCommand(id, request.Name, request.StartDate, request.EndDate);
+            Semester semester = updateSemesterHandler.Handle(command);
 
-            bool isUpdated = updateSemesterHandler.Handle(command);
+            SemesterResponseModel response = semestersMapper.Map(semester);
 
-            return isUpdated;
+            return response;
         }
 
         public bool Delete(int id)
