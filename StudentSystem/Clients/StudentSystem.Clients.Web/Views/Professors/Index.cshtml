@@ -201,7 +201,7 @@
                 }
             }
 
-            function fnFormatDetails(data, detailsRow) {
+            function formatDetails(data, detailsRow) {
                 let result = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
               
                 if (data.Disciplines) {
@@ -229,7 +229,7 @@
                 }
                 else {
                     image.src = '../Content/Images/details_close.png';
-                    studentSystemApi.get('/Professors/Get', { Id: professorId }, fnFormatDetails, detailsRow);              
+                    studentSystemApi.get('/Professors/Get', { Id: professorId }, formatDetails, detailsRow);              
                 }
             });
         });

@@ -1,36 +1,105 @@
 ﻿@using StudentSystem.Clients.Web.Models.Home
 
-@model IEnumerable<StudentViewModel>
+@model IEnumerable<ReportSemesterViewModel>
 @{
     ViewBag.Title = "Home Page";
 }
 
-    <table id="StudentDetails" class="dataTable">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Last name</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var student in Model)
-            {
-                <tr>
-                    <td>@student.Id</td>
-                    <td>@student.FirstName</td>
-                    <td>@student.LastName</td>
-                    <td>@student.Email</td>
-                    <td>@student.DateOfBirth</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
-    @section Scripts {
-        <script>
-            $('#StudentDetails').DataTable();
-        </script>
+<style>
+    tr {
+        text-align: center;
     }
+</style>
+
+<table id="Reports" class="dataTable">
+    <thead>
+        <tr>
+            <th>Details</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var semester in Model)
+        {
+            <tr>
+                <td class="report-details"><img class="details-img" src="~/Content/Images/details_open.png" /></td>
+                <td>@semester.Id</td>
+                <td>@semester.Name</td>
+                <td>@semester.StartDate</td>
+                <td>@semester.EndDate</td>
+            </tr>
+            <tr class="details-row">
+                <td colspan="7">
+                    <table class="report-details-table dataTable" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">
+                        <thead>
+                            <tr>
+                                <th>Discipline</th>
+                                <th>Professor Id</th>
+                                <th>Professor Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var discipline in semester.Disciplines)
+                            {
+                                <tr>
+                                    <td>@discipline.Name</td>
+                                    <td>@discipline.ProfessorId</td>
+                                    <td>@discipline.ProfessorName</td>
+                                </tr>
+                                <tr class="score-details">
+                                    <td colspan="7">
+                                        <table class="report--score-details-table dataTable" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Score</th>
+                                                    <th>Student Id</th>
+                                                    <th>PrStudentofessor Name</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var score in discipline.Scores)
+                                                {
+                                                    <tr>
+                                                        <td>@score.Mark</td>
+                                                        <td>@score.StudentId</td>
+                                                        <td>@score.StudentName</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.details-row').hide();
+ 
+            $('#Reports tbody .report-details').on('click', function () {
+                let detailsRow = $(this).parents('tr')[0];
+                let image = $(detailsRow).children('.report-details').children('.details-img')[0];
+
+                let $toggleRow = $(detailsRow).next('.details-row');
+                $toggleRow.toggle();
+
+                if ($toggleRow.is(":visible")) {
+                    image.src = "../Content/Images/details_close.png";
+                }
+                else {
+                    image.src = '../Content/Images/details_open.png';
+                }
+            });
+        });
+    </script>
+}
