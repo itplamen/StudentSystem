@@ -27,9 +27,11 @@
     <MetadataFile FileName="ProfessorsService1.xsd" MetadataType="Schema" ID="50693721-0237-4459-a767-5b79151469d9" SourceId="1" SourceUrl="http://localhost:49158/ProfessorsService.svc?xsd=xsd2" />
     <MetadataFile FileName="ProfessorsService2.xsd" MetadataType="Schema" ID="e87a6272-3db4-49b0-826a-57f093a0a37e" SourceId="1" SourceUrl="http://localhost:49158/ProfessorsService.svc?xsd=xsd1" />
     <MetadataFile FileName="ProfessorsService3.xsd" MetadataType="Schema" ID="084bb931-483c-43c8-a5be-6150ec316897" SourceId="1" SourceUrl="http://localhost:49158/ProfessorsService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ProfessorsService5.xsd" MetadataType="Schema" ID="fcc405d1-16c3-44cc-92f6-4a2cab7a4911" SourceId="1" SourceUrl="http://localhost:49158/ProfessorsService.svc?xsd=xsd7" />
     <MetadataFile FileName="ProfessorsService.disco" MetadataType="Disco" ID="a3e03bbb-b640-4c53-9324-0550c09b2831" SourceId="1" SourceUrl="http://localhost:49158/ProfessorsService.svc?disco" />
     <MetadataFile FileName="ProfessorsService4.xsd" MetadataType="Schema" ID="ab70c806-95c5-4b9b-83ea-48925df975b7" SourceId="1" SourceUrl="http://localhost:49158/ProfessorsService.svc?xsd=xsd5" />
     <MetadataFile FileName="ProfessorsService41.xsd" MetadataType="Schema" ID="97206c39-43fa-43ca-9460-93e4b24d387e" SourceId="1" SourceUrl="http://localhost:49158/ProfessorsService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ProfessorsService51.xsd" MetadataType="Schema" ID="08d7b4b1-36d1-4adf-b810-31092ffd8f07" SourceId="1" SourceUrl="http://localhost:49158/ProfessorsService.svc?xsd=xsd6" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

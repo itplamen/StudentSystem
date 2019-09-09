@@ -22,12 +22,16 @@
     <MetadataSource Address="http://localhost:49158/SemestersService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="SemestersService.xsd" MetadataType="Schema" ID="5f5dd2b4-c00c-4d3e-aac1-b8dcdbc3fae3" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd5" />
     <MetadataFile FileName="SemestersService1.xsd" MetadataType="Schema" ID="bcd441db-7eac-45a2-94b6-2f6dc31a0595" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd2" />
     <MetadataFile FileName="SemestersService.wsdl" MetadataType="Wsdl" ID="54ca9179-76ea-4459-8392-f08e09cb6296" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?wsdl" />
     <MetadataFile FileName="SemestersService2.xsd" MetadataType="Schema" ID="e5263292-4e57-4cc0-9f27-90401bd3401b" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SemestersService3.xsd" MetadataType="Schema" ID="d01b13b3-a344-44e3-83cf-e5051f89323f" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd6" />
     <MetadataFile FileName="SemestersService4.xsd" MetadataType="Schema" ID="dc69d4b9-fd5d-40a6-95b5-75291b02dec4" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd3" />
+    <MetadataFile FileName="SemestersService5.xsd" MetadataType="Schema" ID="7b07f2c5-9cf0-44be-8724-f9065e5420e3" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd4" />
     <MetadataFile FileName="SemestersService6.xsd" MetadataType="Schema" ID="9e960e45-11d6-4b29-b2c7-2571094e1595" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd1" />
     <MetadataFile FileName="SemestersService.disco" MetadataType="Disco" ID="d48faf62-b3ed-4a57-9bc5-81e9c749e548" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?disco" />
+    <MetadataFile FileName="SemestersService7.xsd" MetadataType="Schema" ID="fd068e22-b841-45fb-bb97-6946ce34af96" SourceId="1" SourceUrl="http://localhost:49158/SemestersService.svc?xsd=xsd7" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

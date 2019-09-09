@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:49158/ProfessorsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" />
-  <xs:import schemaLocation="http://localhost:49158/ProfessorsService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores" />
-  <xs:import schemaLocation="http://localhost:49158/ProfessorsService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semesters" />
-  <xs:import schemaLocation="http://localhost:49158/ProfessorsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" />
+  <xs:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" />
+  <xs:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores" />
+  <xs:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semesters" />
+  <xs:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" />
   <xs:complexType name="ArrayOfDisciplineResponseModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DisciplineResponseModel" nillable="true" type="tns:DisciplineResponseModel" />

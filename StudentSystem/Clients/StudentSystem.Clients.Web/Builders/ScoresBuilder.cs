@@ -5,8 +5,7 @@
     using AutoMapper;
 
     using StudentSystem.Clients.Web.Models.Home;
-    using StudentSystem.Services.Api.DisciplinesServiceSoap;
-    using StudentSystem.Services.Api.StudentsServiceSoap;
+     using StudentSystem.Services.Api.StudentsServiceSoap;
 
     public class ScoresBuilder
     {

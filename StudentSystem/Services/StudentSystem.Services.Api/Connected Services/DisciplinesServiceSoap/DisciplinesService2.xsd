@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:49158/DisciplinesService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" />
-  <xs:import schemaLocation="http://localhost:49158/DisciplinesService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semesters" />
+  <xs:import schemaLocation="http://localhost:49158/DisciplinesService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores" />
+  <xs:import schemaLocation="http://localhost:49158/DisciplinesService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semesters" />
   <xs:import schemaLocation="http://localhost:49158/DisciplinesService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" />
   <xs:complexType name="DisciplineRequestModel">
     <xs:sequence>
@@ -18,7 +19,8 @@
           <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
           <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" minOccurs="0" name="Professor" nillable="true" type="q2:ProfessorResponseModel" />
           <xs:element minOccurs="0" name="ProfessorId" type="xs:int" />
-          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semesters" minOccurs="0" name="Semester" nillable="true" type="q3:SemesterResponseModel" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores" minOccurs="0" name="Scores" nillable="true" type="q3:ArrayOfScoreResponseModel" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semesters" minOccurs="0" name="Semester" nillable="true" type="q4:SemesterResponseModel" />
           <xs:element minOccurs="0" name="SemesterId" type="xs:int" />
         </xs:sequence>
       </xs:extension>

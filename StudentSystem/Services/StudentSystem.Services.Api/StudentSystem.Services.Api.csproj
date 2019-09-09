@@ -97,6 +97,12 @@
     <None Include="Connected Services\DisciplinesServiceSoap\DisciplinesService5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\DisciplinesServiceSoap\DisciplinesService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DisciplinesServiceSoap\DisciplinesService61.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\DisciplinesServiceSoap\StudentSystem.Services.Api.DisciplinesServiceSoap.DisciplineResponseModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -117,6 +123,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ProfessorsServiceSoap\ProfessorsService41.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProfessorsServiceSoap\ProfessorsService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProfessorsServiceSoap\ProfessorsService51.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ProfessorsServiceSoap\StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel.datasource">
@@ -142,16 +154,28 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SemestersServiceSoap\SemestersService.wsdl" />
+    <None Include="Connected Services\SemestersServiceSoap\SemestersService.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\SemestersServiceSoap\SemestersService1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\SemestersServiceSoap\SemestersService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\SemestersServiceSoap\SemestersService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\SemestersServiceSoap\SemestersService4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\SemestersServiceSoap\SemestersService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\SemestersServiceSoap\SemestersService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SemestersServiceSoap\SemestersService7.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\SemestersServiceSoap\StudentSystem.Services.Api.SemestersServiceSoap.SemesterResponseModel.datasource">
@@ -162,6 +186,15 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\StudentsServiceSoap\StudentsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StudentsServiceSoap\StudentsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StudentsServiceSoap\StudentsService21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StudentsServiceSoap\StudentsService22.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\StudentsServiceSoap\StudentsService4.xsd">

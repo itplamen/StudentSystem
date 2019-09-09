@@ -6,6 +6,10 @@
       <xsd:import schemaLocation="http://localhost:49158/SemestersService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:49158/SemestersService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semesters" />
       <xsd:import schemaLocation="http://localhost:49158/SemestersService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" />
+      <xsd:import schemaLocation="http://localhost:49158/SemestersService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" />
+      <xsd:import schemaLocation="http://localhost:49158/SemestersService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Professors" />
+      <xsd:import schemaLocation="http://localhost:49158/SemestersService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores" />
+      <xsd:import schemaLocation="http://localhost:49158/SemestersService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Students" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ISemestersService_Create_InputMessage">

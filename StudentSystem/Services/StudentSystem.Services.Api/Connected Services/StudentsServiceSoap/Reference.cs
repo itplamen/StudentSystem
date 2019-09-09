@@ -140,6 +140,9 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
     public partial class SemesterResponseModel : StudentSystem.Services.Api.StudentsServiceSoap.BaseResponseModel {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private StudentSystem.Services.Api.StudentsServiceSoap.DisciplineResponseModel[] DisciplinesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime EndDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -147,6 +150,19 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime StartDateField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public StudentSystem.Services.Api.StudentsServiceSoap.DisciplineResponseModel[] Disciplines {
+            get {
+                return this.DisciplinesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DisciplinesField, value) != true)) {
+                    this.DisciplinesField = value;
+                    this.RaisePropertyChanged("Disciplines");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime EndDate {
@@ -192,6 +208,10 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudentSystem.Services.Api.StudentsServiceSoap.DisciplineResponseModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudentSystem.Services.Api.StudentsServiceSoap.ProfessorResponseModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudentSystem.Services.Api.StudentsServiceSoap.ScoreResponseModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudentSystem.Services.Api.StudentsServiceSoap.StudentResponseModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudentSystem.Services.Api.StudentsServiceSoap.SemesterResponseModel))]
     public partial class BaseResponseModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -294,6 +314,309 @@ namespace StudentSystem.Services.Api.StudentsServiceSoap {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DisciplineResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Discipl" +
+        "ines")]
+    [System.SerializableAttribute()]
+    public partial class DisciplineResponseModel : StudentSystem.Services.Api.StudentsServiceSoap.BaseResponseModel {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private StudentSystem.Services.Api.StudentsServiceSoap.ProfessorResponseModel ProfessorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProfessorIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private StudentSystem.Services.Api.StudentsServiceSoap.ScoreResponseModel[] ScoresField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private StudentSystem.Services.Api.StudentsServiceSoap.SemesterResponseModel SemesterField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SemesterIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public StudentSystem.Services.Api.StudentsServiceSoap.ProfessorResponseModel Professor {
+            get {
+                return this.ProfessorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProfessorField, value) != true)) {
+                    this.ProfessorField = value;
+                    this.RaisePropertyChanged("Professor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProfessorId {
+            get {
+                return this.ProfessorIdField;
+            }
+            set {
+                if ((this.ProfessorIdField.Equals(value) != true)) {
+                    this.ProfessorIdField = value;
+                    this.RaisePropertyChanged("ProfessorId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public StudentSystem.Services.Api.StudentsServiceSoap.ScoreResponseModel[] Scores {
+            get {
+                return this.ScoresField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ScoresField, value) != true)) {
+                    this.ScoresField = value;
+                    this.RaisePropertyChanged("Scores");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public StudentSystem.Services.Api.StudentsServiceSoap.SemesterResponseModel Semester {
+            get {
+                return this.SemesterField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SemesterField, value) != true)) {
+                    this.SemesterField = value;
+                    this.RaisePropertyChanged("Semester");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SemesterId {
+            get {
+                return this.SemesterIdField;
+            }
+            set {
+                if ((this.SemesterIdField.Equals(value) != true)) {
+                    this.SemesterIdField = value;
+                    this.RaisePropertyChanged("SemesterId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProfessorResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Profess" +
+        "ors")]
+    [System.SerializableAttribute()]
+    public partial class ProfessorResponseModel : StudentSystem.Services.Api.StudentsServiceSoap.BaseResponseModel {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private StudentSystem.Services.Api.StudentsServiceSoap.DisciplineResponseModel[] DisciplinesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastNameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public StudentSystem.Services.Api.StudentsServiceSoap.DisciplineResponseModel[] Disciplines {
+            get {
+                return this.DisciplinesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DisciplinesField, value) != true)) {
+                    this.DisciplinesField = value;
+                    this.RaisePropertyChanged("Disciplines");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FirstName {
+            get {
+                return this.FirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
+                    this.FirstNameField = value;
+                    this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ScoreResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores")]
+    [System.SerializableAttribute()]
+    public partial class ScoreResponseModel : StudentSystem.Services.Api.StudentsServiceSoap.BaseResponseModel {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DisciplineIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float MarkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private StudentSystem.Services.Api.StudentsServiceSoap.StudentResponseModel StudentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StudentIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DisciplineId {
+            get {
+                return this.DisciplineIdField;
+            }
+            set {
+                if ((this.DisciplineIdField.Equals(value) != true)) {
+                    this.DisciplineIdField = value;
+                    this.RaisePropertyChanged("DisciplineId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float Mark {
+            get {
+                return this.MarkField;
+            }
+            set {
+                if ((this.MarkField.Equals(value) != true)) {
+                    this.MarkField = value;
+                    this.RaisePropertyChanged("Mark");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public StudentSystem.Services.Api.StudentsServiceSoap.StudentResponseModel Student {
+            get {
+                return this.StudentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StudentField, value) != true)) {
+                    this.StudentField = value;
+                    this.RaisePropertyChanged("Student");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StudentId {
+            get {
+                return this.StudentIdField;
+            }
+            set {
+                if ((this.StudentIdField.Equals(value) != true)) {
+                    this.StudentIdField = value;
+                    this.RaisePropertyChanged("StudentId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StudentResponseModel", Namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Student" +
+        "s")]
+    [System.SerializableAttribute()]
+    public partial class StudentResponseModel : StudentSystem.Services.Api.StudentsServiceSoap.BaseResponseModel {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateOfBirthField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastNameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateOfBirth {
+            get {
+                return this.DateOfBirthField;
+            }
+            set {
+                if ((this.DateOfBirthField.Equals(value) != true)) {
+                    this.DateOfBirthField = value;
+                    this.RaisePropertyChanged("DateOfBirth");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FirstName {
+            get {
+                return this.FirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
+                    this.FirstNameField = value;
+                    this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
             }
         }
     }

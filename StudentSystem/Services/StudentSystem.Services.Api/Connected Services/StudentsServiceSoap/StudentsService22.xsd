@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Scores" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:49158/DisciplinesService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Students" />
-  <xs:import schemaLocation="http://localhost:49158/DisciplinesService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" />
+  <xs:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Students" />
+  <xs:import schemaLocation="http://localhost:49158/StudentsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" />
   <xs:complexType name="ArrayOfScoreResponseModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="ScoreResponseModel" nillable="true" type="tns:ScoreResponseModel" />

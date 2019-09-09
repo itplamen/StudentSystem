@@ -27,8 +27,10 @@
     <MetadataFile FileName="DisciplinesService2.xsd" MetadataType="Schema" ID="d994ce93-0c02-4ac1-8a5e-d6ae925f2206" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?xsd=xsd2" />
     <MetadataFile FileName="DisciplinesService3.xsd" MetadataType="Schema" ID="3b4f9855-a437-4867-8878-abcd6999f160" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?xsd=xsd3" />
     <MetadataFile FileName="DisciplinesService.wsdl" MetadataType="Wsdl" ID="b68c191a-7783-4521-930c-efcb133ef494" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?wsdl" />
+    <MetadataFile FileName="DisciplinesService6.xsd" MetadataType="Schema" ID="a1517ff3-fae0-407e-bc8d-ed3e80657a1d" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?xsd=xsd7" />
     <MetadataFile FileName="DisciplinesService4.xsd" MetadataType="Schema" ID="7e2a5599-061e-405d-b75d-ac1bfd5f059d" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?xsd=xsd4" />
     <MetadataFile FileName="DisciplinesService5.xsd" MetadataType="Schema" ID="09e9f5c1-c871-475b-9ee6-6746ac40c5b4" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?xsd=xsd5" />
+    <MetadataFile FileName="DisciplinesService61.xsd" MetadataType="Schema" ID="fed2bb01-127d-482f-8703-a5a832e4e2db" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?xsd=xsd6" />
     <MetadataFile FileName="DisciplinesService.disco" MetadataType="Disco" ID="e38798c0-89d7-46ee-9528-9384c07f060c" SourceId="1" SourceUrl="http://localhost:49158/DisciplinesService.svc?disco" />
   </Metadata>
   <Extensions>
