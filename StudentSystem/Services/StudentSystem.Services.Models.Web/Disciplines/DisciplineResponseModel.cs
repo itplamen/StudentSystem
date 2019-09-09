@@ -1,9 +1,11 @@
 ﻿namespace StudentSystem.Services.Models.Web.Disciplines
 {
+    using System.Collections.Generic;
     using System.Runtime.Serialization;
 
     using StudentSystem.Services.Models.Web.Base;
     using StudentSystem.Services.Models.Web.Professors;
+    using StudentSystem.Services.Models.Web.Scores;
     using StudentSystem.Services.Models.Web.Semesters;
 
     [DataContract]
@@ -23,5 +25,8 @@
 
         [DataMember]
         public SemesterResponseModel Semester { get; set; }
+
+        [DataMember]
+        public IEnumerable<ScoreResponseModel> Scores { get; set; }
     }
 }

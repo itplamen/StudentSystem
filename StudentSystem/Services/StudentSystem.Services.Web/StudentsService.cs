@@ -5,10 +5,11 @@
     using StudentSystem.Common.Contracts;
     using StudentSystem.Common.Validators;
     using StudentSystem.Data.Commands.Common;
+    using StudentSystem.Data.Commands.Students;
     using StudentSystem.Data.Contracts.Commands;
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Models;
-    using StudentSystem.Services.Models.Web.Semesters;
+    using StudentSystem.Data.Queries.Common;
     using StudentSystem.Services.Models.Web.Students;
     using StudentSystem.Services.Web.Contracts;
 
@@ -17,74 +18,70 @@
         private const string TABLE_NAME = "Students";
 
         private readonly IValidator<StudentRequestModel> validator;
-        private readonly IMapper<Semester, SemesterResponseModel> semestersMapper;
-        private readonly ICommandHandler<EntityCommand, int> createStudentHandler;
-        private readonly ICommandHandler<UpdateEntityCommand, bool> updateStudentHandler;
-        private readonly IQueryHandler<IEnumerable<Semester>> studentDetailsHandler;
+        private readonly IMapper<Student, StudentResponseModel> studentsMapper;
+        private readonly ICommandHandler<StudentCommand, Student> createStudentHandler;
+        private readonly ICommandHandler<UpdateStudentCommand, Student> updateStudentHandler;
+        private readonly IQueryHandler<AllEntitiesQuery<Student>, IEnumerable<Student>> getAllStudentsHandler;
         private readonly ICommandHandler<DeleteEntityCommand, bool> deleteStudentHandler;
 
         public StudentsService(
             IValidator<StudentRequestModel> validator,
-            IMapper<Semester, SemesterResponseModel> semestersMapper,
-            ICommandHandler<EntityCommand, int> createStudentHandler,
-            ICommandHandler<UpdateEntityCommand, bool> updateStudentHandler,
-            IQueryHandler<IEnumerable<Semester>> studentDetailsHandler,
+            IMapper<Student, StudentResponseModel> studentsMapper,
+            ICommandHandler<StudentCommand, Student> createStudentHandler,
+            ICommandHandler<UpdateStudentCommand, Student> updateStudentHandler,
+            IQueryHandler<AllEntitiesQuery<Student>, IEnumerable<Student>> getAllStudentsHandler,
             ICommandHandler<DeleteEntityCommand, bool> deleteStudentHandler)
         {
             this.validator = validator;
-            this.semestersMapper = semestersMapper;
+            this.studentsMapper = studentsMapper;
             this.createStudentHandler = createStudentHandler;
             this.updateStudentHandler = updateStudentHandler;
-            this.studentDetailsHandler = studentDetailsHandler;
+            this.getAllStudentsHandler = getAllStudentsHandler;
             this.deleteStudentHandler = deleteStudentHandler;
         }
 
-        public bool Create(StudentRequestModel request)
+        public StudentResponseModel Create(StudentRequestModel request)
         {
             ValidationResult validationResult = validator.Validate(request);
 
             if (validationResult.HasErrors)
             {
-                return false;
+                return null;
             }
 
-            EntityCommand command = new EntityCommand(TABLE_NAME);
-            command.Columns.Add(nameof(request.FirstName), request.FirstName);
-            command.Columns.Add(nameof(request.LastName), request.LastName);
-            command.Columns.Add(nameof(request.Email), request.Email);
-            command.Columns.Add(nameof(request.DateOfBirth), request.DateOfBirth);
+            StudentCommand command = new StudentCommand(request.FirstName, request.LastName, request.Email, request.DateOfBirth);
+            Student student = createStudentHandler.Handle(command);
 
-            int id = createStudentHandler.Handle(command);
+            StudentResponseModel response = studentsMapper.Map(student);
 
-            return id > 0;
+            return response;
         }
 
-        public IEnumerable<SemesterResponseModel> Get()
+        public IEnumerable<StudentResponseModel> All()
         {
-            IEnumerable<Semester> studentDetails = studentDetailsHandler.Handle();
-            IEnumerable<SemesterResponseModel> semestersResponse = semestersMapper.Map(studentDetails);
+            AllEntitiesQuery<Student> query = new AllEntitiesQuery<Student>(TABLE_NAME, false);
+            IEnumerable<Student> students = getAllStudentsHandler.Handle(query);
 
-            return semestersResponse;
+            IEnumerable<StudentResponseModel> response = studentsMapper.Map(students);
+
+            return response;
         }
 
-        public bool Update(UpdateStudentRequestModel request)
+        public StudentResponseModel Update(int id, StudentRequestModel request)
         {
             ValidationResult validationResult = validator.Validate(request);
 
             if (validationResult.HasErrors)
             {
-                return false;
+                return null;
             }
 
-            UpdateEntityCommand command = new UpdateEntityCommand(TABLE_NAME, request.Id);
-            command.Columns.Add(nameof(request.FirstName), request.FirstName);
-            command.Columns.Add(nameof(request.LastName), request.LastName);
-            command.Columns.Add(nameof(request.Email), request.Email);
-            command.Columns.Add(nameof(request.DateOfBirth), request.DateOfBirth);
+            UpdateStudentCommand command = new UpdateStudentCommand(id, request.FirstName, request.LastName, request.Email, request.DateOfBirth);
+            Student student = updateStudentHandler.Handle(command);
 
-            bool isUpdated = updateStudentHandler.Handle(command);
+            StudentResponseModel response = studentsMapper.Map(student);
 
-            return isUpdated;
+            return response;
         }
 
         public bool Delete(int id)

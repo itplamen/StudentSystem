@@ -54,7 +54,6 @@
     <Compile Include="Semesters\SemesterResponseModel.cs" />
     <Compile Include="Students\StudentRequestModel.cs" />
     <Compile Include="Students\StudentResponseModel.cs" />
-    <Compile Include="Students\UpdateStudentRequestModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

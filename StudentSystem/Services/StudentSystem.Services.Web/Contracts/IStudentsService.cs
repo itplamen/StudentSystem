@@ -3,20 +3,19 @@
     using System.Collections.Generic;
     using System.ServiceModel;
 
-    using StudentSystem.Services.Models.Web.Semesters;
     using StudentSystem.Services.Models.Web.Students;
 
     [ServiceContract]
     public interface IStudentsService
     {
         [OperationContract]
-        bool Create(StudentRequestModel request);
+        StudentResponseModel Create(StudentRequestModel request);
 
         [OperationContract]
-        IEnumerable<SemesterResponseModel> Get();
+        IEnumerable<StudentResponseModel> All();
 
         [OperationContract]
-        bool Update(UpdateStudentRequestModel request);
+        StudentResponseModel Update(int id, StudentRequestModel request);
 
         [OperationContract]
         bool Delete(int id);
