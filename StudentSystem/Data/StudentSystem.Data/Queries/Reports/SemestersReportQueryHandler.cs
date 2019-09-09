@@ -1,4 +1,4 @@
-﻿namespace StudentSystem.Data.Queries.Students
+﻿namespace StudentSystem.Data.Queries.Reports
 {
     using System.Collections.Generic;
     using System.Data;
@@ -9,12 +9,12 @@
     using StudentSystem.Data.Contracts.Queries;
     using StudentSystem.Data.Models;
 
-    public class ActiveStudentDetailsQueryHandler : IQueryHandler<IEnumerable<Semester>>
+    public class SemestersReportQueryHandler : IQueryHandler<IEnumerable<Semester>>
     {
         private readonly ISqlQueryExecutor sqlQueryExecutor;
         private readonly IBuilder<SqlDataReader, Semester> studentDetailsBuilder;
 
-        public ActiveStudentDetailsQueryHandler(ISqlQueryExecutor sqlQueryExecutor, IBuilder<SqlDataReader, Semester> studentDetailsBuilder)
+        public SemestersReportQueryHandler(ISqlQueryExecutor sqlQueryExecutor, IBuilder<SqlDataReader, Semester> studentDetailsBuilder)
         {
             this.sqlQueryExecutor = sqlQueryExecutor;
             this.studentDetailsBuilder = studentDetailsBuilder;
