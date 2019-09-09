@@ -169,6 +169,8 @@
     <Compile Include="Models\Scores\ScoreResponseViewModel.cs" />
     <Compile Include="Models\Semesters\SemesterResponseViewModel.cs" />
     <Compile Include="Models\Semesters\SemesterViewModel.cs" />
+    <Compile Include="Models\Students\StudentRequestViewModel.cs" />
+    <Compile Include="Models\Students\StudentResponseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
