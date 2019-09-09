@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\DisciplinesBuilder.cs" />
+    <Compile Include="Builders\SemestersBuilder.cs" />
     <Compile Include="Contracts\IDisciplinesService.cs" />
     <Compile Include="Contracts\IProfessorsService.cs" />
     <Compile Include="Contracts\IScoresService.cs" />

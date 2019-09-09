@@ -11,6 +11,7 @@
     using StudentSystem.Services.Models.Web.Scores;
     using StudentSystem.Services.Models.Web.Semesters;
     using StudentSystem.Services.Models.Web.Students;
+    using StudentSystem.Services.Web.Builders;
     using StudentSystem.Services.Web.Mappers;
     using StudentSystem.Services.Web.Validators.Students;
 
@@ -20,6 +21,7 @@
         {
             RegisterMappers(container);
             RegisterValidators(container);
+            RegisterBuilders(container);
         }
 
         public void RegisterMappers(Container container)
@@ -36,6 +38,12 @@
             container.Register(typeof(IValidator<StudentRequestModel>), typeof(ValidatorComposite<StudentRequestModel>), Lifestyle.Singleton);
             container.Collection.Append(typeof(IValidator<StudentRequestModel>), typeof(StudentNameValidator), Lifestyle.Singleton);
             container.Collection.Append(typeof(IValidator<StudentRequestModel>), typeof(StudentEmailValidator), Lifestyle.Singleton);
+        }
+
+        public void RegisterBuilders(Container container)
+        {
+            container.Register(typeof(IBuilder<Semester, SemesterResponseModel>), typeof(SemestersBuilder), Lifestyle.Singleton);
+            container.Register(typeof(IBuilder<Discipline, DisciplineResponseModel>), typeof(DisciplinesBuilder), Lifestyle.Singleton);
         }
     }
 }
