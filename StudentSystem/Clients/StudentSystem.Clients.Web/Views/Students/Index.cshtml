@@ -1,0 +1,219 @@
+﻿@using StudentSystem.Clients.Web.Models.Students
+
+@model IEnumerable<StudentResponseViewModel>
+@{
+    ViewBag.Title = "Students";
+}
+
+<style>
+    label, input {
+        display: block;
+    }
+
+        input.text {
+            margin-bottom: 12px;
+            width: 95%;
+            padding: .4em;
+        }
+
+    fieldset {
+        padding: 0;
+        border: 0;
+        margin-top: 25px;
+    }
+
+    .ui-dialog {
+        padding: .3em;
+    }
+
+    #create {
+        margin-bottom: 10px;
+    }
+</style>
+
+<button id="create">Create</button>
+
+<table id="StudentsTable" class="dataTable">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Date Of Birth</th>
+            <th>Created On</th>
+            <th>Modified On</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td class="student-id">@student.Id</td>
+                <td class="student-first-name">@student.FirstName</td>
+                <td class="student-last-name">@student.LastName</td>
+                <td class="student-email">@student.Email</td>
+                <td class="student-date-of-birth">@student.DateOfBirth</td>
+                <td>@student.CreatedOn</td>
+                <td>@student.ModifiedOn</td>
+                <td>
+                    <button class="update ui-button ui-corner-all">Update</button>
+                    <button class="delete ui-button ui-corner-all">Delete </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="dialog-form">
+    <form>
+        <fieldset>
+            <label for="first-name">First Name</label>
+            <input type="text" name="first-name" id="first-name" class="text ui-widget-content ui-corner-all">
+
+            <label for="last-name">Last Name</label>
+            <input type="text" name="last-name" id="last-name" class="text ui-widget-content ui-corner-all">
+
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" class="text ui-widget-content ui-corner-all">
+
+            <label for="date-of-birth">Date Of Birth</label>
+            <input type="text" name="date-of-birth" id="date-of-birth" class="text ui-widget-content ui-corner-all">
+        </fieldset>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            let $studentsTable = $('#StudentsTable').DataTable({
+                "sPaginationType": "full_numbers",
+                "aaSorting": [[0, 'asc']],
+            });
+
+            let dialog = $("#dialog-form").dialog({
+                autoOpen: false,
+                height: 420,
+                width: 350,
+                modal: true,
+                close: clearForm
+            });
+
+            function clearForm() {
+                $('#first-name').val('');
+                $('#last-name').val('');
+                $('#email').val('');
+                $('#date-of-birth').val('');
+            }
+
+            $("#create").button().on("click", function () {
+                dialog.dialog("option", "title", "Create new student");
+                dialog.dialog("option", "buttons",
+                    [
+                        {
+                            text: "Create",
+                            click: function() {
+                                const requestModel = {
+                                    FirstName: $('#first-name').val(),
+                                    LastName: $('#last-name').val(),
+                                    Email: $('email').val(),
+                                    DateOfBirth: $('#date-of-birth').val()
+                                };
+
+                                studentSystemApi.post('/Students/Create', requestModel, successfullyCreatedStudent);
+                                clearForm();
+
+                                dialog.dialog("close");
+                            }
+                        },
+                        {
+                            text: "Close",
+                            click: function () {
+                                dialog.dialog("close");
+                            }
+                        }
+                    ]
+                );
+
+                dialog.dialog("open");
+            });
+
+            $(".update").click(function () {
+                let column = $(this).parent();
+
+                $('#first-name').val(column.siblings('.student-first-name').html());
+                $('#last-name').val(column.siblings('.student-last-name').html());
+                $('#email').val(column.siblings('.student-email').html());
+                $('#last-name').val(column.siblings('.student-date-of-birth').html());
+
+                dialog.dialog("option", "title", "Update student")
+                dialog.dialog("option", "buttons",
+                    [
+                        {
+                            text: "Update",
+                            click: function () {
+                                const requestModel = {
+                                    Id: column.siblings('.student-id').html(),
+                                    FirstName: $('#first-name').val(),
+                                    LastName: $('#last-name').val(),
+                                    Email: $('email').val(),
+                                    DateOfBirth: $('#date-of-birth').val()
+                                };
+
+                                studentSystemApi.post('/Students/Update', requestModel, successfullyUpdatedStudent, column.parent().index());
+                                clearForm();
+
+                                dialog.dialog("close");
+                            }
+                        },
+                        {
+                            text: "Close",
+                            click: function () {
+                                dialog.dialog("close");
+                            }
+                        }
+                    ]
+                );
+
+                dialog.dialog("open");
+            });
+
+            $('.delete').on("click", function () {
+                let row = $(this).parent();
+                let studentId = row.siblings('.student-id').html();
+
+                studentSystemApi.post('/Students/Delete', { "Id": studentId }, successfullyDeletedStudent, row);
+            });
+
+            function successfullyCreatedStudent(data) {
+                $studentsTable.fnAddData([
+                    data.Id,
+                    data.FirstName,
+                    data.LastName,
+                    data.CreatedOn,
+                    data.ModifiedOn,
+                    '<td><button class="update ui-button ui-corner-all">Update</button><button class="delete ui-button ui-corner-all">Delete </button></td>']);
+
+                alert('Sucessfully created new student!');
+            }
+
+            function successfullyUpdatedStudent(data, rowIndex) {
+                $studentsTable.fnUpdate(data.FirstName, rowIndex, 2);
+                $studentsTable.fnUpdate(data.LastName, rowIndex, 3);
+                $studentsTable.fnUpdate(data.ModifiedOn, rowIndex, 5);
+
+                alert('Sucessfully updated student!');
+            }
+
+            function successfullyDeletedStudent(isDeleted, row) {
+                if (isDeleted == true) {
+                    $studentsTable.fnDeleteRow(row.parent()[0]);
+
+                    alert('Sucessfully deleted student!');
+                }
+            }
+        });
+
+    </script>
+}
