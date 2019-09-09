@@ -4,30 +4,29 @@
     using System.Threading.Tasks;
     using System.Web.Mvc;
 
-    using StudentSystem.Clients.Web.Builders;
+    using AutoMapper;
+
     using StudentSystem.Clients.Web.Models.Home;
     using StudentSystem.Services.Api.Contracts;
-    using StudentSystem.Services.Api.StudentsServiceSoap;
-
+    using StudentSystem.Services.Api.ReportsServiceSoap;
+ 
     public class HomeController : Controller
     {
         private readonly IStudentSystemApi studentSystemApi;
-        private readonly StudentsServiceClient studentsClient;
+        private readonly ReportsServiceClient reportsClient;
 
-        public HomeController(IStudentSystemApi studentSystemApi, StudentsServiceClient studentsClient)
+        public HomeController(IStudentSystemApi studentSystemApi, ReportsServiceClient reportsClient)
         {
             this.studentSystemApi = studentSystemApi;
-            this.studentsClient = studentsClient;
+            this.reportsClient = reportsClient;
         }
 
         public async Task<ActionResult> Index()
         {
-            //IEnumerable<SemesterResponseModel> response = await studentSystemApi.Execute(studentsClient.GetAsync);
-            //IEnumerable<StudentViewModel> studentViewModels = StudentsBuilder.Build(response);
+            IEnumerable<SemesterResponseModel> response = await studentSystemApi.Execute(reportsClient.GetStemestersAsync);
+            IEnumerable<ReportSemesterViewModel> viewModel = Mapper.Map<IEnumerable<ReportSemesterViewModel>>(response);
 
-            //return View(studentViewModels);
-
-            return View();
+            return View(viewModel);
         }
 
         public ActionResult About()
