@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semesters" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Semesters" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:49158/ReportsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" />
+  <xs:import schemaLocation="http://localhost:49158/ReportsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" />
+  <xs:complexType name="ArrayOfSemesterResponseModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SemesterResponseModel" nillable="true" type="tns:SemesterResponseModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSemesterResponseModel" nillable="true" type="tns:ArrayOfSemesterResponseModel" />
+  <xs:complexType name="SemesterResponseModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Base" base="q1:BaseResponseModel">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/StudentSystem.Services.Models.Web.Disciplines" minOccurs="0" name="Disciplines" nillable="true" type="q2:ArrayOfDisciplineResponseModel" />
+          <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SemesterResponseModel" nillable="true" type="tns:SemesterResponseModel" />
+</xs:schema>

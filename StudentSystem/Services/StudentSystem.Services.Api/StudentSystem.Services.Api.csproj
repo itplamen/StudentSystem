@@ -56,6 +56,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\ReportsServiceSoap\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ScoresServiceSoap\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -132,6 +137,34 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ProfessorsServiceSoap\StudentSystem.Services.Api.ProfessorsServiceSoap.ProfessorResponseModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportsServiceSoap\ReportsService.wsdl" />
+    <None Include="Connected Services\ReportsServiceSoap\ReportsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReportsServiceSoap\ReportsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReportsServiceSoap\ReportsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReportsServiceSoap\ReportsService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReportsServiceSoap\ReportsService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReportsServiceSoap\ReportsService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReportsServiceSoap\ReportsService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReportsServiceSoap\ReportsService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReportsServiceSoap\StudentSystem.Services.Api.ReportsServiceSoap.SemesterResponseModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ScoresServiceSoap\ScoresService.wsdl" />
@@ -211,6 +244,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\DisciplinesServiceSoap\" />
     <WCFMetadataStorage Include="Connected Services\ProfessorsServiceSoap\" />
+    <WCFMetadataStorage Include="Connected Services\ReportsServiceSoap\" />
     <WCFMetadataStorage Include="Connected Services\ScoresServiceSoap\" />
     <WCFMetadataStorage Include="Connected Services\SemestersServiceSoap\" />
     <WCFMetadataStorage Include="Connected Services\StudentsServiceSoap\" />
@@ -286,6 +320,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ScoresServiceSoap\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ReportsServiceSoap\ReportsService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ReportsServiceSoap\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ReportsServiceSoap\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ReportsServiceSoap\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

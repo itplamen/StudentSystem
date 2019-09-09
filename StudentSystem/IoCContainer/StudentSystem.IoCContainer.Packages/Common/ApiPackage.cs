@@ -7,6 +7,7 @@
     using StudentSystem.Services.Api.Contracts;
     using StudentSystem.Services.Api.DisciplinesServiceSoap;
     using StudentSystem.Services.Api.ProfessorsServiceSoap;
+    using StudentSystem.Services.Api.ReportsServiceSoap;
     using StudentSystem.Services.Api.ScoresServiceSoap;
     using StudentSystem.Services.Api.SemestersServiceSoap;
     using StudentSystem.Services.Api.StudentsServiceSoap;
@@ -23,6 +24,7 @@
             container.Register(() => new SemestersServiceClient(), Lifestyle.Singleton);
             container.Register(() => new ProfessorsServiceClient(), Lifestyle.Singleton);
             container.Register(() => new DisciplinesServiceClient(), Lifestyle.Singleton);
+            container.Register(() => new ReportsServiceClient(), Lifestyle.Singleton);
         }
     }
 }

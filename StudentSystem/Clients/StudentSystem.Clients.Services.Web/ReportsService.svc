@@ -1,0 +1,5 @@
+﻿<%@ ServiceHost 
+    Service="StudentSystem.Services.Web.ReportsService" 
+    Language="C#" 
+    Factory="SimpleInjector.Integration.Wcf.SimpleInjectorServiceHostFactory,
+        SimpleInjector.Integration.Wcf" %>
