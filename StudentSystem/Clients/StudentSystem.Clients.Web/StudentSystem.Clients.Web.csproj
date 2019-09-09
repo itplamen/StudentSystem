@@ -158,6 +158,9 @@
     <Compile Include="Mappers\DateTimeMapper.cs" />
     <Compile Include="Models\Disciplines\DisciplineRequestViewModel.cs" />
     <Compile Include="Models\Disciplines\DisciplineResponseViewModel.cs" />
+    <Compile Include="Models\Home\ReportDisciplineViewModel.cs" />
+    <Compile Include="Models\Home\ReportScoreViewModel.cs" />
+    <Compile Include="Models\Home\ReportSemesterViewModel.cs" />
     <Compile Include="Models\Professors\ProfessorDisciplinesViewModel.cs" />
     <Compile Include="Models\Home\ScoreViewModel.cs" />
     <Compile Include="Models\Home\SemesterViewModel.cs" />
