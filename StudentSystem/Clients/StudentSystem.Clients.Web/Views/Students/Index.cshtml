@@ -92,6 +92,8 @@
                 "aaSorting": [[0, 'asc']],
             });
 
+            $("#date-of-birth").datepicker();
+
             let dialog = $("#dialog-form").dialog({
                 autoOpen: false,
                 height: 420,
@@ -117,7 +119,7 @@
                                 const requestModel = {
                                     FirstName: $('#first-name').val(),
                                     LastName: $('#last-name').val(),
-                                    Email: $('email').val(),
+                                    Email: $('#email').val(),
                                     DateOfBirth: $('#date-of-birth').val()
                                 };
 
@@ -145,7 +147,7 @@
                 $('#first-name').val(column.siblings('.student-first-name').html());
                 $('#last-name').val(column.siblings('.student-last-name').html());
                 $('#email').val(column.siblings('.student-email').html());
-                $('#last-name').val(column.siblings('.student-date-of-birth').html());
+                $('#date-of-birth').val(column.siblings('.student-date-of-birth').html());
 
                 dialog.dialog("option", "title", "Update student")
                 dialog.dialog("option", "buttons",
@@ -157,7 +159,7 @@
                                     Id: column.siblings('.student-id').html(),
                                     FirstName: $('#first-name').val(),
                                     LastName: $('#last-name').val(),
-                                    Email: $('email').val(),
+                                    Email: $('#email').val(),
                                     DateOfBirth: $('#date-of-birth').val()
                                 };
 
