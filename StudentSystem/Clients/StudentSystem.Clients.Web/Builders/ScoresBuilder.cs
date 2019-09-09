@@ -5,8 +5,8 @@
     using AutoMapper;
 
     using StudentSystem.Clients.Web.Models.Home;
-     using StudentSystem.Services.Api.StudentsServiceSoap;
-
+    using StudentSystem.Services.Api.DisciplinesServiceSoap;
+ 
     public class ScoresBuilder
     {
         public static IEnumerable<ScoreViewModel> Build(IEnumerable<DisciplineResponseModel> disciplines)

@@ -6,7 +6,7 @@
     using AutoMapper;
 
     using StudentSystem.Common.Infrastructure.Mapping;
-    using StudentSystem.Services.Api.StudentsServiceSoap;
+    using StudentSystem.Services.Api.SemestersServiceSoap;
 
     public class SemesterViewModel : IMapFrom<SemesterResponseModel>, IHaveCustomMappings
     {

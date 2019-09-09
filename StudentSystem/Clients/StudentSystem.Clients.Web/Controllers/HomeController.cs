@@ -22,10 +22,12 @@
 
         public async Task<ActionResult> Index()
         {
-            IEnumerable<SemesterResponseModel> response = await studentSystemApi.Execute(studentsClient.GetAsync);
-            IEnumerable<StudentViewModel> studentViewModels = StudentsBuilder.Build(response);
+            //IEnumerable<SemesterResponseModel> response = await studentSystemApi.Execute(studentsClient.GetAsync);
+            //IEnumerable<StudentViewModel> studentViewModels = StudentsBuilder.Build(response);
 
-            return View(studentViewModels);
+            //return View(studentViewModels);
+
+            return View();
         }
 
         public ActionResult About()

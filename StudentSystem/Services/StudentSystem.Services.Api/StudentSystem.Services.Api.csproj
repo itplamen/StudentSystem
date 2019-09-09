@@ -182,19 +182,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\StudentsServiceSoap\StudentsService.wsdl" />
-    <None Include="Connected Services\StudentsServiceSoap\StudentsService.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\StudentsServiceSoap\StudentsService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\StudentsServiceSoap\StudentsService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\StudentsServiceSoap\StudentsService21.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\StudentsServiceSoap\StudentsService22.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\StudentsServiceSoap\StudentsService4.xsd">
@@ -206,7 +194,7 @@
     <None Include="Connected Services\StudentsServiceSoap\StudentsService6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\StudentsServiceSoap\StudentSystem.Services.Api.StudentsServiceSoap.SemesterResponseModel.datasource">
+    <None Include="Connected Services\StudentsServiceSoap\StudentSystem.Services.Api.StudentsServiceSoap.StudentResponseModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="packages.config" />
