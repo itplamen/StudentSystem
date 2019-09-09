@@ -143,9 +143,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Attributes\AjaxOnlyAttribute.cs" />
-    <Compile Include="Builders\ScoresBuilder.cs" />
-    <Compile Include="Builders\SemestersBuilder.cs" />
-    <Compile Include="Builders\StudentsBuilder.cs" />
     <Compile Include="Controllers\DisciplinesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfessorsController.cs" />
@@ -162,9 +159,6 @@
     <Compile Include="Models\Home\ReportScoreViewModel.cs" />
     <Compile Include="Models\Home\ReportSemesterViewModel.cs" />
     <Compile Include="Models\Professors\ProfessorDisciplinesViewModel.cs" />
-    <Compile Include="Models\Home\ScoreViewModel.cs" />
-    <Compile Include="Models\Home\SemesterViewModel.cs" />
-    <Compile Include="Models\Home\StudentViewModel.cs" />
     <Compile Include="Models\Professors\ProfessorRequestViewModel.cs" />
     <Compile Include="Models\Professors\ProfessorResponseViewModel.cs" />
     <Compile Include="Models\Professors\ProfessorSemestersViewModel.cs" />
