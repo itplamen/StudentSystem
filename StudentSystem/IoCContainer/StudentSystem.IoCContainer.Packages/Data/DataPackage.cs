@@ -22,7 +22,7 @@
     using StudentSystem.Data.Models;
     using StudentSystem.Data.Queries.Common;
     using StudentSystem.Data.Queries.Professors;
-    using StudentSystem.Data.Queries.Students;
+    using StudentSystem.Data.Queries.Reports;
 
     public sealed class DataPackage : IPackage
     {
@@ -62,7 +62,7 @@
         {
             container.Register(typeof(IQueryHandler<,>), typeof(AllEntitiesQueryHandler<>), Lifestyle.Transient);
             container.Register(typeof(IQueryHandler<,>), typeof(EntityByIdQueryHandler<>), Lifestyle.Transient);
-            container.Register<IQueryHandler<IEnumerable<Semester>>, ActiveStudentDetailsQueryHandler>(Lifestyle.Transient);
+            container.Register<IQueryHandler<IEnumerable<Semester>>, SemestersReportQueryHandler>(Lifestyle.Transient);
 
             container.Register<IQueryHandler<ProfessorByIdQuery, Professor>, ProfessorByIdQueryHandler>(Lifestyle.Transient);
         }

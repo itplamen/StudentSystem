@@ -81,6 +81,7 @@
     <Content Include="DisciplinesService.svc" />
     <Content Include="Global.asax" />
     <Content Include="ProfessorsService.svc" />
+    <Content Include="ReportsService.svc" />
     <Content Include="ScoresService.svc" />
     <Content Include="SemestersService.svc" />
     <Content Include="StudentsService.svc" />
