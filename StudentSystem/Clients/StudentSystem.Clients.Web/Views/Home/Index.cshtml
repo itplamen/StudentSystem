@@ -33,48 +33,7 @@
             </tr>
             <tr class="details-row">
                 <td colspan="7">
-                    <table class="report-details-table dataTable" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">
-                        <thead>
-                            <tr>
-                                <th>Discipline</th>
-                                <th>Professor Id</th>
-                                <th>Professor Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var discipline in semester.Disciplines)
-                            {
-                                <tr>
-                                    <td>@discipline.Name</td>
-                                    <td>@discipline.ProfessorId</td>
-                                    <td>@discipline.ProfessorName</td>
-                                </tr>
-                                <tr class="score-details">
-                                    <td colspan="7">
-                                        <table class="report--score-details-table dataTable" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">
-                                            <thead>
-                                                <tr>
-                                                    <th>Score</th>
-                                                    <th>Student Id</th>
-                                                    <th>PrStudentofessor Name</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach (var score in discipline.Scores)
-                                                {
-                                                    <tr>
-                                                        <td>@score.Mark</td>
-                                                        <td>@score.StudentId</td>
-                                                        <td>@score.StudentName</td>
-                                                    </tr>
-                                                }
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+                    @Html.Partial("_DisciplinesReportPartial", semester.Disciplines);
                 </td>
             </tr>
         }

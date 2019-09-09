@@ -202,6 +202,8 @@
     <Content Include="Views\Scores\Index.cshtml" />
     <Content Include="Views\Semesters\Index.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\Shared\_ScoresReportPartial.cshtml" />
+    <Content Include="Views\Shared\_DisciplinesReportPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\StudentSystem.Common.Infrastructure\StudentSystem.Common.Infrastructure.csproj">

@@ -1,0 +1,28 @@
+﻿@using StudentSystem.Clients.Web.Models.Home
+
+@model IEnumerable<ReportDisciplineViewModel>
+
+<table class="report-details-table dataTable" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">
+    <thead>
+        <tr>
+            <th>Discipline</th>
+            <th>Professor Id</th>
+            <th>Professor Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var discipline in Model)
+        {
+            <tr>
+                <td>@discipline.Name</td>
+                <td>@discipline.ProfessorId</td>
+                <td>@discipline.ProfessorName</td>
+            </tr>
+            <tr class="score-details">
+                <td colspan="7">
+                    @Html.Partial("_ScoresReportPartial", discipline.Scores);
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

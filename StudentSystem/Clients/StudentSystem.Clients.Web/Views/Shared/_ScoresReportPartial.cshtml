@@ -1,0 +1,23 @@
+﻿@using StudentSystem.Clients.Web.Models.Home
+
+@model IEnumerable<ReportScoreViewModel>
+
+<table class="report--score-details-table dataTable" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">
+    <thead>
+        <tr>
+            <th>Score</th>
+            <th>Student Id</th>
+            <th>Student Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var score in Model)
+        {
+            <tr>
+                <td>@score.Mark</td>
+                <td>@score.StudentId</td>
+                <td>@score.StudentName</td>
+            </tr>
+        }
+    </tbody>
+</table>
