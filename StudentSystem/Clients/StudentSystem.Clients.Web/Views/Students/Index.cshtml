@@ -123,10 +123,23 @@
                                     DateOfBirth: $('#date-of-birth').val()
                                 };
 
-                                studentSystemApi.post('/Students/Create', requestModel, successfullyCreatedStudent);
-                                clearForm();
+                                studentSystemApi.post('/Students/Create', requestModel)
+                                    .then(function (data) {
+                                        $studentsTable.fnAddData([
+                                            data.Id,
+                                            data.FirstName,
+                                            data.LastName,
+                                            data.CreatedOn,
+                                            data.ModifiedOn,
+                                            '<td><button class="update ui-button ui-corner-all">Update</button><button class="delete ui-button ui-corner-all">Delete </button></td>']);
 
-                                dialog.dialog("close");
+                                        alert('Sucessfully created new student!');
+                                    })
+                                    .catch(err => alert(err))
+                                    .finally(function () {
+                                        clearForm();
+                                        dialog.dialog("close");
+                                    });
                             }
                         },
                         {
@@ -143,6 +156,7 @@
 
             $(".update").click(function () {
                 let column = $(this).parent();
+                let rowIndex = column.parent().index();
 
                 $('#first-name').val(column.siblings('.student-first-name').html());
                 $('#last-name').val(column.siblings('.student-last-name').html());
@@ -163,10 +177,19 @@
                                     DateOfBirth: $('#date-of-birth').val()
                                 };
 
-                                studentSystemApi.post('/Students/Update', requestModel, successfullyUpdatedStudent, column.parent().index());
-                                clearForm();
+                                studentSystemApi.post('/Students/Update', requestModel)
+                                    .then(function (data) {
+                                        $studentsTable.fnUpdate(data.FirstName, rowIndex, 2);
+                                        $studentsTable.fnUpdate(data.LastName, rowIndex, 3);
+                                        $studentsTable.fnUpdate(data.ModifiedOn, rowIndex, 5);
 
-                                dialog.dialog("close");
+                                        alert('Sucessfully updated student!');
+                                    })
+                                    .catch(err => alert(err))
+                                    .finally(function () {
+                                        clearForm();
+                                        dialog.dialog("close");
+                                    });
                             }
                         },
                         {
@@ -185,36 +208,16 @@
                 let row = $(this).parent();
                 let studentId = row.siblings('.student-id').html();
 
-                studentSystemApi.post('/Students/Delete', { "Id": studentId }, successfullyDeletedStudent, row);
+                studentSystemApi.post('/Students/Delete', { "Id": studentId })
+                    .then(function (isDeleted) {
+                        if (isDeleted == true) {
+                            $studentsTable.fnDeleteRow(row.parent()[0]);
+
+                            alert('Sucessfully deleted student!');
+                        }
+                    })
+                    .catch(err => alert(err));
             });
-
-            function successfullyCreatedStudent(data) {
-                $studentsTable.fnAddData([
-                    data.Id,
-                    data.FirstName,
-                    data.LastName,
-                    data.CreatedOn,
-                    data.ModifiedOn,
-                    '<td><button class="update ui-button ui-corner-all">Update</button><button class="delete ui-button ui-corner-all">Delete </button></td>']);
-
-                alert('Sucessfully created new student!');
-            }
-
-            function successfullyUpdatedStudent(data, rowIndex) {
-                $studentsTable.fnUpdate(data.FirstName, rowIndex, 2);
-                $studentsTable.fnUpdate(data.LastName, rowIndex, 3);
-                $studentsTable.fnUpdate(data.ModifiedOn, rowIndex, 5);
-
-                alert('Sucessfully updated student!');
-            }
-
-            function successfullyDeletedStudent(isDeleted, row) {
-                if (isDeleted == true) {
-                    $studentsTable.fnDeleteRow(row.parent()[0]);
-
-                    alert('Sucessfully deleted student!');
-                }
-            }
         });
 
     </script>

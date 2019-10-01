@@ -109,10 +109,24 @@
                                     LastName: $('#last-name').val()
                                 };
 
-                                studentSystemApi.post('/Professors/Create', requestModel, successfullyCreatedProfessor);
-                                clearForm();
+                                studentSystemApi.post('/Professors/Create', requestModel)
+                                    .then(function (data) {
+                                        professorsTable.fnAddData([
+                                            '<td class="professor-details"><img class="details-img" src="../Content/Images/details_open.png" /></td>',
+                                            data.Id,
+                                            data.FirstName,
+                                            data.LastName,
+                                            data.CreatedOn,
+                                            data.ModifiedOn,
+                                            '<td><button class="update ui-button ui-corner-all">Update</button><button class="delete ui-button ui-corner-all">Delete </button></td>']);
 
-                                dialog.dialog("close");
+                                        alert('Sucessfully created new professor!');
+                                    })
+                                    .catch(err => alert(err))
+                                    .finally(function () {
+                                        clearForm();
+                                        dialog.dialog("close");
+                                    });
                             }
                         },
                         {
@@ -145,10 +159,22 @@
                                     LastName: $('#last-name').val()
                                 };
 
-                                studentSystemApi.post('/Professors/Update', requestModel, successfullyUpdatedProfessor, column.parent().index());
-                                clearForm();
+                                studentSystemApi.post('/Professors/Update', requestModel)
+                                    .then(function (data) {
+                                        let professorsTable = $('#ProfessorsTable').DataTable();
+                                        let rowIndex = column.parent().index();
 
-                                dialog.dialog("close");
+                                        professorsTable.fnUpdate(data.FirstName, rowIndex, 2);
+                                        professorsTable.fnUpdate(data.LastName, rowIndex, 3);
+                                        professorsTable.fnUpdate(data.ModifiedOn, rowIndex, 5);
+
+                                        alert('Sucessfully updated professor!');
+                                    })
+                                    .catch(err => alert(err))
+                                    .finally(function () {
+                                        clearForm();
+                                        dialog.dialog("close");
+                                    });
                             }
                         },
                         {
@@ -167,56 +193,16 @@
                 let row = $(this).parent();
                 let professorId = row.siblings('.professor-id').html();
 
-                studentSystemApi.post('/Professors/Delete', { "Id": professorId }, successfullyDeletedProfessor, row);
-            });
+                studentSystemApi.post('/Professors/Delete', { "Id": professorId })
+                    .then(function (isDeleted) {
+                        if (isDeleted == true) {
+                            professorsTable.fnDeleteRow(row.parent()[0]);
 
-            function successfullyCreatedProfessor(data) {
-                professorsTable.fnAddData([
-                    '<td class="professor-details"><img class="details-img" src="../Content/Images/details_open.png" /></td>',
-                    data.Id,
-                    data.FirstName,
-                    data.LastName,
-                    data.CreatedOn,
-                    data.ModifiedOn,
-                    '<td><button class="update ui-button ui-corner-all">Update</button><button class="delete ui-button ui-corner-all">Delete </button></td>']);
-
-                alert('Sucessfully created new professor!');
-            }
-
-            function successfullyUpdatedProfessor(data, rowIndex) {
-                let professorsTable = $('#ProfessorsTable').DataTable();
-
-                professorsTable.fnUpdate(data.FirstName, rowIndex, 2);
-                professorsTable.fnUpdate(data.LastName, rowIndex, 3);
-                professorsTable.fnUpdate(data.ModifiedOn, rowIndex, 5);
-
-                alert('Sucessfully updated professor!');
-            }
-
-            function successfullyDeletedProfessor(isDeleted, row) {
-                if (isDeleted == true) {
-                    professorsTable.fnDeleteRow(row.parent()[0]);
-
-                    alert('Sucessfully deleted professor!');
-                }
-            }
-
-            function formatDetails(data, detailsRow) {
-                let result = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
-              
-                if (data.Disciplines) {
-                    $(data.Disciplines).each(function (index, value) {
-                        result += '<tr><td>Discipline | Semester:</td><td>' + value.Name + ' | ' + value.Semester.Name + '</td></tr>';
+                            alert('Sucessfully deleted professor!');
+                        }
                     })
-                }
-                else {
-                    result += '<tr><td>Could not find any disciplines</td></tr>';
-                }
-
-                result += '</table>';
-
-                professorsTable.fnOpen(detailsRow, result, 'details');   
-            }
+                    .catch(err => alert(err));
+            });
 
             $('#ProfessorsTable tbody .professor-details').on('click', function () {
                 let detailsRow = $(this).parents('tr')[0];
@@ -229,7 +215,24 @@
                 }
                 else {
                     image.src = '../Content/Images/details_close.png';
-                    studentSystemApi.get('/Professors/Get', { Id: professorId }, formatDetails, detailsRow);              
+                    studentSystemApi.get('/Professors/Get', { Id: professorId })
+                        .then(function (data) {
+                            let result = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+
+                            if (data.Disciplines) {
+                                $(data.Disciplines).each(function (index, value) {
+                                    result += '<tr><td>Discipline | Semester:</td><td>' + value.Name + ' | ' + value.Semester.Name + '</td></tr>';
+                                })
+                            }
+                            else {
+                                result += '<tr><td>Could not find any disciplines</td></tr>';
+                            }
+
+                            result += '</table>';
+
+                            professorsTable.fnOpen(detailsRow, result, 'details');
+                        })
+                        .catch(err => alert(err));              
                 }
             });
         });

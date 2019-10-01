@@ -73,19 +73,19 @@
 
                 const rowIndex = $('table tbody input[name="score-mark"]').parent().parent().index();
 
-                studentSystemApi.post('/Scores/Create', requestModel, successfullyCreatedScore, rowIndex);
+                studentSystemApi.post('/Scores/Create', requestModel)
+                    .then(function (data) {
+                        $scoresTable.fnUpdate(data.Id, rowIndex, 0);
+                        $scoresTable.fnUpdate(data.Mark, rowIndex, 1);
+                        $scoresTable.fnUpdate(data.StudentId, rowIndex, 2);
+                        $scoresTable.fnUpdate(data.DisciplineId, rowIndex, 3);
+                        $scoresTable.fnUpdate(data.CreatedOn, rowIndex, 4);
+                        $scoresTable.fnUpdate(data.ModifiedOn, rowIndex, 5);
+
+                        alert('Sucessfully created score!');
+                    })
+                    .catch(err => alert(err));
             });
-
-            function successfullyCreatedScore(data, rowIndex) {
-                $scoresTable.fnUpdate(data.Id, rowIndex, 0);
-                $scoresTable.fnUpdate(data.Mark, rowIndex, 1);
-                $scoresTable.fnUpdate(data.StudentId, rowIndex, 2);
-                $scoresTable.fnUpdate(data.DisciplineId, rowIndex, 3);
-                $scoresTable.fnUpdate(data.CreatedOn, rowIndex, 4);
-                $scoresTable.fnUpdate(data.ModifiedOn, rowIndex, 5);
-
-                alert('Sucessfully created score!');
-            }
         });
     </script>
 }
