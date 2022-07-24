@@ -215,7 +215,7 @@
                 }
                 else {
                     image.src = '../Content/Images/details_close.png';
-                    studentSystemApi.get('/Professors/Get', { Id: professorId })
+                    studentSystemApi.get('/Professors/Get/' + encodeURIComponent(professorId))
                         .then(function (data) {
                             let result = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
 
